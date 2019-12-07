@@ -14,11 +14,12 @@ class LazyBeast:public Behaviour{
       //To verify the beast is next to this beast or not and the range of detection is 30, variable count will count the number of beast in the range of detection
       if(sqrt((posA.first- posActual.first)*(posA.first- posActual.first)+(posA.second- posActual.second)*(posA.second- posActual.second))< 30) {
         count +=1;
+		}
     }
     //Set the alert number equals to 3(3+1(himself)), if the number of beast around is bigger than this value, the beast will change the direction to the opposite one.
     if(count<4){
       
-    } else{
+    }else{
       dirActual.first = -dirActual.first;
       dirActual.second = -dirActual.second;
     }
@@ -27,5 +28,6 @@ class LazyBeast:public Behaviour{
     posActual.second+=dirActual.second;
     return pair<pair< int, int >, pair< int, int >>(posActual, dirActual);
     
-  };
-}
+  
+	}
+};
