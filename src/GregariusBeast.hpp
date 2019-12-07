@@ -19,6 +19,7 @@ class GregariusBeast:public Behaviour{
         count +=1;
         moyenDirX+=dirA.first;
         moyenDirY+=dirA.second;
+		}
     }
     moyenDirX/=count;
     moyenDirY/=count;
@@ -29,8 +30,5 @@ class GregariusBeast:public Behaviour{
     posActual.first+=dirActual.first;
     posActual.second+=dirActual.second;
     return pair<pair< int, int >, pair< int, int >>(posActual, dirActual);
-      
     }
-    
-  };
-}
+};

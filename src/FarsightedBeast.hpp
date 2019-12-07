@@ -17,9 +17,10 @@ class FarsigthedBeast:public Behaviour{
       if(sqrt((posA.first- posActual.first)*(posA.first- posActual.first)+(posA.second- posActual.second)*(posA.second- posActual.second))< 4) {
           dirActual = ptr->getDirection();  // not defind in the class beast, return type pair<int, int>
       }
+    }
     // change the position
     posActual.first+=dirActual.first;
     posActual.second+=dirActual.second;
     return pair<pair< int, int >, pair< int, int >>(posActual, dirActual);       
-  };
-}
+  }
+};

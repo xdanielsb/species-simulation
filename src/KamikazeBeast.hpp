@@ -39,5 +39,5 @@ class KamikazeBeast:public Behaviour{
     posActual.second+=dirActual.second;
     return pair<pair< int, int >, pair< int, int >>(posActual, dirActual);
     
-  };
-}
+  }
+};
