@@ -14,6 +14,9 @@ private:
   vector< Accesory*> accesories;
   bool isMP;
   Behaviour behaviour;
+  
+  int index;  // @author lei
+  
 public:
   void addAccessory(Accesory *a){
 
@@ -44,6 +47,19 @@ public:
   }
   void changeDirection(){
 
+  }
+  
+  // @author lei
+  pair<int ,int> getPosition(){
+    return this->pos;
+  }
+  // @author lei
+  pair<int, int> getDirection(){
+    return this->dir;
+  }
+  // @author lei
+  int getIndex(){
+    return this->index;
   }
 
 };
