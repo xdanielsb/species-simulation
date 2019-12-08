@@ -1,3 +1,5 @@
+#ifndef _CFin
+#define _CFin
 #include "./Accesory.hpp"
 class Fin: public Accesory{
 private:
@@ -5,3 +7,4 @@ private:
 public:
   Fin( double _c): cspeed(_c){}
 };
+#endif

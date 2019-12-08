@@ -1,3 +1,5 @@
+#ifndef _CCamouflage
+#define _CCamouflage
 #include "./Accesory.hpp"
 class Camouflage{
 private:
@@ -5,3 +7,4 @@ private:
 public:
   Camouflage( int _c): ccamouflage(_c){}
 };
+#endif
