@@ -3,8 +3,8 @@
 class Animal{
 private:
   int id;
-  ii pos;
-  ii dir;
+  pair<float, float> pos;
+  pair<float, float> dir;
   public:
   Animal(){}
   virtual ~Animal(){};
