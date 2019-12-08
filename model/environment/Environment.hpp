@@ -1,3 +1,5 @@
+#ifndef _CEnvironment
+#define _CEnvironment
 class Environment{
 private:
   vector< Beast* > lbeast;
@@ -29,7 +31,8 @@ public:
   }
 
   void getCurrentState(){
-    
+
   }
 
 };
+#endif

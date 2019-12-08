@@ -1,8 +1,10 @@
 #include"./Cloneable.hpp"
+#ifndef _CBeast
+#define _CBeast
 class Beast: public Cloneable{
 private:
-  pair< int, int > pos;
-  pair< int, int > dir;
+  ii pos;
+  ii dir;
   int current_age;
   int max_age;
   double camouflage;
@@ -14,9 +16,9 @@ private:
   vector< Accesory*> accesories;
   bool isMP;
   Behaviour behaviour;
-  
+
   int index;  // @author lei
-  
+
 public:
   void addAccessory(Accesory *a){
 
@@ -48,7 +50,7 @@ public:
   void changeDirection(){
 
   }
-  
+
   // @author lei
   pair<int ,int> getPosition(){
     return this->pos;
@@ -63,3 +65,4 @@ public:
   }
 
 };
+#endif

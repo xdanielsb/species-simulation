@@ -4,7 +4,9 @@
 
 using namespace std;
 
-class Contextbehavior{
+#ifndef _CContexBehaviour
+#define _CContexBehaviour
+class ContextBehavior{
 private:
 	Behavior* behavior;
 public:
@@ -13,6 +15,7 @@ public:
 		this->behavior= behavior;
 	}
 	pair<pair<int, int >, pair< int, int >> executeBehavior(int index, pair< int, int > posActual, pair< int, int > dirActual, vector< Beast*> listBeast){
-		retrun this->behavior->move(int index, pair< int, int > posActual, pair< int, int > dirActual, vector< Beast*> listBeast);	
+		retrun this->behavior->move(int index, pair< int, int > posActual, pair< int, int > dirActual, vector< Beast*> listBeast);
 	}
 };
+#endif
