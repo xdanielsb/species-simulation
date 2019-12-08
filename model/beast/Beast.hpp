@@ -1,10 +1,12 @@
 #ifndef _CBeast
 #define _CBeast
-#include"./Cloneable.hpp"
-class Beast: public Cloneable{
+#include"./IMove.hpp"
+#include"../accesory/Accessory.hpp"
+#include"../sensor/Sensor.hpp"
+#include"../behaviour/IBehaviour.hpp"
+class Beast: public IMove, public Animal{
 private:
-  ii pos;
-  ii dir;
+
   int current_age;
   int max_age;
   double camouflage;
@@ -13,27 +15,30 @@ private:
   double speed;
   double resistance;
   vector< Sensor* > sensors;
-  vector< Accesory*> accesories;
-  bool isMP;
+  vector< Accessory*> accesories;
+  bool hasMultipleBehaviours;
   Behaviour behaviour;
 
-  int index;  // @author lei
 
 public:
-  void addAccessory(Accesory *a){
+
+  Beast(){}
+  ~Beast(){}
+  void addAccessory(Accessory *a){
 
   }
   void addSensor( Sensor* s){
 
   }
-  void removeAccesory( Accesory *a){
+  void removeAccesory( Accessory *a){
 
   }
   void removeSensor(Sensor *s){
 
   }
   void move(){
-
+    vector< Animal*> neighbors;
+    this->behaviour.move( this, neighbors );
   }
   Beast* clone(){
 
@@ -51,18 +56,6 @@ public:
 
   }
 
-  // @author lei
-  ii getPosition(){
-    return this->pos;
-  }
-  // @author lei
-  ii getDirection(){
-    return this->dir;
-  }
-  // @author lei
-  int getIndex(){
-    return this->index;
-  }
 
 };
 #endif

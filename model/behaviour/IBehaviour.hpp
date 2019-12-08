@@ -1,10 +1,9 @@
 #ifndef _CBehaviour
 #define _CBehaviour
-#include"./Beast.hpp"
+#include"../beast/Animal.hpp"
 class Behaviour{
  public:
- virtual pair<ii, ii>
-      move( int index, ii posActual, ii dirActual, vector< Beast*> listBeast)  = 0;
- ~Behaviour()= default;
+ virtual ii move( Animal *animal, vector< Animal*> neighbors);
+ ~Behaviour() = default;
 };
 #endif

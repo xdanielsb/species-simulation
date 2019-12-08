@@ -2,16 +2,14 @@
 #define _CKamikaze
 #include"./Behaviour.hpp"
 class Kamikaze:public Behaviour{
-  pair<pair< int, int >, pair< int, int >> move(int index, pair< int, int > posActual, pair< int, int > dirActual, vector< Beast*> listBeast){
+  pair<ii, ii> move(int index, ii posActual, ii dirActual, vector< Beast*> listBeast){
 
-
-    vector<Beast*>::iterator ptr;
     int count =0;
     pair<int, int> nearestPos;
     bool flag = true;
     double nearestDistance;
 
-    for(ptr=listBeast.begin(); ptr!=listBeast.end(); ptr++){
+    for(auto ptr=listBeast.begin(); ptr!=listBeast.end(); ptr++){
       // If it's himself, than turn to the next bestle
       if(index== ptr->getIndex()){
         break;

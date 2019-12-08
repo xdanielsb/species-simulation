@@ -1,7 +1,7 @@
 #ifndef _CAquarium
 #define _CAquarium
 /*
- * Namespace and Dependencies
+ * Namespace
  */
 
 using namespace std;
@@ -17,27 +17,31 @@ typedef pair< int, int > ii;
  */
 const double PI = acos(-1);
 
+/*
+ * Depenedencies
+ */
+
+#include"../model/environment/Environment.hpp"
 //#include"../model/beast//Beast.hpp"
-//#include"../model/environment/Environment.hpp"
 
 
 
-#include"./factory/FactoryBeast.hpp"
+#include"./factory/BeastFactory.hpp"
 class Aquarium{
 private:
+  BeastFactory *fac;
   Environment *env;
-  FactoryBeast *fac;
 public:
   Aquarium(){
-    this->fac = new FactoryBeast();
+    //this->fac = new FactoryBeast();
     //vector< Beast*> list_beast;
     //env = new Environment( list_beast );
   }
   void run(){
-    bool ok = true;
-    while( ok ){
+    //bool ok = true;
+    //while( ok ){
       //ok &= env->step();
-    }
+    //}
   }
 };
 #endif

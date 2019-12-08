@@ -2,7 +2,7 @@
 #define _CGregarius
 #include"./Behaviour.hpp"
 class Gregarius:public Behaviour{
-  pair<pair< int, int >, pair< int, int >> move(int index, pair< int, int > posActual, pair< int, int > dirActual, vector< Beast*> listBeast){
+  pair<ii, ii> move(int index, ii posActual, ii dirActual, vector< Beast*> listBeast){
     int moyenDirX = 0;
     int moyenDirY = 0;
     vector<Beast*>::iterator ptr;

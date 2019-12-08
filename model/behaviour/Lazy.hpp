@@ -4,10 +4,9 @@
 #include"./Behaviour.hpp"
 class Lazy:public Behaviour{
   pair<pair< int, int >, pair< int, int >> move(int index, pair< int, int > posActual, pair< int, int > dirActual, vector< Beast*> listBeast){
-    vector<Beast*>::iterator ptr;
     int count =0;
 
-    for(ptr=listBeast.begin(); ptr!=listBeast.end(); ptr++){
+    for(auto ptr=listBeast.begin(); ptr!=listBeast.end(); ptr++){
 
       pair<int, int> posA = ptr->getPosition();   // not defind in the class beast, return type pair<int, int>
 

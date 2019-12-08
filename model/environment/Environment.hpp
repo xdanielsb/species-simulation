@@ -1,5 +1,7 @@
 #ifndef _CEnvironment
 #define _CEnvironment
+#include"../beast/Beast.hpp"
+#include"../behaviour/IBehaviour.hpp"
 class Environment{
 private:
   vector< Beast* > lbeast;
@@ -8,7 +10,7 @@ public:
 
   }
   Environment( vector< Beast*> &lbeast){
-    this.lbeast = lbeast;
+    this->lbeast = lbeast;
   }
   bool step(){
 
@@ -26,13 +28,11 @@ public:
   void cloneBeast(){
 
   }
-  void changeBehaviour( Beast* b, Behaviour *b){
+  void changeBehaviour( Beast* beast, Behaviour *behaviour){
 
   }
-
   void getCurrentState(){
 
   }
-
 };
 #endif
