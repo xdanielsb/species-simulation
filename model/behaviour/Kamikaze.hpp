@@ -2,7 +2,8 @@
 #define _CKamikaze
 #include"./Behaviour.hpp"
 class Kamikaze:public Behaviour{
-  pair<ii, ii> move(int index, ii posActual, ii dirActual, vector< Beast*> listBeast){
+public:
+  auto move(int index, ii posActual, ii dirActual, vector< Beast*> listBeast){
 
     int count =0;
     pair<int, int> nearestPos;
@@ -33,7 +34,7 @@ class Kamikaze:public Behaviour{
     // change the position
     posActual.first+=dirActual.first;
     posActual.second+=dirActual.second;
-    return pair<pair< int, int >, pair< int, int >>(posActual, dirActual);
+    return make_pair(posActual, dirActual);
 
   }
 };
