@@ -1,5 +1,7 @@
-#include "FactoryBeast.hpp"
-
+#ifndef _CEnvironment
+#define _CEnvironment
+#include"../beast/Beast.hpp"
+#include"../behaviour/IBehaviour.hpp"
 class Environment{
 private:
   vector< Beast* > lbeast;
@@ -31,12 +33,11 @@ public:
   void cloneBeast(){
 
   }
-  void changeBehaviour( Beast* b, Behaviour *b){
+  void changeBehaviour( Beast* beast, Behaviour *behaviour){
 
   }
-
   void getCurrentState(){
-    
-  }
 
+  }
 };
+#endif
