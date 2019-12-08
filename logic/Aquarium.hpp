@@ -1,3 +1,11 @@
+#ifndef _CAquarium
+#define _CAquarium
+/*
+ * Namespace and Dependencies
+ */
+
+using namespace std;
+
 /*
  * New Types
  */
@@ -7,33 +15,28 @@ typedef pair< int, int > ii;
 /*
  * Constants
  */
+const double PI = acos(-1);
 
-const double 2PI = acos(-1) * 2.;
-/*
- * Dependencies
- */
-using namespace std;
+//#include"../model/beast//Beast.hpp"
+//#include"../model/environment/Environment.hpp"
+
+
+
 #include"./factory/FactoryBeast.hpp"
-#include"../../model/beast//Beast.hpp"
-#include"../../model/environment/Environment.hpp"
-
-
-#ifndef _CAquarium
-#define _CAquarium
 class Aquarium{
 private:
   Environment *env;
   FactoryBeast *fac;
 public:
   Aquarium(){
-    fac = new FactoryBeast();
-    vector< Beast*> list_beast;
-    env = new Environment( list_beast );
+    this->fac = new FactoryBeast();
+    //vector< Beast*> list_beast;
+    //env = new Environment( list_beast );
   }
   void run(){
     bool ok = true;
     while( ok ){
-      ok &= env->step();
+      //ok &= env->step();
     }
   }
 };

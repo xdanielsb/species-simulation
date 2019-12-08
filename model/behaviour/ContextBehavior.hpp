@@ -1,11 +1,9 @@
-#include "./Behaviour.hpp"
-#include "./Beast.hpp"
-#include<vector>
-
-using namespace std;
 
 #ifndef _CContexBehaviour
 #define _CContexBehaviour
+
+#include "./Behaviour.hpp"
+#include "./Beast.hpp"
 class ContextBehavior{
 private:
 	Behavior* behavior;

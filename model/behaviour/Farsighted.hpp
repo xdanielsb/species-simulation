@@ -1,8 +1,6 @@
-#include"./Behaviour.hpp"
-
-using namespace std;
 #ifndef _CFarsigthed
 #define _CFarsigthed
+#include"./Behaviour.hpp"
 class Farsigthed:public Behaviour{
   pair<pair<int, int >, pair< int, int >> move(int index, pair< int, int > posActual, pair< int, int > dirActual, vector< Beast*> listBeast){
 

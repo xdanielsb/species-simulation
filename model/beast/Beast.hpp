@@ -1,6 +1,6 @@
-#include"./Cloneable.hpp"
 #ifndef _CBeast
 #define _CBeast
+#include"./Cloneable.hpp"
 class Beast: public Cloneable{
 private:
   ii pos;
@@ -52,11 +52,11 @@ public:
   }
 
   // @author lei
-  pair<int ,int> getPosition(){
+  ii getPosition(){
     return this->pos;
   }
   // @author lei
-  pair<int, int> getDirection(){
+  ii getDirection(){
     return this->dir;
   }
   // @author lei

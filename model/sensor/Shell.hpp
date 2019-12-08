@@ -1,6 +1,6 @@
-#include "./Accesory.hpp"
 #ifndef _CShell
 #define _CShell
+#include "./Accesory.hpp"
 class Shell: public Accesory{
 private:
   double cdied;

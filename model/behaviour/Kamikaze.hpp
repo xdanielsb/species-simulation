@@ -1,7 +1,6 @@
-#include"./Behaviour.hpp"
-
 #ifndef _CKamikaze
 #define _CKamikaze
+#include"./Behaviour.hpp"
 class Kamikaze:public Behaviour{
   pair<pair< int, int >, pair< int, int >> move(int index, pair< int, int > posActual, pair< int, int > dirActual, vector< Beast*> listBeast){
 

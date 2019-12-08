@@ -1,6 +1,6 @@
-#include "./Accesory.hpp"
 #ifndef _CCamouflage
 #define _CCamouflage
+#include "./Accesory.hpp"
 class Camouflage{
 private:
   double ccamouflage;

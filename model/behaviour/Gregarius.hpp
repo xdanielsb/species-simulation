@@ -1,8 +1,6 @@
-#include"./Behaviour.hpp"
-
-using namespace std;
 #ifndef _CGregarius
 #define _CGregarius
+#include"./Behaviour.hpp"
 class Gregarius:public Behaviour{
   pair<pair< int, int >, pair< int, int >> move(int index, pair< int, int > posActual, pair< int, int > dirActual, vector< Beast*> listBeast){
     int moyenDirX = 0;

@@ -1,10 +1,6 @@
-#include<iterator>
-#include<vector>
-#include"./Beast.hpp"
-
-using namespace std;
 #ifndef _CBehaviour
 #define _CBehaviour
+#include"./Beast.hpp"
 class Behaviour{
  public:
  virtual pair<ii, ii>
