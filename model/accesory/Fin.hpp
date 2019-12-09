@@ -6,5 +6,6 @@ private:
   double cspeed;
 public:
   Fin( double _c): cspeed(_c){}
+  ~Fin(){}
 };
 #endif

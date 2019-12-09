@@ -10,13 +10,14 @@ using namespace std;
  * New Types
  */
 
-typedef pair< int, int > ii;
+typedef pair< float, float > ii;
 
 /*
- * Constants
+ * Constants and defines
  */
 const double PI = acos(-1);
-
+#define first X
+#define second Y
 /*
  * Depenedencies
  */
@@ -37,7 +38,7 @@ public:
     //vector< Beast*> list_beast;
     //env = new Environment( list_beast );
   }
-  void run(){
+  void* run(){
     //bool ok = true;
     //while( ok ){
       //ok &= env->step();

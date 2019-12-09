@@ -2,7 +2,7 @@
 #define _CEnvironment
 #include"../beast/Beast.hpp"
 #include"../behaviour/IBehaviour.hpp"
-class Environment{
+class Environment{ // facade 
 private:
   vector< Beast* > lbeast;
 public:
@@ -34,7 +34,7 @@ public:
 
   }
   void changeBehaviour( Beast* beast, Behaviour *behaviour){
-
+    beast->setBehavior( behaviour);
   }
   void getCurrentState(){
 

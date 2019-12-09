@@ -6,7 +6,7 @@ using namespace std;
 
 class Behaviour{
 public:
- virtual auto move(int index, pair<float, float> posActual, pair<float, float> dirActual, vector<Beast*> listBeast);
+ virtual void move(Animal *animal, vector<Animal*> listBeast);
  ~Behaviour() = default;
 };
 #endif
