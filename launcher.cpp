@@ -1,4 +1,8 @@
-#include<bits/stdc++.h>
+#include<iostream>
+#include<vector>
+#include<math.h>
+#include<array>
+#include<new>
 #include"./view/Aquarium.hpp"
 using namespace std;
 
