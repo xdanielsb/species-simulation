@@ -10,7 +10,7 @@ using namespace std;
  * New Types
  */
 
-typedef pair< int, int > ii;
+typedef pair< float, float > ii;
 
 /*
  * Constants

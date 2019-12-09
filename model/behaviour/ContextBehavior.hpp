@@ -15,8 +15,8 @@ public:
 	void setBehavior(Behavior* behavior){
 		this->behavior= behavior;
 	}
-	auto executeBehavior(int index, pair<float, float> posActual, pair<float, float> dirActual, vector<Beast*> listBeast){
-		retrun this->behavior->move(int index, pair<float, float> posActual, pair<float, float> dirActual, vector<Beast*> listBeast);
+	auto executeBehavior(int index, ii posActual, ii dirActual, vector<Beast*> listBeast){
+		retrun this->behavior->move(int index, ii posActual, ii dirActual, vector<Beast*> listBeast);
 	}
 };
 #endif
