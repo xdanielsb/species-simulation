@@ -3,13 +3,13 @@
 #include<math.h>
 #include<array>
 #include<new>
-#include"./view/Aquarium.hpp"
+#include"./logic/controller/Simulation.hpp"
 using namespace std;
 
 int main(){
-  Aquarium *q = new Aquarium(300, 300);
+  Simulation *s = new Simulation();
   try{
-    q->run();
+    s->start();
   }catch(const char* msg){
     printf("An error has occurred %s \n",msg);
   }

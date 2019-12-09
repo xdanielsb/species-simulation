@@ -1,8 +1,8 @@
 #ifndef _CEnvironment
 #define _CEnvironment
-#include"../beast/Beast.hpp"
-#include"../behaviour/IBehaviour.hpp"
-#include"../../logic/factory/BeastFactory.hpp"
+#include"../factory/BeastFactory.hpp"
+#include"../../model/beast/Beast.hpp"
+#include"../../model/behaviour/IBehaviour.hpp"
 class Environment{ // facade
 private:
   vector< Animal* > lbeast;
