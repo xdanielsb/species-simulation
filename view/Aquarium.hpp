@@ -22,8 +22,8 @@ private:
 public:
   Aquarium( int _width, int _height ): width(_width), height(_height){
     this->fac = new BeastFactory();
-    vector< Beast*> list_beast = this->fac->newPopulation();
-    env = new Environment( list_beast );
+    vector< Animal*> list = this->fac->newPopulation();
+    env = new Environment( list );
   }
   void run(){
     env->step();
