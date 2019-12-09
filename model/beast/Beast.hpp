@@ -1,10 +1,9 @@
 #ifndef _CBeast
 #define _CBeast
-#include"./IMove.hpp"
 #include"../accesory/Accessory.hpp"
 #include"../sensor/Sensor.hpp"
 #include"../behaviour/IBehaviour.hpp"
-class Beast: public IMove, public Animal{
+class Beast: public Animal{
 private:
 
   int age;
@@ -59,6 +58,11 @@ public:
  void setBehavior( Behaviour *b ){
    this->behaviour = b;
  }
+
+ friend ostream& operator << (ostream &out, Beast *b) {
+  out << "Animal { id = "<< b->getId() << "}"<< endl;
+  return out;
+}
 
 };
 #endif

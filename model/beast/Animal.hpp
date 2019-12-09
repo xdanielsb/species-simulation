@@ -6,15 +6,17 @@ private:
   ii pos;
   ii dir;
   public:
-  Animal(int _id, ii _pos, ii _dir): id(_id), pos(_pos), dir(_dir){}
+  Animal(int _id, ii _pos, ii _dir): id(_id), pos(_pos), dir(_dir){
+    printf("An animal with id = %d was created.\n", _id);
+  }
   virtual ~Animal(){};
-  ii getPosition(){
+  ii getPosition() {
     return this->pos;
   }
   ii getDirection(){
     return this->dir;
   }
-  int getId(){
+  int getId() {
     return this->id;
   }
 };
