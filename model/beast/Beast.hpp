@@ -7,11 +7,11 @@
 class Beast: public IMove, public Animal{
 private:
 
-  int current_age;
-  int max_age;
+  int age;
+  int maxAge;
   double camouflage;
-  double perception_ear;
-  double perception_eye;
+  double perceptionEar;
+  double perceptionEye;
   double speed;
   double resistance;
   vector< Sensor* > sensors;
@@ -21,7 +21,9 @@ private:
 
 public:
 
-  Beast(){}
+  Beast(int _id, ii _pos, ii _dir):Animal(_id, _pos, _dir){
+    //Animal(_id, _pos, _dir)
+  }
   ~Beast(){}
   void addAccessory(Accessory *a){
 
@@ -35,8 +37,7 @@ public:
   void removeSensor(Sensor *s){
 
   }
-  void move(){
-    vector< Animal*> neighbors;
+  void move(vector<Animal*> &neighbors){
     this->behaviour->move( this, neighbors );
   }
   Beast* clone(){

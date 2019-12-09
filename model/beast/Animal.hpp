@@ -6,7 +6,7 @@ private:
   ii pos;
   ii dir;
   public:
-  Animal(){}
+  Animal(int _id, ii _pos, ii _dir): id(_id), pos(_pos), dir(_dir){}
   virtual ~Animal(){};
   ii getPosition(){
     return this->pos;

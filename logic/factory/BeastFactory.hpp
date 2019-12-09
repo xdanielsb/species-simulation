@@ -18,9 +18,8 @@ class BeastFactory{
 
   static BeastFactory *factory;
 
-  ~BeastFactory() {}
-
   public:
+    BeastFactory() {}
 
     static BeastFactory *buildFactory() {
       if (!factory)
@@ -34,6 +33,11 @@ class BeastFactory{
     }
 
     vector<Beast*> newPopulation(){
+  //    int n = 10;
+    //  vector<Beast*> list(10);
+      //for( int i = 0; i  < 10; i++){
+      //  list[i] = this->newBeast();
+      //}
 
     }
 
