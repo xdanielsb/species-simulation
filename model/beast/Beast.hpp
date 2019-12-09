@@ -17,7 +17,7 @@ private:
   vector< Sensor* > sensors;
   vector< Accessory*> accesories;
   bool hasMultipleBehaviours;
-  Behaviour behaviour;
+  Behaviour *behaviour;
 
 public:
 
@@ -37,7 +37,7 @@ public:
   }
   void move(){
     vector< Animal*> neighbors;
-    this->behaviour.move( this, neighbors );
+    this->behaviour->move( this, neighbors );
   }
   Beast* clone(){
 
@@ -55,8 +55,8 @@ public:
 
   }
  // setters and getters
- void setBehavior( Behavior *b ){
-   this->behavior = b;
+ void setBehavior( Behaviour *b ){
+   this->behaviour = b;
  }
 
 };
