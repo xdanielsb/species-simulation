@@ -2,19 +2,20 @@
 #define _CEnvironment
 #include"../beast/Beast.hpp"
 #include"../behaviour/IBehaviour.hpp"
-class Environment{ // facade 
+#include"../../logic/factory/BeastFactory.hpp"
+class Environment{ // facade
 private:
-  vector< Beast* > lbeast;
+  vector< Animal* > lbeast;
 public:
   void changeState(){
 
   }
-  Environment( vector< Beast*> &lbeast){
-    this.lbeast = lbeast;
+  Environment( vector< Animal*> &lbeast){
+    this->lbeast = lbeast;
 
     //Initialize pointer to zero so that it can be initialized in first call to buildFactory
-    FactoryBeast *FactoryBeast::factory = 0;
-    Factory *f = f->buildFactory();
+  //  BeastFactory *BeastFactory::factory = 0;
+    //Factory *f = f->buildFactory();
   }
 
   bool step(){

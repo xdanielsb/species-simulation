@@ -1,30 +1,12 @@
 #ifndef _CAquarium
 #define _CAquarium
-/*
- * Namespace
- */
 
-using namespace std;
-
-/*
- * New Types
- */
-
-typedef pair< float, float > ii;
-
-/*
- * Constants and defines
- */
-const double PI = acos(-1);
-#define first X
-#define second Y
 /*
  * Depenedencies
  */
-
+#include"./include.hpp"
 #include"../model/environment/Environment.hpp"
-//#include"../model/beast//Beast.hpp"
-
+#include"../model/beast//Beast.hpp"
 
 
 #include"./factory/BeastFactory.hpp"
@@ -34,8 +16,10 @@ private:
   Environment *env;
 public:
   Aquarium(){
-    //this->fac = new FactoryBeast();
-    //vector< Beast*> list_beast;
+    this->fac = new BeastFactory();
+    //Animal *a = new Animal(1, {1,1}, {1,1});
+
+    //vector< Beast*> list_beast = this->fac->newPopulation();
     //env = new Environment( list_beast );
   }
   void* run(){

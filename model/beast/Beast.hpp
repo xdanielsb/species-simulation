@@ -1,27 +1,28 @@
 #ifndef _CBeast
 #define _CBeast
-#include"./IMove.hpp"
 #include"../accesory/Accessory.hpp"
 #include"../sensor/Sensor.hpp"
 #include"../behaviour/IBehaviour.hpp"
-class Beast: public IMove, public Animal{
+class Beast: public Animal{
 private:
 
-  int current_age;
-  int max_age;
+  int age;
+  int maxAge;
   double camouflage;
-  double perception_ear;
-  double perception_eye;
+  double perceptionEar;
+  double perceptionEye;
   double speed;
   double resistance;
   vector< Sensor* > sensors;
   vector< Accessory*> accesories;
   bool hasMultipleBehaviours;
-  Behaviour behaviour;
+  Behaviour *behaviour;
 
 public:
 
-  Beast(){}
+  Beast(int _id, ii _pos, ii _dir):Animal(_id, _pos, _dir){
+    //Animal(_id, _pos, _dir)
+  }
   ~Beast(){}
   void addAccessory(Accessory *a){
 
@@ -35,9 +36,8 @@ public:
   void removeSensor(Sensor *s){
 
   }
-  void move(){
-    vector< Animal*> neighbors;
-    this->behaviour.move( this, neighbors );
+  void move(vector<Animal*> &neighbors){
+    this->behaviour->move( this, neighbors );
   }
   Beast* clone(){
 
@@ -55,9 +55,14 @@ public:
 
   }
  // setters and getters
- void setBehavior( Behavior *b ){
-   this->behavior = b;
+ void setBehavior( Behaviour *b ){
+   this->behaviour = b;
  }
+
+ friend ostream& operator << (ostream &out, Beast *b) {
+  out << "Animal { id = "<< b->getId() << "}"<< endl;
+  return out;
+}
 
 };
 #endif
