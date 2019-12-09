@@ -6,7 +6,7 @@ using namespace std;
 
 class Farsighted:public Behaviour{
 public:
-  auto move(int index,ii posActual, ii dirActual, vector< Beast*> listBeast){
+  void move(Animal *animal, vector<Animal*> listBeast){
 
     for(auto ptr=listBeast.begin(); ptr!=listBeast.end(); ptr++){
       if(index == ptr->getIndex()){

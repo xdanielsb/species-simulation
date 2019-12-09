@@ -3,7 +3,7 @@
 #include"./Behaviour.hpp"
 class Kamikaze:public Behaviour{
 public:
-  auto move(int index, ii posActual, ii dirActual, vector< Beast*> listBeast){
+  void move(Animal *animal, vector<Animal*> listBeast){
 
     int count =0;
     pair<int, int> nearestPos;

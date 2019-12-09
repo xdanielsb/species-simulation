@@ -6,7 +6,7 @@ using namespace std;
 
 class Gregarius:public Behaviour{
 public:
-    auto move(int index, ii posActual, ii dirActual, vector< Beast*> listBeast){
+    void move(Animal *animal, vector<Animal*> listBeast){
         float moyenDirX = 0;
         float moyenDirY = 0;
         int count =0;
@@ -29,9 +29,9 @@ public:
         dirActual.first = moyenDirX;
         dirActual.second = moyenDirY;
         // change the position
-        posActual.first+=dirActual.first;
-        posActual.second+=dirActual.second;
-        return make_pair(posActual, dirActual);
+        animal.posActual.first+=dirActual.first;
+        animal.posActual.second+=dirActual.second;
+
     }
 };
 #endif

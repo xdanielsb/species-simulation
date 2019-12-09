@@ -14,7 +14,7 @@ private:
   ii getDirection(){
     return this->dir;
   }
-  int getIndex(){
+  int getId(){
     return this->id;
   }
 };

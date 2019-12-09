@@ -7,9 +7,8 @@ using namespace std;
 
 class Lazy:public Behaviour{
 public:
-    auto move(int index, ii posActual, ii dirActual, vector< Beast*> listBeast){
+    void move(Animal *animal, vector<Animal*> listBeast)
     int count =0;
-
     for(auto ptr=listBeast.begin(); ptr!=listBeast.end(); ptr++){
 
       ii posA = ptr->getPosition();   // not defind in the class beast, return type pair<int, int>

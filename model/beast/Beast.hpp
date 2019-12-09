@@ -19,7 +19,6 @@ private:
   bool hasMultipleBehaviours;
   Behaviour behaviour;
 
-
 public:
 
   Beast(){}
@@ -55,7 +54,10 @@ public:
   void changeDirection(){
 
   }
-
+ // setters and getters
+ void setBehavior( Behavior *b ){
+   this->behavior = b;
+ }
 
 };
 #endif
