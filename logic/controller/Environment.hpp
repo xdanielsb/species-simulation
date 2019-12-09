@@ -1,8 +1,8 @@
 #ifndef _CEnvironment
 #define _CEnvironment
-#include"../beast/Beast.hpp"
-#include"../behaviour/IBehaviour.hpp"
-#include"../../logic/factory/BeastFactory.hpp"
+#include"../factory/BeastFactory.hpp"
+#include"../../model/beast/Beast.hpp"
+#include"../../model/behaviour/IBehaviour.hpp"
 class Environment{ // facade
 private:
   vector< Animal* > lbeast;
@@ -14,15 +14,17 @@ public:
     this->lbeast = lbeast;
 
     //Initialize pointer to zero so that it can be initialized in first call to buildFactory
-  //  BeastFactory *BeastFactory::factory = 0;
+    //BeastFactory *BeastFactory::factory = 0;
     //Factory *f = f->buildFactory();
   }
-
   bool step(){
-
+      this->removeDiedBeast();
+      this->removeCollidedBeast();
+      for( Animal* b: this->lbeast){
+        b->move( this->lbeast );
+      }
   }
   void removeCollidedBeast(){
-
 
   }
   void removeDiedBeast(){

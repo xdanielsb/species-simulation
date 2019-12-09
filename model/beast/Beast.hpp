@@ -15,12 +15,12 @@ private:
   double resistance;
   vector< Sensor* > sensors;
   vector< Accessory*> accesories;
-  bool hasMultipleBehaviours;
+  bool idBehaviour;
   Behaviour *behaviour;
 
 public:
-
-  Beast(int _id, ii _pos, ii _dir):Animal(_id, _pos, _dir){
+  
+  Beast(int _id, ii _pos, ii _dir, int _idBehaviour):Animal(_id, _pos, _dir), idBehaviour(_idBehaviour){
     //Animal(_id, _pos, _dir)
   }
   ~Beast(){}
@@ -37,6 +37,7 @@ public:
 
   }
   void move(vector<Animal*> &neighbors){
+    cout << "Moving "<< this << endl;
     this->behaviour->move( this, neighbors );
   }
   Beast* clone(){

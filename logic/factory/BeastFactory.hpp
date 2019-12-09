@@ -1,5 +1,6 @@
 #ifndef _CBeastFactory
 #define _CBeastFactory
+#include"../../model/beast/Animal.hpp"
 #include"../../model/beast/Beast.hpp"
 class BeastFactory{
 
@@ -27,18 +28,17 @@ class BeastFactory{
       return factory;
     }
 
-
-    Beast* newBeast(){
-
+    Beast* newRandomBeast(){
+      return new Beast(1, {1,1}, {1,1}, 1);
     }
 
-    vector<Beast*> newPopulation(){
-  //    int n = 10;
-    //  vector<Beast*> list(10);
-      //for( int i = 0; i  < 10; i++){
-      //  list[i] = this->newBeast();
-      //}
-
+    vector<Animal*> newPopulation(){
+      int n = 10;
+      vector<Animal*> list;
+      for( int i = 1; i  <= 10; i++){
+       list.push_back( this->newRandomBeast() );
+      }
+      return list;
     }
 
 };

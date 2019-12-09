@@ -1,3 +1,5 @@
+#ifndef _CDefines
+#define _CDefines
 /*
  * Namespace
  */
@@ -25,3 +27,4 @@ const double PI = acos(-1);
    Lazy               = 3,
    MultipleBehaviour  = 4
  };
+#endif
