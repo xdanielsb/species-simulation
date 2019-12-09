@@ -3,39 +3,38 @@
 #include"./Behaviour.hpp"
 class Kamikaze:public Behaviour{
 public:
-  void move(Animal *animal, vector<Animal*> listBeast){
+  void move(Animal* animal, vector<Animal*> listAnimals){
 
-    int count =0;
-    pair<int, int> nearestPos;
+    int countAnimal =0;
+    ii nearestPos;
+    ii posSelf = animal->getPosition();
     bool flag = true;
     double nearestDistance;
-
-    for(auto ptr=listBeast.begin(); ptr!=listBeast.end(); ptr++){
+    
+    for(auto ptr:listAnimals){
       // If it's himself, than turn to the next bestle
       if(index== ptr->getIndex()){
-        break;
+        continue;
       }
-      pair<int, int> posA = ptr->getPosition();   // not defind in the class beast, return type pair<int, int>
+      ii posA = ptr->getPosition();   // not defind in the class beast, return type pair<int, int>
       if(flag==true){
-        nearestDistance = sqrt((posA.first- posActual.first)*(posA.first- posActual.first)+(posA.second- posActual.second)*(posA.second- posActual.second));
+        nearestDistance = sqrt((posA.X- posSelf.X)*(posA.X- posSelf.X)+(posA.Y- posSelf.Y)*(posA.Y- posSelf.Y));
         nearestPos = ptr->getPosition();          // not define in the class beast, return type pair<int, int>
         flag = false;
-        break;
+        continue;
       }
       // if we find another beast, whose distance is smaller than nearestdDistance, we will update this variable
-      if(sqrt((posA.first- posActual.first)*(posA.first- posActual.first)+(posA.second- posActual.second)*(posA.second- posActual.second))< nearestDistance){
+      if(sqrt((posA.X- posSelf.X)*(posA.X- posSelf.X)+(posA.Y- posSelf.Y)*(posA.Y- posSelf.Y))< nearestDistance){
         nearestPos = ptr->getPosition();          // not define in the class beast, return type pair<int, int>
-        nearestDistance = sqrt((posA.first- posActual.first)*(posA.first- posActual.first)+(posA.second- posActual.second)*(posA.second- posActual.second));
+        nearestDistance = sqrt((posA.X- posSelf.X)*(posA.X- posSelf.X)+(posA.Y- posSelf.Y)*(posA.Y- posSelf.Y));
       }
     }
     //change the direction and normalisation
-    dirActual.first = (nearestPos.first-posActual.first)/sqrt((nearestPos.first-posActual.first)*(nearestPos.first-posActual.first)+(nearestPos.second-posActual.second)*(nearestPos.second-posActual.second));
-    dirActual.second = (nearestPos.second-posActual.second)/sqrt((nearestPos.first-posActual.first)*(nearestPos.first-posActual.first)+(nearestPos.second-posActual.second)*(nearestPos.second-posActual.second));
+    animal->dir.X = (nearestPos.X - animal->pos.X)/sqrt((nearestPos.X - animal->pos.X)*(nearestPos.X - animal->pos.X)+(nearestPos.Y - animal->pos.Y)*(nearestPos.Y - animal->pos.Y));
+    animal->dir.Y = (nearestPos.Y - animal->pos.Y)/sqrt((nearestPos.X - animal->pos.X)*(nearestPos.X - animal->pos.X)+(nearestPos.Y - animal->pos.Y)*(nearestPos.Y - animal->pos.Y));
     // change the position
-    posActual.first+=dirActual.first;
-    posActual.second+=dirActual.second;
-    return make_pair(posActual, dirActual);
-
+    animal->pos.X+= animal->dir.X;
+    animal->pos.Y+= animal->dir.Y;
   }
 };
 #endif
