@@ -5,12 +5,12 @@
 #include"../../logic/factory/BeastFactory.hpp"
 class Environment{ // facade
 private:
-  vector< Animal* > lbeast;
+  vector< Beast* > lbeast;
 public:
   void changeState(){
 
   }
-  Environment( vector< Animal*> &lbeast){
+  Environment( vector< Beast*> &lbeast){
     this->lbeast = lbeast;
 
     //Initialize pointer to zero so that it can be initialized in first call to buildFactory

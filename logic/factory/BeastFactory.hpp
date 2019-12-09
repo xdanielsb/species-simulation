@@ -27,18 +27,17 @@ class BeastFactory{
       return factory;
     }
 
-
     Beast* newBeast(){
 
     }
 
     vector<Beast*> newPopulation(){
-  //    int n = 10;
-    //  vector<Beast*> list(10);
-      //for( int i = 0; i  < 10; i++){
-      //  list[i] = this->newBeast();
-      //}
-
+      int n = 10;
+      vector<Beast*> list;
+      for( int i = 1; i  <= 10; i++){
+       list.push_back(new Beast(i, {1,1}, {1,1}));
+      }
+      return list;
     }
 
 };

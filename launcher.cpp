@@ -1,9 +1,9 @@
 #include<bits/stdc++.h>
-#include"./logic/Aquarium.hpp"
+#include"./view/Aquarium.hpp"
 using namespace std;
 
 int main(){
-  Aquarium *q = new Aquarium();
+  Aquarium *q = new Aquarium(300, 300);
   try{
     q->run();
   }catch(const char* msg){
