@@ -1,6 +1,7 @@
 #ifndef _CBehaviour
 #define _CBehaviour
 #include"../beast/Animal.hpp"
+#include<vector>
 
 using namespace std;
 
