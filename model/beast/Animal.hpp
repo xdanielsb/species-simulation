@@ -3,9 +3,9 @@
 class Animal{
 private:
   int id;
+  public:
   ii pos;
   ii dir;
-  public:
   Animal(){}
   virtual ~Animal(){};
   ii getPosition(){

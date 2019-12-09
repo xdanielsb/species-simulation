@@ -6,31 +6,33 @@ using namespace std;
 
 class Gregarius:public Behaviour{
 public:
-    void move(Animal *animal, vector<Animal*> listBeast){
+    void move(Animal* animal, vector<Animal*> listAnimals){
         float moyenDirX = 0;
         float moyenDirY = 0;
-        int count =0;
+        int countAnimal =1;
+	ii posSelf = animal->getPosition();
 
-        for(auto ptr=listBeast.begin(); ptr!=listBeast.end(); ptr++){
+        for(auto ptr:listAnimals){
 
             ii posA = ptr->getPosition();   // not defind in the class beast, return type pair<int, int>
             ii dirA = ptr->getDirection();  // not defind in the class beast, return type pair<int, int>
 
             //To verify the beast is next to this beast or not and the range of detection is 30, variable count will count the number of beast in the range of detection
-            if(sqrt((posA.first- posActual.first)*(posA.first- posActual.first)+(posA.second- posActual.second)*(posA.second- posActual.second))< 30) {
-                count +=1;
-                moyenDirX+=dirA.first;
-                moyenDirY+=dirA.second;
+            if(sqrt((posA.X- posSelf.X)*(posA.X- posSelf.X)+(posA.Y- posSelf.Y)*(posA.Y- posSelf.Y))< 30) {
+                countAnimal +=1;
+                moyenDirX+=dirA.X;
+                moyenDirY+=dirA.Y;
             }
         }
-        moyenDirX/=count;
-        moyenDirY/=count;
+	countAnimal-=1;
+        moyenDirX/=countAnimal;
+        moyenDirY/=countAnimal;
         //change the direction
-        dirActual.first = moyenDirX;
-        dirActual.second = moyenDirY;
+        animal->dir.X = moyenDirX;
+        animal->dir.Y = moyenDirY;
         // change the position
-        animal.posActual.first+=dirActual.first;
-        animal.posActual.second+=dirActual.second;
+        animal->pos.X+= animal->dir.X;
+        animal->pos.Y+= animal->dir.Y;
 
     }
 };
