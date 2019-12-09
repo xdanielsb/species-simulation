@@ -7,7 +7,7 @@ using namespace std;
 
 class Lazy:public Behaviour{
 public:
-    auto move(int index, pair<float, float > posActual, ii dirActual, vector< Beast*> listBeast){
+    auto move(int index, ii posActual, ii dirActual, vector< Beast*> listBeast){
     int count =0;
 
     for(auto ptr=listBeast.begin(); ptr!=listBeast.end(); ptr++){

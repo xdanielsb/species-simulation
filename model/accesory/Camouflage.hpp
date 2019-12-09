@@ -6,5 +6,6 @@ private:
   double ccamouflage;
 public:
   Camouflage( int _c): ccamouflage(_c){}
+  ~Camouflage(){}
 };
 #endif
