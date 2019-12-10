@@ -1,10 +1,15 @@
 #ifndef _CSensor
 #define _CSensor
-#include <random>
+
+#include<random>
 #include<iostream>
+
 using namespace std;
+
 class Sensor{
 private:
+
+protected:
 	double distance;
 	double degree;
 	double detection;
@@ -16,8 +21,8 @@ public:
 		uniform_real_distribution<double> distribution_deg(_deg_min, _deg_max);
 		uniform_real_distribution<double> distribution_det(_det_min, _det_max);
 		this->distance= distribution_dist(generator);
-		this->detection= distribution_deg(generator);
-		this->degree= distribution_det(generator);	
+		this->detection= distribution_det(generator);
+		this->degree= distribution_deg(generator);	
 	}
 	//Sensor(double _dist, double _deg, double _det){
 	//	this->distance=_dist;
