@@ -14,8 +14,8 @@ typedef pair< float, float > ii;
  * Constants and defines
  */
 const double PI = acos(-1);
-#define first X
-#define second Y
+#define X first
+#define Y second
 
 /*
  * Enum types
@@ -28,3 +28,7 @@ const double PI = acos(-1);
    MultipleBehaviour  = 4
  };
 #endif
+
+/**
+  * New operations
+  */

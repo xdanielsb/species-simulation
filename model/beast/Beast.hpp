@@ -3,6 +3,11 @@
 #include"../accesory/Accessory.hpp"
 #include"../sensor/Sensor.hpp"
 #include"../behaviour/IBehaviour.hpp"
+#include"../behaviour/Lazy.hpp"
+#include"../behaviour/Kamikaze.hpp"
+#include"../behaviour/Gregarius.hpp"
+#include"../behaviour/Farsighted.hpp"
+
 class Beast: public Animal{
 private:
 
@@ -19,9 +24,10 @@ private:
   Behaviour *behaviour;
 
 public:
-  
+
   Beast(int _id, ii _pos, ii _dir, int _idBehaviour):Animal(_id, _pos, _dir), idBehaviour(_idBehaviour){
-    //Animal(_id, _pos, _dir)
+   // TODO : get the correct beahivour
+    this->behaviour = new FarsightedB();
   }
   ~Beast(){}
   void addAccessory(Accessory *a){
@@ -61,7 +67,7 @@ public:
  }
 
  friend ostream& operator << (ostream &out, Beast *b) {
-  out << "Animal { id = "<< b->getId() << "}"<< endl;
+  out << "Animal #"<< b->getId() << " = { "<< b->getPosition().X <<", " << b->getPosition().Y << "}"<< endl;
   return out;
 }
 

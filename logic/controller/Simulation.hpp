@@ -13,14 +13,13 @@ private:
 public:
   Simulation(){
       // create window
-      this->q = new Aquarium(300, 300);
-      // add animals to the window
+      // this->q = new Aquarium(300, 300);
       this->fac = new BeastFactory();
       vector< Animal*> list = this->fac->newPopulation();
       this->env = new Environment( list );
   }
   void start (){
-    this->q->run();
+      this->env->step();
   }
   void stop(){
 
