@@ -26,5 +26,10 @@ public:
   virtual void move(vector<Animal*> &neighbors){
     printf("Move of parent was called\n");
   };
+
+  friend ostream& operator << (ostream &out, Animal *b) {
+   out << "Animal #"<< b->getId() << " = { "<< b->getPosition().X <<", " << b->getPosition().Y << "}"<< endl;
+   return out;
+ }
 };
 #endif

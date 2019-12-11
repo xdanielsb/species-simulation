@@ -4,10 +4,13 @@
 #include<array>
 #include<new>
 #include"./logic/controller/Simulation.hpp"
+#include"./model/behaviour/Lazy.hpp"
 using namespace std;
+
 
 int main(){
   Simulation *s = new Simulation();
+
   try{
     s->start();
   }catch(const char* msg){

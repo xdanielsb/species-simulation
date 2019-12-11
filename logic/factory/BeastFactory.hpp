@@ -28,15 +28,15 @@ class BeastFactory{
       return factory;
     }
 
-    Beast* newRandomBeast(){
-      return new Beast(1, {1,1}, {1,1}, 1);
+    Beast* newRandomBeast(int id){
+      return new Beast(id, {1,1}, {1,1}, 1);
     }
 
     vector<Animal*> newPopulation(){
-      int n = 10;
+      int n = 3;
       vector<Animal*> list;
-      for( int i = 1; i  <= 10; i++){
-       list.push_back( this->newRandomBeast() );
+      for( int i = 1; i  <= n; i++){
+       list.push_back( this->newRandomBeast( i ) );
       }
       return list;
     }
