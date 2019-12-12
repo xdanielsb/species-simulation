@@ -5,21 +5,29 @@
 #include"../factory/BeastFactory.hpp"
 #include"../../view/Aquarium.hpp"
 #include"../../model/beast/Animal.hpp"
+#include <thread>
+#include <chrono>
+
 class Simulation{
 private:
   Aquarium *q;
   BeastFactory *fac;
   Environment *env;
 public:
-  Simulation(){
-      // create window
-      // this->q = new Aquarium(300, 300);
+  Simulation( int nBeast, bool simulateWithGUI = false){
       this->fac = new BeastFactory();
-      vector< Animal*> list = this->fac->newPopulation();
+      vector< Animal*> list = this->fac->newRandomPopulation( nBeast );
       this->env = new Environment( list );
+      if(!simulateWithGUI){
+        this->q = new Aquarium(300, 300);
+      }
   }
-  void start (){
-      this->env->step();
+  void start(){
+     for(int step = 0;; step++){
+       printf("Running step #%d\n", step);
+       this_thread::sleep_for(chrono::seconds(1));
+       this->env->step();
+     }
   }
   void stop(){
 
