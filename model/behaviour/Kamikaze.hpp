@@ -30,7 +30,7 @@ public:
     a->dir = getNewDirection( a, nearestAnimal);
     a->pos.X += a->dir.X;
     a->pos.Y += a->dir.Y;
-    printf( "K{%.2f, %.2f}\n", a->pos.X, a->pos.Y);
+    printf("->K{%.2f, %.2f}\n", a->pos.X, a->pos.Y);
   }
 };
 #endif
