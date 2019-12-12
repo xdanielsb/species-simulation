@@ -12,7 +12,6 @@ public:
 	double getDistanceEye(){
 		return this->distance;
 	}
-
 	double getDetectionEye(){
 		return this->detection;
 	}

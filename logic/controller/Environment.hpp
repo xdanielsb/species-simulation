@@ -12,17 +12,12 @@ public:
   }
   Environment( vector< Animal*> &lbeast){
     this->lbeast = lbeast;
-
-    //Initialize pointer to zero so that it can be initialized in first call to buildFactory
-    //BeastFactory *BeastFactory::factory = 0;
-    //Factory *f = f->buildFactory();
   }
   bool step(){
       this->removeDiedBeast();
       this->removeCollidedBeast();
-      for( Animal* b: this->lbeast){
+      for( Animal* b: this->lbeast)
         b->move( this->lbeast );
-      }
   }
   void removeCollidedBeast(){
 
@@ -38,9 +33,6 @@ public:
   }
   void changeBehaviour( Beast* beast, Behaviour *behaviour){
     beast->setBehavior( behaviour);
-  }
-  void getCurrentState(){
-
   }
 };
 #endif
