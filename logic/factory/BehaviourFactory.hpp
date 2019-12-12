@@ -5,7 +5,7 @@ class BehaviourFactory{
   public:
     BehaviourFactory() {}
 
-    
+
 
 };
 #endif

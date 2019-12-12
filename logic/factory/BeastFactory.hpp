@@ -2,44 +2,30 @@
 #define _CBeastFactory
 #include"../../model/beast/Animal.hpp"
 #include"../../model/beast/Beast.hpp"
+#include"../util/Random.hpp"
 class BeastFactory{
-
-  // TODO: put this in the parameters of the main program
-  /* DISTRIBUTION_OF_BEAST is an array which contains the probability
-  *  of spawning each types of Beast.
-  *  Its sum should be equal to 1.0.
-  *  The indexes of the behaviours are referenced as follows:
-  *  0:FarSighted
-  *  1:Gregariu
-  *  2:Kamikaze
-  *  3:Lazy
-  *  4:MultipleBehaviour
-  */
-  const array<double, 5> DISTRIBUTION_OF_BEASTS = {0.2, 0.2, 0.2, 0.2, 0.2};
-
-  static BeastFactory *factory;
-
+  private:
+    Random *rnd;
+    const int NUM_BEHAVIOURS = 5;
   public:
-    BeastFactory() {}
-
-    static BeastFactory *buildFactory() {
-      if (!factory)
-      factory = new BeastFactory();
-      return factory;
+    BeastFactory() {
+      rnd = new Random();
     }
-
-    Beast* newRandomBeast(int id){
-      return new Beast(id, {1,1}, {1,1}, 1);
+    Beast* newRandomBeast(int id, int type){
+      return new Beast(id, {1,1}, {1,1}, type);
     }
-
-    vector<Animal*> newPopulation(){
-      int n = 3;
+    // TODO: put a limit of the maximun number of elements in the population
+    vector<Animal*> newRandomPopulation( int n ){
       vector<Animal*> list;
-      for( int i = 1; i  <= n; i++){
-       list.push_back( this->newRandomBeast( i ) );
+      vector< float > pseudoRandomDistribution = rnd->getVector(  NUM_BEHAVIOURS );
+      for( int i = 0, id = 1; i < NUM_BEHAVIOURS; i++){
+        int totali = round(pseudoRandomDistribution[ i ] * n);
+        printf("\tNumber of beast with behaviour %d = %d \n", i,  totali);
+        for( int j = 0; j < totali; j++, id++){
+            list.push_back( this->newRandomBeast( id, i ) );
+        }
       }
       return list;
     }
-
 };
 #endif
