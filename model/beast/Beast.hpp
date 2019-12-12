@@ -8,9 +8,9 @@
 #include"../behaviour/Gregarius.hpp"
 #include"../behaviour/Farsighted.hpp"
 
+#include <iomanip>
 class Beast: public Animal{
 private:
-
   int age;
   int maxAge;
   double camouflage;
@@ -22,54 +22,46 @@ private:
   vector< Accessory*> accesories;
   bool idBehaviour;
   Behaviour *behaviour;
-
 public:
-
   Beast(int _id, ii _pos, ii _dir, int _idBehaviour):Animal(_id, _pos, _dir), idBehaviour(_idBehaviour){
-   // TODO : get the correct beahivour
-    this->behaviour = new FarsightedB();
+   // TODO : Factory of Behaviours
+    this->age = 0;
+    if( _idBehaviour == 0){
+      this->behaviour = new FarsightedB();
+    }else if( _idBehaviour == 1){
+      this->behaviour = new GregariusB();
+    }else if( _idBehaviour == 2){
+      this->behaviour = new KamikazeB();
+    }else if( _idBehaviour == 3){
+      this->behaviour = new LazyB();
+    }else if( _idBehaviour == 4){ //this can change
+      this->behaviour = new FarsightedB();
+    }
   }
   ~Beast(){}
   void addAccessory(Accessory *a){
-
+    this->accesories.push_back( a );
   }
   void addSensor( Sensor* s){
-
-  }
-  void removeAccesory( Accessory *a){
-
-  }
-  void removeSensor(Sensor *s){
-
+    this->sensors.push_back( s );
   }
   void move(vector<Animal*> &neighbors){
-    cout << "Moving "<< this << endl;
+    cout << setprecision(2) << fixed << "\tMoving "<< this ;
     this->behaviour->move( this, neighbors );
   }
   Beast* clone(){
 
   }
-  bool checkCollition(){
-
-  }
   void getOlder(){
-
+    this->age++;
   }
-  void changePosition( ){
-
+  void setBehavior( Behaviour *b ){
+    this->behaviour = b;
   }
-  void changeDirection(){
-
+  friend ostream& operator << (ostream &out, Beast *b) {
+    out << "Animal #"<< b->getId() << " = {"<< b->getPosition().X <<", " << b->getPosition().Y << "}";
+    return out;
   }
- // setters and getters
- void setBehavior( Behaviour *b ){
-   this->behaviour = b;
- }
-
- friend ostream& operator << (ostream &out, Beast *b) {
-  out << "Animal #"<< b->getId() << " = { "<< b->getPosition().X <<", " << b->getPosition().Y << "}"<< endl;
-  return out;
-}
 
 };
 #endif
