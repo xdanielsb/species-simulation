@@ -4,16 +4,16 @@
 #include<array>
 #include<new>
 #include"./logic/controller/Simulation.hpp"
-#include"./model/behaviour/Lazy.hpp"
 using namespace std;
-
-
+#include <thread>
 int main(){
-  Simulation *s = new Simulation();
-
+  int nBeast = 10;
+  Simulation *stask = new Simulation(nBeast);
   try{
-    s->start();
+    thread th(&Simulation::start, stask);
+    th.join();
   }catch(const char* msg){
     printf("An error has occurred %s \n",msg);
   }
+  delete stask;
 }
