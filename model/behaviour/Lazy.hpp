@@ -34,5 +34,10 @@ public:
     	a->setPosY(a->getPosY()+a->getDirY());
     	printf("->L{%.2f, %.2f}\n", a->getPosX(), a->getPosY());
 	}
+	
+	const double getMINDIS(){
+		
+		return this->MINDIS;
+	}
 };
 #endif

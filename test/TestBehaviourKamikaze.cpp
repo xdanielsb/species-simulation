@@ -4,7 +4,7 @@ using namespace std;
 #include"../logic/include.hpp"
 #include"../model/beast/Beast.hpp"
 #include"../logic/factory/BeastFactory.hpp"
-#include"../model/behaviour/Lazy.hpp"
+#include"../model/behaviour/Kamikaze.hpp"
 #include <assert.h>
 #include"../include/doctest.h"
 #include"../logic/include.hpp"
@@ -16,7 +16,7 @@ TEST_CASE("Beasts without speed don't move") {
 	int xinit = 4;
 	int yinit = 5;
 	
-	shared_ptr<LazyB> lazy_behaviour = make_shared<LazyB>();
+	shared_ptr<KamikazeB> lazy_behaviour = make_shared<KamikazeB>();
 	
 	vector <Animal*> list;
 
@@ -42,7 +42,7 @@ TEST_CASE("Beasts without speed don't move") {
 
 TEST_CASE("Lazy beast returnig in it's way when there are too many quiet beasts - 1D") {
 	
-	shared_ptr<LazyB> lazy_behaviour = make_shared<LazyB>();
+	shared_ptr<KamikazeB> lazy_behaviour = make_shared<KamikazeB>();
 	int n_neighs = lazy_behaviour->getMINDIS();
 
 	Beast *me = new Beast(1, {0,1}, {0,1}, lazy_behaviour);
@@ -56,6 +56,9 @@ TEST_CASE("Lazy beast returnig in it's way when there are too many quiet beasts 
 	}
 	
 	list.push_back(me);
+	
+	//BeastFactory *fac = new BeastFactory();
+    //vector< Animal*> list = fac->newRandomPopulation( 4 );
 	
 	CHECK(get<0>(me->getPosition()) == 0);
 	CHECK(get<1>(me->getPosition()) == 1);
@@ -79,7 +82,7 @@ TEST_CASE("Lazy beast returnig in it's way when there are too many quiet beasts 
 
 TEST_CASE("Lazy beast doesn't return. There are not too many beasts - 1D") {
 	
-	shared_ptr<LazyB> lazy_behaviour = make_shared<LazyB>();
+	shared_ptr<KamikazeB> lazy_behaviour = make_shared<KamikazeB>();
 	int n_neighs = lazy_behaviour->getMINDIS()-1;
 	
 	ii my_pos = {0,1};
@@ -122,7 +125,7 @@ TEST_CASE("Lazy beast doesn't return. There are not too many beasts - 1D") {
 
 TEST_CASE("Lazy beast bouncing when reaching the aquarium bounds") {
 	
-	shared_ptr<LazyB> lazy_behaviour = make_shared<LazyB>();
+	shared_ptr<KamikazeB> lazy_behaviour = make_shared<KamikazeB>();
 	int n = 2;
 	
 	ii pos1 = {WIDTH_WINDOW,0};
