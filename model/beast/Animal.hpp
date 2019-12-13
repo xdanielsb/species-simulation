@@ -70,6 +70,8 @@ public:
     printf("Move of parent was called\n");
   };
 
+  virtual Animal* clone() = 0;
+
   friend ostream& operator << (ostream &out, Animal *b) {
    out << "Animal #"<< b->getId()
        << " = { "<< b->getPosition().X

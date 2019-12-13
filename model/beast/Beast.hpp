@@ -23,7 +23,6 @@ private:
   shared_ptr<Behaviour> behaviour;
 public:
   Beast(int _id, ii _pos, ii _dir, shared_ptr<Behaviour> b):Animal(_id, _pos, _dir) {
-   // TODO : Factory of Behaviours
     b.swap(behaviour);
   }
   ~Beast(){}
