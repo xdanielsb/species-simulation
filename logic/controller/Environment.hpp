@@ -13,7 +13,7 @@ private:
   const double SIZEBEAST = 10;
 public:
   void changeStateMultipleBehaviourBeast(){
-    int i = 0, n = lbeast.size();
+    int n = lbeast.size();
     for( int i= 0; i < n; i++){
       if( lbeast[i]->gethasMultipleBehaviours()){
 

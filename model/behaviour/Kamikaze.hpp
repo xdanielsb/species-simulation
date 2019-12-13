@@ -27,8 +27,10 @@ public:
         nearestAnimal = b;
       }
     }
+	if(nearestAnimal){
     a->setDirX(getNewDirection( a, nearestAnimal).X);
     a->setDirY(getNewDirection( a, nearestAnimal).Y);
+  }
   if(isOutOfBoundaryX(a)){
 		a->setDirX(a->getDirX()*-1);
 	}

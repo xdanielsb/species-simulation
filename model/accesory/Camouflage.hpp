@@ -5,8 +5,8 @@ class Camouflage: public Accessory{
 private:
   double ccamouflage;
 public:
-  Camouflage( int cam_limit_min, int cam_limit_max){
-    this->ccamouflage = rand() % (cam_limit_max - cam_limit_min) + cam_limit_min;
+  Camouflage(double cam_limit_min, double cam_limit_max){
+		this->ccamouflage = fmod(rand(),(cam_limit_max - cam_limit_min)) + cam_limit_min;
   }
   double get_ccamouflage(){
     return this->ccamouflage;
