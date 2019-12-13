@@ -16,7 +16,12 @@ class BeastFactory{
       behaviourFactory = new BehaviourFactory();
     }
     Beast* newRandomBeast(int id, int type){
-      return new Beast(id, {1,1}, {1,1}, behaviourFactory->getComportement(type));
+      return new Beast(id, {this->rnd->getInt(1, WIDTH_WINDOW),
+                            this->rnd->getInt(1, HEIGHT_WINDOW)},
+                            {this->rnd->getInt(-1, 1),
+                            this->rnd->getInt(-1, 1)},
+                            behaviourFactory->getComportement(type)
+                      );
     }
     // TODO: put a limit of the maximun number of elements in the population
     vector<Animal*> newRandomPopulation( int n ){
