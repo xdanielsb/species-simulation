@@ -9,10 +9,16 @@ private:
   vector< Animal* > lbeast;
   Random *rnd;
   const double PROBABILITY_OF_DIED_IN_COLLISION  = 0.5;
+  const double PROBABILITY_OF_AUTO_CLONAGE  = 0.05;
   const double SIZEBEAST = 10;
 public:
-  void changeState(){
+  void changeStateMultipleBehaviourBeast(){
+    int i = 0, n = lbeast.size();
+    for( int i= 0; i < n; i++){
+      if( lbeast[i]->gethasMultipleBehaviours()){
 
+      }
+    }
   }
   Environment( vector< Animal*> &l){
     this->lbeast = l;
@@ -21,6 +27,7 @@ public:
   bool step(){
       this->removeOlderBeast();
       this->removeCollidedBeast();
+      this->autoClonage();
       int n = lbeast.size();
       for( int i = 0; i < n ; i++){
         if( this->lbeast[i]){
@@ -71,15 +78,22 @@ public:
           printf("The Beast %d died by age\n", (*beast)->getId());
         #endif
       }
-
     }
     this->lbeast = lbeastn;
   }
-  void giveBirthToNewBeast(){
 
+  void autoClonage(){
+    int n = this->lbeast.size();
+    for( int i = 0; i < n; i++ ){
+      int probAutoClonage  = this->rnd->getDouble();
+      if( probAutoClonage <= PROBABILITY_OF_AUTO_CLONAGE){
+        this->lbeast.push_back( this->lbeast[i]->clone() );
+        #ifdef DEBUG
+          printf("The Beast %d was cloned\n", this->lbeast[i]->getId());
+        #endif
+      }
+    }
   }
-  void cloneBeast(){
 
-  }
 };
 #endif

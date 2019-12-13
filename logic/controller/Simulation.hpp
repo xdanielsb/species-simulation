@@ -25,7 +25,7 @@ public:
       vector< Animal*> list = this->fac->newRandomPopulation( nBeast );
       this->env = new Environment( list );
   }
-  
+
   ~Simulation() {
     delete behaviourFactory;
     delete fac;

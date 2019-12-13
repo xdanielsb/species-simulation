@@ -1,5 +1,6 @@
 #ifndef _CAnimal
 #define _CAnimal
+
 class Animal{
 private:
   int id;
@@ -7,6 +8,7 @@ private:
   ii dir;
   int age;
   int maxAge;
+  bool hasMultipleBehaviours;
 public:
   Animal(){}
   Animal(int _id, ii _pos, ii _dir): id(_id), pos(_pos), dir(_dir){
@@ -69,6 +71,17 @@ public:
   virtual void move(vector<Animal*> &neighbors){
     printf("Move of parent was called\n");
   };
+
+  void sethasMultipleBehaviours( bool flag ){
+    this->hasMultipleBehaviours = flag;
+  }
+
+  bool gethasMultipleBehaviours() const {
+    return this->hasMultipleBehaviours;
+  }
+  virtual void setBehavior( int type) = 0;
+
+  virtual Animal* clone() = 0;
 
   friend ostream& operator << (ostream &out, Animal *b) {
    out << "Animal #"<< b->getId()
