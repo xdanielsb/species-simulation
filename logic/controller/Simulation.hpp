@@ -1,7 +1,7 @@
 #ifndef _CSimulation
 #define _CSimulation
-#include"../include.hpp"
 #include"./Environment.hpp"
+#include"../include.hpp"
 #include"../factory/BeastFactory.hpp"
 #include"../factory/BehaviourFactory.hpp"
 #include"../../view/Aquarium.hpp"
@@ -26,12 +26,10 @@ public:
       vector< Animal*> list = this->beastFactory->newRandomPopulation( nBeast );
       this->env = new Environment( list );
   }
-
   ~Simulation() {
     delete behaviourFactory;
     delete beastFactory;
   }
-
   void startCLI( ){
    for(int step = 1;; step++){
      printf("Running step #%d\n", step);
