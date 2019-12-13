@@ -1,5 +1,9 @@
 #ifndef _CAnimal
 #define _CAnimal
+#include"../../include/CImg.h"
+using namespace cimg_library;
+typedef unsigned char        T;
+typedef CImg<T>            UImg;
 class Animal{
 private:
   int id;
@@ -8,10 +12,19 @@ private:
   int age;
   int maxAge;
   bool hasMultipleBehaviours;
+   T               * color;
+
+const double      AFF_SIZE = 8.;
+const double      MAX_VITESSE = 10.;
+const double      LIMITE_VUE = 30.;
 public:
   Animal(){}
   Animal(int _id, ii _pos, ii _dir): id(_id), pos(_pos), dir(_dir){
     this->age = 0;
+    color = new T[ 3 ];
+    color[ 0 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*230. );
+    color[ 1 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*230. );
+    color[ 2 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*230. );
   }
   virtual ~Animal(){};
   ii getPosition() {
@@ -69,7 +82,6 @@ public:
   virtual void move(vector<Animal*> &neighbors){
     printf("Move of parent was called\n");
   };
-
   void sethasMultipleBehaviours( bool flag ){
     this->hasMultipleBehaviours = flag;
   }
@@ -81,6 +93,14 @@ public:
 
   virtual Animal* clone() = 0;
 
+  void draw( UImg &u ){
+   double orientation = this->getDirX() != 0 ? atan(-this->getDirY()/this->getDirX()): .0;
+   debug( orientation );
+   double         xt = this->getPosX() + cos( orientation )*AFF_SIZE/2.1;
+   double         yt = this->getPosY() - sin( orientation )*AFF_SIZE/2.1;
+   u.draw_ellipse( this->getPosX(), this->getPosY(), AFF_SIZE, AFF_SIZE/5., -orientation/M_PI*180., this->color );
+   u.draw_circle(  this->getPosX(), this->getPosY(), 4, this->color );
+  }
   friend ostream& operator << (ostream &out, Animal *b) {
    out << "Animal #"<< b->getId()
        << " = { "<< b->getPosition().X
