@@ -20,6 +20,8 @@ const double PI = acos(-1);
 #define X first
 #define Y second
 
+#define MaxX 300
+#define MaxY 300
 /*
  * Enum types
  */
