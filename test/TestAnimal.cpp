@@ -9,5 +9,6 @@ void printBeast(){
 }
 
 int main(){
+
   printBeast();
 }
