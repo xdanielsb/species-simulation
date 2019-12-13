@@ -8,7 +8,7 @@ using namespace std;
 #include <thread>
 int main(){
   int nBeast = 10;
-  int simulateWithGUI = true;
+  int simulateWithGUI = false;
   Simulation *stask = new Simulation(nBeast);
   try{
     if(simulateWithGUI ){
