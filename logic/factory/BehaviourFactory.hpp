@@ -6,33 +6,32 @@
 #include "../../model/behaviour/Kamikaze.hpp"
 #include "../../model/behaviour/Lazy.hpp"
 #include <map>
+#include<memory>
 
 class BehaviourFactory{
   private:
-    map<int, Behaviour*> BehaviourPool;	
-    BehaviourFactory() {}
+    map<int, shared_ptr<Behaviour>> BehaviourPool;	
   public:
-    Behaviour* getComportement(int indexCom){
+  	BehaviourFactory() {}
+    shared_ptr<Behaviour> getComportement(int indexCom){
   	if (!BehaviourPool.count(indexCom)){
 		switch(indexCom){
 			case 0:
-				BehaviourPool[indexCom] = new FarsightedB;
+				BehaviourPool[indexCom] = make_shared<FarsightedB>();
 				break;
 			case 1: 
-				BehaviourPool[indexCom] = new GregariusB;
+				BehaviourPool[indexCom] = make_shared<GregariusB>();
 				break;
 			case 2: 
-				BehaviourPool[indexCom] = new KamikazeB;
+				BehaviourPool[indexCom] = make_shared<KamikazeB>();
 				break;
 			case 3: 
-				BehaviourPool[indexCom] = new LazyB;
+				BehaviourPool[indexCom] = make_shared<LazyB>();
 				break;		
-		}	
-	}
-		{
-			flyweightPool[info] = new ElectricCar(info);
-			cout << "create a new object." << endl;
-		}
-    }
+		}		
+    } else {
+		return BehaviourPool[indexCom];
+	}}
+
 };
 #endif

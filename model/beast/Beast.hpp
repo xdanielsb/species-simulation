@@ -9,6 +9,8 @@
 #include"../behaviour/Farsighted.hpp"
 
 #include <iomanip>
+#include <memory>
+
 class Beast: public Animal{
 private:
   int age;
@@ -20,23 +22,12 @@ private:
   double resistance;
   vector< Sensor* > sensors;
   vector< Accessory*> accesories;
-  bool idBehaviour;
-  Behaviour *behaviour;
+  shared_ptr<Behaviour> behaviour;
 public:
-  Beast(int _id, ii _pos, ii _dir, int _idBehaviour):Animal(_id, _pos, _dir), idBehaviour(_idBehaviour){
+  Beast(int _id, ii _pos, ii _dir, shared_ptr<Behaviour> behaviour):Animal(_id, _pos, _dir) {
    // TODO : Factory of Behaviours
     this->age = 0;
-    if( _idBehaviour == 0){
-      this->behaviour = new FarsightedB();
-    }else if( _idBehaviour == 1){
-      this->behaviour = new GregariusB();
-    }else if( _idBehaviour == 2){
-      this->behaviour = new KamikazeB();
-    }else if( _idBehaviour == 3){
-      this->behaviour = new LazyB();
-    }else if( _idBehaviour == 4){ //this can change
-      this->behaviour = new FarsightedB();
-    }
+    this->behaviour = shared_ptr<Behaviour>(behaviour);
   }
   ~Beast(){}
   void addAccessory(Accessory *a){
@@ -55,7 +46,7 @@ public:
   void getOlder(){
     this->age++;
   }
-  void setBehavior( Behaviour *b ){
+  void setBehavior( shared_ptr<Behaviour> b ){
     this->behaviour = b;
   }
   friend ostream& operator << (ostream &out, Beast *b) {
