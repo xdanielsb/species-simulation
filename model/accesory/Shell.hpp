@@ -10,15 +10,12 @@ public:
     this->cdied = rand() % (resistance_limit-1) + 1;
     this->cspeed = rand() % (speed_limit-1) + 1;
   }
-
   double get_cdied(){
     return this->cdied;
   }
-
   double get_cspeed(){
     return this->cspeed;
   }
-
   ~Shell(){}
 };
 #endif
