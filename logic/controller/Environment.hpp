@@ -20,8 +20,10 @@ public:
   bool step(){
       this->removeDiedBeast();
       this->removeCollidedBeast();
-      for( Animal* b: this->lbeast)
+      for( Animal* b: this->lbeast){
         b->move( this->lbeast );
+        b->getOlder();
+      }
   }
   void removeCollidedBeast(){
     int i = 0, n = lbeast.size();
@@ -31,14 +33,16 @@ public:
         if( dis <= SIZEBEAST ){
           double pdied = rnd->getDouble();
           if(pdied >= PROBABILITY_OF_DIED_IN_COLLISION){
-            
+
           }
         }
       }
     }
   }
   void removeDiedBeast(){
-
+    for( auto beast= lbeast.begin(); beast != lbeast.end(); beast++){
+        if( (*beast)->getAge() > (*beast)->getMaxAge() ) this->lbeast.erase( beast );
+    }
   }
   void giveBirthToNewBeast(){
 

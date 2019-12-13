@@ -13,8 +13,6 @@
 
 class Beast: public Animal{
 private:
-  int age;
-  int maxAge;
   double camouflage;
   double perceptionEar;
   double perceptionEye;
@@ -26,7 +24,6 @@ private:
 public:
   Beast(int _id, ii _pos, ii _dir, shared_ptr<Behaviour> behaviour):Animal(_id, _pos, _dir) {
    // TODO : Factory of Behaviours
-    this->age = 0;
     this->behaviour = shared_ptr<Behaviour>(behaviour);
   }
   ~Beast(){}
@@ -42,9 +39,6 @@ public:
   }
   Beast* clone(){
 
-  }
-  void getOlder(){
-    this->age++;
   }
   void setBehavior( shared_ptr<Behaviour> b ){
     this->behaviour = b;

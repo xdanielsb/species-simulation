@@ -5,10 +5,13 @@ private:
   int id;
   ii pos;
   ii dir;
+  int age;
+  int maxAge;
 public:
   Animal(){}
   Animal(int _id, ii _pos, ii _dir): id(_id), pos(_pos), dir(_dir){
     //printf("An animal with id = %d was created.\n", _id);
+    this->age = 0;
   }
   virtual ~Animal(){};
   ii getPosition() {
@@ -38,7 +41,18 @@ public:
   void setDirY(float dirY){
     this->dir.Y = dirY;
   }
-
+  int getAge() const {
+    return this->age;
+  }
+  void getOlder(){
+    this->age++;
+  }
+  void setMaxAge( int m){
+    this->maxAge = m;
+  }
+  int getMaxAge( ) const{
+    return this->maxAge;
+  }
   ii getDirection(){
     return this->dir;
   }
