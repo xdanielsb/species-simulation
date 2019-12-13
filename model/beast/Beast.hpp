@@ -13,8 +13,6 @@
 
 class Beast: public Animal{
 private:
-  int age;
-  int maxAge;
   double camouflage;
   double perceptionEar;
   double perceptionEye;
@@ -24,10 +22,8 @@ private:
   vector< Accessory*> accesories;
   shared_ptr<Behaviour> behaviour;
 public:
-  Beast(int _id, ii _pos, ii _dir, shared_ptr<Behaviour> behaviour):Animal(_id, _pos, _dir) {
-   // TODO : Factory of Behaviours
-    this->age = 0;
-    this->behaviour = shared_ptr<Behaviour>(behaviour);
+  Beast(int _id, ii _pos, ii _dir, shared_ptr<Behaviour> b):Animal(_id, _pos, _dir) {
+    b.swap(behaviour);
   }
   ~Beast(){}
   void addAccessory(Accessory *a){
@@ -41,13 +37,10 @@ public:
     this->behaviour->move( this, neighbors );
   }
   Beast* clone(){
-
+    return new Beast( *this);
   }
-  void getOlder(){
-    this->age++;
-  }
-  void setBehavior( shared_ptr<Behaviour> b ){
-    this->behaviour = b;
+  void setBehavior( int type ){
+  //  this->behaviour = b;
   }
    auto getBehaviour(){
 	cout<<"the behaviour is:"<<endl;
