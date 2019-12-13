@@ -14,6 +14,12 @@ public:
   ii getPosition() {
     return this->pos;
   }
+  float getX(){
+    return this->pos.X;
+  }
+  float getY(){
+    return this->pos.Y;
+  }
   ii getDirection(){
     return this->dir;
   }
