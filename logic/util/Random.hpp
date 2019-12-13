@@ -9,6 +9,9 @@ class Random{
   Random(){
     srand (time(NULL));
   }
+  double getDouble(){
+    return rand();
+  }
   int getInt(int a , int b){
      assert( a >= 1);
      assert( a < b );
