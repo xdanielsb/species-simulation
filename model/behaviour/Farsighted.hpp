@@ -20,9 +20,17 @@ public:
     }
     a->setDirX(nearestAnimal->getDirX());
     a->setDirY(nearestAnimal->getDirY());
+<<<<<<< HEAD
+    if(isOutOfBoundariesX(a)){
+		a->setDirX(a->getDirX()*-1);		
+	  }
+    if(isOutOfBoundariesY(a)){
+		a->setDirY(a->getDirY()*-1);		
+=======
     if(isOutOfBoundaries(a)){
   		a->setDirX(a->getDirX()*-1);
   		a->setDirY(a->getDirY()*-1);
+>>>>>>> 47f3c90c922d3e7e19b2ae43a2ee01cedad5ad94
 	  }
     a->setPosX(a->getPosX()+a->getDirX());
     a->setPosY(a->getPosY()+a->getDirY());
