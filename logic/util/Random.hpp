@@ -5,10 +5,17 @@
 #include <assert.h>
 class Random{
   private:
+    static Random* instance;
+    Random(){
+      srand (time(NULL));
+    }
   public:
-  Random(){
-    srand (time(NULL));
+
+  static Random *getInstance() {
+    if (!instance) instance = new Random();
+    return instance;
   }
+
   double getDouble(){
     return rand();
   }
@@ -33,4 +40,5 @@ class Random{
     return res;
   }
 };
+Random* Random::instance = 0;
 #endif

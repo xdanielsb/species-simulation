@@ -13,15 +13,14 @@ class BeastFactory{
     BehaviourFactory* behaviourFactory;
 
     BeastFactory(BehaviourFactory* b) {
-      rnd = new Random();
+      rnd =  Random::getInstance();
       this->behaviourFactory = b;
     }
 
   public:
 
     static BeastFactory *buildFactory(BehaviourFactory* behaviourFactory) {
-      if (!instance)
-      instance = new BeastFactory(behaviourFactory);
+      if (!instance) instance = new BeastFactory(behaviourFactory);
       return instance;
     }
     Beast* newRandomBeast(int id, int type){
@@ -48,4 +47,5 @@ class BeastFactory{
       return list;
     }
 };
+BeastFactory* BeastFactory::instance = 0;
 #endif

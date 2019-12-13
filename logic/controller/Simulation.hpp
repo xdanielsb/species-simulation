@@ -1,16 +1,13 @@
 #ifndef _CSimulation
 #define _CSimulation
-#include"./Environment.hpp"
 #include"../include.hpp"
+#include"./Environment.hpp"
 #include"../factory/BeastFactory.hpp"
 #include"../factory/BehaviourFactory.hpp"
 #include"../../view/Aquarium.hpp"
 #include"../../model/beast/Animal.hpp"
 #include <thread>
 #include <chrono>
-
-BeastFactory *BeastFactory::instance=0;
-BehaviourFactory *BehaviourFactory::instance=0;
 
 class Simulation{
 private:

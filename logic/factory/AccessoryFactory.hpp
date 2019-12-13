@@ -40,4 +40,5 @@ class AccessoryFactory{
 	  return AccessoryPool[id];
 	}
 };
+AccessoryFactory* AccessoryFactory::instance = 0;
 #endif

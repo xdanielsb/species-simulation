@@ -21,9 +21,8 @@ public:
     }
   }
   Environment( vector< Animal*> &l){
-	  
     this->lbeast = l;
-    rnd = new Random();
+    rnd = Random::getInstance();
   }
   bool step(){
       this->removeOlderBeast();

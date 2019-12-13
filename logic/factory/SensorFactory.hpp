@@ -31,4 +31,5 @@ class SensorFactory{
 	  return SensorPool[id];
 	}
 };
+SensorFactory* SensorFactory::instance = 0;
 #endif

@@ -41,4 +41,5 @@ class BehaviourFactory{
 	  return BehaviourPool[id];
 	}
 };
+BehaviourFactory* BehaviourFactory::instance = 0;
 #endif
