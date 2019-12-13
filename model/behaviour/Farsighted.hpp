@@ -21,8 +21,10 @@ public:
         nearestAnimal = b;
       }
     }
-    a->setDirX(nearestAnimal->getDirX());
-    a->setDirY(nearestAnimal->getDirY());
+		if(nearestAnimal){
+    	a->setDirX(nearestAnimal->getDirX());
+    	a->setDirY(nearestAnimal->getDirY());
+		}
     if(isOutOfBoundaryX(a)){
 		    a->setDirX(a->getDirX()*-1);
 	  }

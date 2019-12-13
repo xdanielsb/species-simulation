@@ -7,8 +7,8 @@ private:
   double cspeed;
 public:
   Shell( double resistance_limit, double speed_limit){
-    this->cdied = rand() % (resistance_limit-1) + 1;
-    this->cspeed = rand() % (speed_limit-1) + 1;
+    this->cdied = fmod(rand(),(resistance_limit-1)) + 1;
+    this->cspeed = fmod(rand(),(speed_limit-1)) + 1;
   }
   double get_cdied(){
     return this->cdied;
