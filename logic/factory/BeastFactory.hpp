@@ -3,16 +3,20 @@
 #include"../../model/beast/Animal.hpp"
 #include"../../model/beast/Beast.hpp"
 #include"../util/Random.hpp"
+#include"./BehaviourFactory.hpp"
+
 class BeastFactory{
   private:
     Random *rnd;
     const int NUM_BEHAVIOURS = 5;
+    BehaviourFactory* behaviourFactory;
   public:
     BeastFactory() {
       rnd = new Random();
+      behaviourFactory = new BehaviourFactory();
     }
     Beast* newRandomBeast(int id, int type){
-      return new Beast(id, {1,1}, {1,1}, type);
+      return new Beast(id, {1,1}, {1,1}, behaviourFactory->getComportement(type));
     }
     // TODO: put a limit of the maximun number of elements in the population
     vector<Animal*> newRandomPopulation( int n ){

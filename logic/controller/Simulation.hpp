@@ -18,9 +18,8 @@ public:
       this->fac = new BeastFactory();
       vector< Animal*> list = this->fac->newRandomPopulation( nBeast );
       this->env = new Environment( list );
-
   }
-  void startCLI(  ){
+  void startCLI( ){
    for(int step = 1;; step++){
      printf("Running step #%d\n", step);
      this_thread::sleep_for(chrono::seconds(1));
