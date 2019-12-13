@@ -1,7 +1,7 @@
 #ifndef _CFin
 #define _CFin
-#include "./Accesory.hpp"
-class Fin: public Accesory{
+#include "./Accessory.hpp"
+class Fin: public Accessory{
 private:
   double cspeed;
 public:
