@@ -5,11 +5,11 @@ TFLAGS = -pthread -pedantic -Dcimg_use_vt100 -Dcimg_display=1   -lm -lX11 -lpthr
 NAMEFILE = launcher.cpp
 NAMEFILETEST = ./test/TestBehaviourLazy.cpp
 
-test-code:
-	$(CC) $(CFLAGS) $(NAMEFILETEST) $(TFLAGS) -o main.o && ./main.o
 all:
 	$(CC) $(CSANIT) $(CFLAGS) $(NAMEFILE) $(TFLAGS) -o main.o && ./main.o
 debug:
 	$(CC) -DDEBUG  $(CFLAGS) $(NAMEFILE) $(TFLAGS) -o main.o && ./main.o
 run:
 	$(CC)  $(CFLAGS) $(NAMEFILE) $(TFLAGS) -o main.o && ./main.o
+test-code:
+	$(CC) $(CFLAGS) $(NAMEFILETEST) $(TFLAGS) -o main.o && ./main.o
