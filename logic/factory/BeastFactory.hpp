@@ -7,25 +7,22 @@
 
 class BeastFactory{
   private:
+    static BeastFactory* instance;
     Random *rnd;
     const int NUM_BEHAVIOURS = 5;
     BehaviourFactory* behaviourFactory;
 
-    static BeastFactory* instance;
-
     BeastFactory(BehaviourFactory* b) {
-      rnd = new Random();
+      rnd =  Random::getInstance();
       this->behaviourFactory = b;
     }
 
   public:
 
     static BeastFactory *buildFactory(BehaviourFactory* behaviourFactory) {
-      if (!instance)
-      instance = new BeastFactory(behaviourFactory);
+      if (!instance) instance = new BeastFactory(behaviourFactory);
       return instance;
     }
-
     Beast* newRandomBeast(int id, int type){
       Beast *b = new Beast(id, {this->rnd->getInt(1, WIDTH_WINDOW),
                             this->rnd->getInt(1, HEIGHT_WINDOW)},
@@ -34,10 +31,9 @@ class BeastFactory{
                             behaviourFactory->getComportement(type)
                       );
       b->setMaxAge( rnd->getInt(ONE_SECOND, ONE_MINUTE));
-      b->sethasMultipleBehaviours( type == MultipleBehaviour );
+      b->sethasMultipleBehaviours( type == MULTIPLEBEHAVIOUR );
 			return b;
     }
-    // TODO: put a limit of the maximun number of elements in the population
     vector<Animal*> newRandomPopulation( int n ){
       vector<Animal*> list;
       vector< float > pseudoRandomDistribution = rnd->getVector(  NUM_BEHAVIOURS );
@@ -51,4 +47,5 @@ class BeastFactory{
       return list;
     }
 };
+BeastFactory* BeastFactory::instance = 0;
 #endif

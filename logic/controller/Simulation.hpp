@@ -9,28 +9,24 @@
 #include <thread>
 #include <chrono>
 
-BeastFactory *BeastFactory::instance=0;
-BehaviourFactory *BehaviourFactory::instance=0;
-
 class Simulation{
 private:
   Aquarium *q;
-  BeastFactory *fac;
+  BeastFactory *beastFactory;
   BehaviourFactory *behaviourFactory;
   Environment *env;
+
 public:
   Simulation( int nBeast){
-      this->behaviourFactory = behaviourFactory->buildFactory();
-      this->fac = fac->buildFactory(behaviourFactory);
-      vector< Animal*> list = this->fac->newRandomPopulation( nBeast );
+      this->behaviourFactory = BehaviourFactory::buildFactory();
+      this->beastFactory = BeastFactory::buildFactory(behaviourFactory);
+      vector< Animal*> list = this->beastFactory->newRandomPopulation( nBeast );
       this->env = new Environment( list );
   }
-
   ~Simulation() {
     delete behaviourFactory;
-    delete fac;
+    delete beastFactory;
   }
-
   void startCLI( ){
    for(int step = 1;; step++){
      printf("Running step #%d\n", step);

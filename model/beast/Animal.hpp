@@ -1,6 +1,5 @@
 #ifndef _CAnimal
 #define _CAnimal
-
 class Animal{
 private:
   int id;
@@ -12,7 +11,6 @@ private:
 public:
   Animal(){}
   Animal(int _id, ii _pos, ii _dir): id(_id), pos(_pos), dir(_dir){
-    //printf("An animal with id = %d was created.\n", _id);
     this->age = 0;
   }
   virtual ~Animal(){};

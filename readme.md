@@ -1,14 +1,13 @@
 ### BeastCollider
 
-This is a projet that implements several design patterns, you will see down how to contribute to the project
-
-#### How to contribute?
-
-if you are going to add another type of beast, add the name of the beast to the enum type BEHAVIOURS located
-in /logic/Aquarium
-
+This is a simulation of a game in c++
 
 #### How to run?
-```c++
+```sh
   $ make
+```
+
+### How to test ?
+```sh
+  $ make test-code
 ```

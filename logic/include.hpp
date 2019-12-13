@@ -24,16 +24,27 @@ const double PI = acos(-1);
 #define HEIGHT_WINDOW 400
 #define ONE_MINUTE 60
 #define ONE_SECOND 1
+
 /*
  * Enum types
  */
  enum BEHAVIOURS{
-   FarSighted         = 0,
-   Gregariu           = 1,
-   Kamikaze           = 2,
-   Lazy               = 3,
-   MultipleBehaviour  = 4
+   FARSIGTHED         = 0,
+   GREGARIU           = 1,
+   KAMIKAZE           = 2,
+   LAZY               = 3,
+   MULTIPLEBEHAVIOUR  = 4
  };
+ enum ACCESSORY{
+   CAMOUFLAGE  = 0,
+   FIN         = 1,
+   SHELL       = 2,
+ };
+ enum SENSOR{
+   EAR = 0,
+   EYE = 1,
+ };
+
 #endif
 
 /**

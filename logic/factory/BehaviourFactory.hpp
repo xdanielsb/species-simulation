@@ -11,38 +11,35 @@
 class BehaviourFactory{
   private:
     map<int, shared_ptr<Behaviour>> BehaviourPool;
-
-	static BehaviourFactory *instance;
-
-	BehaviourFactory() {}
-  
+	  static BehaviourFactory *instance;
+    BehaviourFactory() {}
   public:
-
 	static BehaviourFactory *buildFactory() {
 		if (!instance)
       	instance = new BehaviourFactory;
       	return instance;
 	}
-	
-    shared_ptr<Behaviour> getComportement(int indexCom){
-    if( indexCom == MultipleBehaviour ) indexCom = 0;
-  	if( !BehaviourPool.count(indexCom)){
-  		switch(indexCom){
-  			case FarSighted:
-  				BehaviourPool[indexCom] = make_shared<FarsightedB>();
+
+  shared_ptr<Behaviour> getComportement(int id){
+    if( id == MULTIPLEBEHAVIOUR ) id = 0;
+  	if( !BehaviourPool.count(id)){
+  		switch(id){
+  			case FARSIGTHED:
+  				BehaviourPool[id] = make_shared<FarsightedB>();
   				break;
-  			case Gregariu:
-  				BehaviourPool[indexCom] = make_shared<GregariusB>();
+  			case GREGARIU:
+  				BehaviourPool[id] = make_shared<GregariusB>();
   				break;
-  			case Kamikaze:
-  				BehaviourPool[indexCom] = make_shared<KamikazeB>();
+  			case KAMIKAZE:
+  				BehaviourPool[id] = make_shared<KamikazeB>();
   				break;
-  			case Lazy:
-  				BehaviourPool[indexCom] = make_shared<LazyB>();
+  			case LAZY:
+  				BehaviourPool[id] = make_shared<LazyB>();
   				break;
   		}
-  }
-	return BehaviourPool[indexCom];
+    }
+	  return BehaviourPool[id];
 	}
 };
+BehaviourFactory* BehaviourFactory::instance = 0;
 #endif
