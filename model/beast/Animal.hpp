@@ -45,6 +45,9 @@ public:
   int getId() {
     return this->id;
   }
+  double getDistance(const ii &a2){
+      return hypot( this->pos.X - a2.X , this->pos.Y - a2.Y );
+  }
   virtual void move(vector<Animal*> &neighbors){
     printf("Move of parent was called\n");
   };
