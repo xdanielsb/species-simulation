@@ -6,7 +6,7 @@ NAMEFILE = launcher.cpp
 NAMEFILETEST = ./test/TestBehaviourLazy.cpp
 
 test-code:
-	$(CC) $(CFLAGS) $(NAMEFILETEST) $(TFLAGS) -o main.o && ./main.o
+	$(CC) $(CFLAGS) $(CSANIT) $(NAMEFILETEST) $(TFLAGS) -o main.o && ./main.o
 all:
 	$(CC) $(CSANIT) $(CFLAGS) $(NAMEFILE) $(TFLAGS) -o main.o && ./main.o
 debug:

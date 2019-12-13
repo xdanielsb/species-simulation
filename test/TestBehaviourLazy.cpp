@@ -36,6 +36,13 @@ TEST_CASE("Beasts without speed don't move") {
 		}
 	}
 	
+	
+	for(Animal*  b:list){
+			delete(b);
+	}
+	
+
+	
 }
 
 
@@ -76,6 +83,10 @@ TEST_CASE("Lazy beast returnig in it's way when there are too many quiet beasts 
 	
 	CHECK(get<0>(me->getPosition()) == 0);
 	CHECK(get<1>(me->getPosition()) == 5);
+	
+	for(Animal*  b:list){
+			delete(b);
+	}
 
 }
 
@@ -119,13 +130,16 @@ TEST_CASE("Lazy beast doesn't return. There are not too many beasts - 1D") {
 	
 	CHECK(get<0>(me->getPosition()) == 0);
 	CHECK(get<1>(me->getPosition()) == 7);
+	
+	for(Animal*  b:list){
+			delete(b);
+	}
 
 }
 
 TEST_CASE("Lazy beast bouncing when reaching the aquarium bounds") {
 	
 	shared_ptr<LazyB> lazy_behaviour = make_shared<LazyB>();
-	int n = 2;
 	
 	ii pos1 = {WIDTH_WINDOW,0};
 	ii speed1 = {1,0};
@@ -160,6 +174,10 @@ TEST_CASE("Lazy beast bouncing when reaching the aquarium bounds") {
 	
 	CHECK(get<0>(b3->getPosition()) == get<0>(pos3)+1);
 	CHECK(get<1>(b3->getPosition()) == get<1>(pos3)+1);
+	
+	delete(b1);
+	delete(b2);
+	delete(b3);
 	
 }
 
