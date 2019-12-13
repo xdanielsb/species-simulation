@@ -23,8 +23,10 @@ public:
     }
     a->setDirX(nearestAnimal->getDirX());
     a->setDirY(nearestAnimal->getDirY());
-    if(isOutOfBoundaries(a)){
-		a->setDirX(a->getDirX()*-1);
+    if(isOutOfBoundariesX(a)){
+		a->setDirX(a->getDirX()*-1);		
+	  }
+    if(isOutOfBoundariesY(a)){
 		a->setDirY(a->getDirY()*-1);		
 	  }
     a->setPosX(a->getPosX+a->getDirX());

@@ -13,26 +13,24 @@ class BehaviourFactory{
     BehaviourFactory() {}
   public:
     Behaviour* getComportement(int indexCom){
-  	if (!BehaviourPool.count(indexCom)){
-		switch(indexCom){
-			case 0:
-				BehaviourPool[indexCom] = new FarsightedB;
-				break;
-			case 1: 
-				BehaviourPool[indexCom] = new GregariusB;
-				break;
-			case 2: 
-				BehaviourPool[indexCom] = new KamikazeB;
-				break;
-			case 3: 
-				BehaviourPool[indexCom] = new LazyB;
-				break;		
-		}	
+			if (!BehaviourPool.count(indexCom)){
+				switch(indexCom){
+					case 0:
+						BehaviourPool[indexCom] = new FarsightedB;
+						break;
+					case 1: 
+						BehaviourPool[indexCom] = new GregariusB;
+						break;
+					case 2: 
+						BehaviourPool[indexCom] = new KamikazeB;
+						break;
+					case 3: 
+						BehaviourPool[indexCom] = new LazyB;
+						break;		
+				}
+			return 	
+			
 	}
-		{
-			flyweightPool[info] = new ElectricCar(info);
-			cout << "create a new object." << endl;
-		}
-    }
+	 
 };
 #endif

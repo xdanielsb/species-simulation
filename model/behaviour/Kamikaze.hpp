@@ -29,9 +29,11 @@ public:
     }
     a->setDirX(getNewDirection( a, nearestAnimal).X);
     a->setDirY(getNewDirection( a, nearestAnimal).Y);
-    if(isOutOfBoundaries(a)){
-		a->setDirX(a->getDirX()*-1);
-		a->setDirY(a->getDirY()*-1);
+  if(isOutOfBoundariesX(a)){
+		a->setDirX(a->getDirX()*-1);		
+	}
+  if(isOutOfBoundariesY(a)){
+		a->setDirY(a->getDirY()*-1);		
 	}
     a->setPosX(a->getPosX+a->getDirX());
     a->setPosY(a->getPosY+a->getDirY());
