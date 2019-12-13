@@ -46,8 +46,5 @@ public:
   void cloneBeast(){
 
   }
-  void changeBehaviour( Beast* beast, Behaviour *behaviour){
-    beast->setBehavior( behaviour);
-  }
 };
 #endif
