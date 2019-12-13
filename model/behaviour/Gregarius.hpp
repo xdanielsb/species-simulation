@@ -27,13 +27,13 @@ public:
          a->setDirX(sumDirX / beastInMyRegion);
          a->setDirY(sumDirY / beastInMyRegion);
         }
-	if(isOutOfBoundaries(a)){
-		a->setDirX(a->getDirX()*-1);
-		a->setDirY(a->getDirY()*-1);
-	}
-        a->setPosX(a->getPosX+a->getDirX());
-    	a->setPosY(a->getPosY+a->getDirY());
-    	printf("->G{%.2f, %.2f}\n", a->getPosX(), a->getPosY());
+      	if(isOutOfBoundaries(a)){
+      		a->setDirX(a->getDirX()*-1);
+      		a->setDirY(a->getDirY()*-1);
+      	}
+        a->setPosX(a->getPosX()+a->getDirX());
+      	a->setPosY(a->getPosY()+a->getDirY());
+      	printf("->G{%.2f, %.2f}\n", a->getPosX(), a->getPosY());
     }
 };
 #endif

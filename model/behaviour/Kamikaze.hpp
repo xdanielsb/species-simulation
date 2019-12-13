@@ -9,10 +9,10 @@ private:
   }
   ii getNewDirection( Animal *src, Animal *aim){
     ii res;
-    res.X = (aim->pos.X - src->pos.X);
-    res.Y = (aim->pos.Y - src->pos.Y);
-    if( fabs(res.X) > 1e-6 ) res.X /= getDistance( src->pos, aim->pos);
-    if( fabs(res.Y) > 1e-6 ) res.Y /= getDistance( src->pos, aim->pos);
+    res.X = (aim->getPosX() - src->getPosX());
+    res.Y = (aim->getPosY() - src->getPosY());
+    if( fabs(res.X) > 1e-6 ) res.X /= getDistance( src->getPosition(), aim->getPosition());
+    if( fabs(res.Y) > 1e-6 ) res.Y /= getDistance( src->getPosition(), aim->getPosition());
     return res;
   }
 public:
@@ -30,11 +30,11 @@ public:
     a->setDirX(getNewDirection( a, nearestAnimal).X);
     a->setDirY(getNewDirection( a, nearestAnimal).Y);
     if(isOutOfBoundaries(a)){
-		a->setDirX(a->getDirX()*-1);
-		a->setDirY(a->getDirY()*-1);
-	}
-    a->setPosX(a->getPosX+a->getDirX());
-    a->setPosY(a->getPosY+a->getDirY());
+  		a->setDirX(a->getDirX()*-1);
+  		a->setDirY(a->getDirY()*-1);
+	  }
+    a->setPosX(a->getPosX()+a->getDirX());
+    a->setPosY(a->getPosY()+a->getDirY());
     printf("->K{%.2f, %.2f}\n", a->getPosX(), a->getPosY());
   }
 };

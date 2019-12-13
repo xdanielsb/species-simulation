@@ -3,9 +3,9 @@
 class Animal{
 private:
   int id;
-public:
   ii pos;
   ii dir;
+public:
   Animal(){}
   Animal(int _id, ii _pos, ii _dir): id(_id), pos(_pos), dir(_dir){
     //printf("An animal with id = %d was created.\n", _id);
@@ -14,16 +14,16 @@ public:
   ii getPosition() {
     return this->pos;
   }
-  float getPosX(){
+  float getPosX() const{
     return this->pos.X;
   }
-  float getPosY(){
+  float getPosY() const{
     return this->pos.Y;
   }
-  float getDirX(){
+  float getDirX() const{
     return this->dir.X;
   }
-  float getDirY(){
+  float getDirY() const{
     return this->dir.Y;
   }
   void setPosX(float posX){

@@ -28,8 +28,8 @@ public:
     		a->setDirX(a->getDirX()*-1);
 				a->setDirY(a->getDirY()*-1);
     	}
-    	a->setPosX(a->getPosX+a->getDirX());
-    	a->setPosY(a->getPosY+a->getDirY());
+    	a->setPosX(a->getPosX()+a->getDirX());
+    	a->setPosY(a->getPosY()+a->getDirY());
     	printf("->L{%.2f, %.2f}\n", a->getPosX(), a->getPosY());
 	}
 };
