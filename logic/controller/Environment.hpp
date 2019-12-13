@@ -9,7 +9,7 @@ private:
   vector< Animal* > lbeast;
   Random *rnd;
   const double PROBABILITY_OF_DIED_IN_COLLISION  = 0.5;
-  const double SIZEBEAST = 1;
+  const double SIZEBEAST = 10;
 public:
   void changeState(){
 
@@ -22,13 +22,13 @@ public:
       this->removeOlderBeast();
       this->removeCollidedBeast();
       int n = lbeast.size();
-      debug( n );
       for( int i = 0; i < n ; i++){
         if( this->lbeast[i]){
           this->lbeast[i]->move( this->lbeast );
           this->lbeast[i]->getOlder();
         }
       }
+      return n;
   }
   void removeCollidedBeast(){
     unordered_set< int > died;

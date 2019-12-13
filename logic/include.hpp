@@ -22,7 +22,7 @@ const double PI = acos(-1);
 
 #define WIDTH_WINDOW 300
 #define HEIGHT_WINDOW 400
-#define ONE_MINUTE 5
+#define ONE_MINUTE 60
 #define ONE_SECOND 1
 /*
  * Enum types
