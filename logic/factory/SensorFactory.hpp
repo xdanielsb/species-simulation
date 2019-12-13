@@ -9,10 +9,8 @@
 class SensorFactory{
   private:
     map<int, shared_ptr<Sensor>> SensorPool;
-
-	static SensorFactory *instance;
-	SensorFactory() {}
-
+	  static SensorFactory *instance;
+	  SensorFactory() {}
   public:
 	static SensorFactory *buildFactory() {
 		if (!instance)

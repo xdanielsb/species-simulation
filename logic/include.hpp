@@ -24,6 +24,7 @@ const double PI = acos(-1);
 #define HEIGHT_WINDOW 400
 #define ONE_MINUTE 60
 #define ONE_SECOND 1
+
 /*
  * Enum types
  */
@@ -43,8 +44,6 @@ const double PI = acos(-1);
    EAR = 0,
    EYE = 1,
  };
-
-
 
 #endif
 

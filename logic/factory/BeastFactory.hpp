@@ -7,11 +7,10 @@
 
 class BeastFactory{
   private:
+    static BeastFactory* instance;
     Random *rnd;
     const int NUM_BEHAVIOURS = 5;
     BehaviourFactory* behaviourFactory;
-
-    static BeastFactory* instance;
 
     BeastFactory(BehaviourFactory* b) {
       rnd = new Random();
@@ -36,7 +35,6 @@ class BeastFactory{
       b->sethasMultipleBehaviours( type == MULTIPLEBEHAVIOUR );
 			return b;
     }
-    // TODO: put a limit of the maximun number of elements in the population
     vector<Animal*> newRandomPopulation( int n ){
       vector<Animal*> list;
       vector< float > pseudoRandomDistribution = rnd->getVector(  NUM_BEHAVIOURS );

@@ -11,13 +11,9 @@
 class BehaviourFactory{
   private:
     map<int, shared_ptr<Behaviour>> BehaviourPool;
-
-	static BehaviourFactory *instance;
-
-	BehaviourFactory() {}
-
+	  static BehaviourFactory *instance;
+    BehaviourFactory() {}
   public:
-
 	static BehaviourFactory *buildFactory() {
 		if (!instance)
       	instance = new BehaviourFactory;
