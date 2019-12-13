@@ -22,9 +22,9 @@ private:
   vector< Accessory*> accesories;
   shared_ptr<Behaviour> behaviour;
 public:
-  Beast(int _id, ii _pos, ii _dir, shared_ptr<Behaviour> behaviour):Animal(_id, _pos, _dir) {
+  Beast(int _id, ii _pos, ii _dir, shared_ptr<Behaviour> b):Animal(_id, _pos, _dir) {
    // TODO : Factory of Behaviours
-    this->behaviour = shared_ptr<Behaviour>(behaviour);
+    b.swap(behaviour);
   }
   ~Beast(){}
   void addAccessory(Accessory *a){

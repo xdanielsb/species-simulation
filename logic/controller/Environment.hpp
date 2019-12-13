@@ -18,11 +18,15 @@ public:
     rnd = new Random();
   }
   bool step(){
-      this->removeDiedBeast();
-      this->removeCollidedBeast();
-      for( Animal* b: this->lbeast){
-        b->move( this->lbeast );
-        b->getOlder();
+      this->removeOlderBeast();
+//      this->removeCollidedBeast();
+      int n = lbeast.size();
+      debug( n );
+      for( int i = 0; i < n ; i++){
+        if( this->lbeast[i]){
+          this->lbeast[i]->move( this->lbeast );
+          this->lbeast[i]->getOlder();
+        }
       }
   }
   void removeCollidedBeast(){
@@ -39,10 +43,11 @@ public:
       }
     }
   }
-  void removeDiedBeast(){
-    for( auto beast= lbeast.begin(); beast != lbeast.end(); beast++){
-        if( (*beast)->getAge() > (*beast)->getMaxAge() ) this->lbeast.erase( beast );
-    }
+  void removeOlderBeast(){
+    vector< Animal* > lbeastn;
+    for( auto beast= lbeast.begin(); beast != lbeast.end(); beast++)
+        if( (*beast)->getAge() <= (*beast)->getMaxAge() )lbeastn.push_back( *beast );
+    this->lbeast = lbeastn;
   }
   void giveBirthToNewBeast(){
 
