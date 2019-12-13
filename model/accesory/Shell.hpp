@@ -1,7 +1,7 @@
 #ifndef _CShell
 #define _CShell
-#include "./Accesory.hpp"
-class Shell: public Accesory{
+#include "./Accessory.hpp"
+class Shell: public Accessory{
 private:
   double cdied;
   double cspeed;
