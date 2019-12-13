@@ -15,8 +15,8 @@ public:
   void changeState(){
 
   }
-  Environment( vector< Animal*> &lbeast){
-    this->lbeast = lbeast;
+  Environment( vector< Animal*> &l){
+    this->lbeast = l;
     rnd = new Random();
   }
   bool step(){
@@ -34,7 +34,8 @@ public:
   }
   void removeCollidedBeast(){
     unordered_set< int > died;
-    int i = 0, n = lbeast.size();
+    //int i = 0, n = lbeast.size();
+		int n = lbeast.size();
     for( int i= 0; i < n; i++){
       if( died.count(i) ) continue;
       for( int j = i+1; j < n; j++){
