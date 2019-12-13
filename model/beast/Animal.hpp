@@ -1,5 +1,6 @@
 #ifndef _CAnimal
 #define _CAnimal
+
 class Animal{
 private:
   int id;
@@ -7,6 +8,7 @@ private:
   ii dir;
   int age;
   int maxAge;
+  bool hasMultipleBehaviours;
 public:
   Animal(){}
   Animal(int _id, ii _pos, ii _dir): id(_id), pos(_pos), dir(_dir){
@@ -59,6 +61,10 @@ public:
   int getId() {
     return this->id;
   }
+  void invertDirection(){
+    this->dir.X *= -1;
+    this->dir.Y *= -1;
+  }
   double getDistance(const ii &a2){
       return hypot( this->pos.X - a2.X , this->pos.Y - a2.Y );
   }
@@ -66,8 +72,22 @@ public:
     printf("Move of parent was called\n");
   };
 
+  void sethasMultipleBehaviours( bool flag ){
+    this->hasMultipleBehaviours = flag;
+  }
+
+  bool gethasMultipleBehaviours() const {
+    return this->hasMultipleBehaviours;
+  }
+  virtual void setBehavior( int type) = 0;
+
+  virtual Animal* clone() = 0;
+
   friend ostream& operator << (ostream &out, Animal *b) {
-   out << "Animal #"<< b->getId() << " = { "<< b->getPosition().X <<", " << b->getPosition().Y << "}"<< endl;
+   out << "Animal #"<< b->getId()
+       << " = { "<< b->getPosition().X
+       << ", " << b->getPosition().Y
+       << "}"<< endl;
    return out;
  }
 };

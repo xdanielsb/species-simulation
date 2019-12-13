@@ -3,22 +3,34 @@
 #include"../include.hpp"
 #include"./Environment.hpp"
 #include"../factory/BeastFactory.hpp"
+#include"../factory/BehaviourFactory.hpp"
 #include"../../view/Aquarium.hpp"
 #include"../../model/beast/Animal.hpp"
 #include <thread>
 #include <chrono>
 
+BeastFactory *BeastFactory::instance=0;
+BehaviourFactory *BehaviourFactory::instance=0;
+
 class Simulation{
 private:
   Aquarium *q;
   BeastFactory *fac;
+  BehaviourFactory *behaviourFactory;
   Environment *env;
 public:
   Simulation( int nBeast){
-      this->fac = new BeastFactory();
+      this->behaviourFactory = behaviourFactory->buildFactory();
+      this->fac = fac->buildFactory(behaviourFactory);
       vector< Animal*> list = this->fac->newRandomPopulation( nBeast );
       this->env = new Environment( list );
   }
+
+  ~Simulation() {
+    delete behaviourFactory;
+    delete fac;
+  }
+
   void startCLI( ){
    for(int step = 1;; step++){
      printf("Running step #%d\n", step);

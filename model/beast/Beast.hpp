@@ -23,7 +23,6 @@ private:
   shared_ptr<Behaviour> behaviour;
 public:
   Beast(int _id, ii _pos, ii _dir, shared_ptr<Behaviour> b):Animal(_id, _pos, _dir) {
-   // TODO : Factory of Behaviours
     b.swap(behaviour);
   }
   ~Beast(){}
@@ -38,10 +37,13 @@ public:
     this->behaviour->move( this, neighbors );
   }
   Beast* clone(){
-
+    return new Beast( *this);
   }
-  void setBehavior( shared_ptr<Behaviour> b ){
-    this->behaviour = b;
+  void setBehavior( int type ){
+  //  this->behaviour = b;
+  }
+  shared_ptr<Behaviour> getBehaviour(){
+    return this->behaviour;
   }
   friend ostream& operator << (ostream &out, Beast *b) {
     out << "Animal #"<< b->getId() << " = {"<< b->getPosition().X <<", " << b->getPosition().Y << "}";

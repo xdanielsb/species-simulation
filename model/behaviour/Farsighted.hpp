@@ -12,7 +12,7 @@ private:
 public:
   void move(Animal* a, vector<Animal*> list){
     double minDistance = 1e9;
-    Animal *nearestAnimal;
+    Animal *nearestAnimal=nullptr;
     for(Animal* b:list){
       if( b->getId() == a->getId() )continue;
       double aux =  a->getDistance( b->getPosition());

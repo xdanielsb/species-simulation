@@ -3,11 +3,10 @@
 using namespace std;
 #include"../logic/include.hpp"
 #include"../model/beast/Beast.hpp"
-#include"../logic/factory/BeastFactory.hpp"
 #include"../model/behaviour/Lazy.hpp"
-#include <assert.h>
 #include"../include/doctest.h"
 #include"../logic/include.hpp"
+
 
 TEST_CASE("Beasts without speed don't move") {
 	
@@ -40,10 +39,13 @@ TEST_CASE("Beasts without speed don't move") {
 }
 
 
+
+
 TEST_CASE("Lazy beast returnig in it's way when there are too many quiet beasts - 1D") {
 	
 	shared_ptr<LazyB> lazy_behaviour = make_shared<LazyB>();
 	int n_neighs = lazy_behaviour->getMINDIS();
+
 
 	Beast *me = new Beast(1, {0,1}, {0,1}, lazy_behaviour);
 	
