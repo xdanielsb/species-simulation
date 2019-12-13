@@ -27,14 +27,15 @@ public:
         nearestAnimal = b;
       }
     }
-    a->dir = getNewDirection( a, nearestAnimal);
+    a->setDirX(getNewDirection( a, nearestAnimal).X);
+    a->setDirY(getNewDirection( a, nearestAnimal).Y);
     if(isOutOfBoundaries(a)){
-		a->dir.X *= -1;
-      		a->dir.Y *= -1;
+		a->setDirX(a->getDirX()*-1);
+		a->setDirY(a->getDirY()*-1);
 	}
-    a->pos.X += a->dir.X;
-    a->pos.Y += a->dir.Y;
-    printf("->K{%.2f, %.2f}\n", a->pos.X, a->pos.Y);
+    a->setPosX(a->getPosX+a->getDirX());
+    a->setPosY(a->getPosY+a->getDirY());
+    printf("->K{%.2f, %.2f}\n", a->getPosX(), a->getPosY());
   }
 };
 #endif

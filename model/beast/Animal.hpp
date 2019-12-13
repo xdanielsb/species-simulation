@@ -14,12 +14,31 @@ public:
   ii getPosition() {
     return this->pos;
   }
-  float getX(){
+  float getPosX(){
     return this->pos.X;
   }
-  float getY(){
+  float getPosY(){
     return this->pos.Y;
   }
+  float getDirX(){
+    return this->dir.X;
+  }
+  float getDirY(){
+    return this->dir.Y;
+  }
+  void setPosX(float posX){
+    this->pos.X = posX;
+  }
+  void setPosY(float posY){
+    this->pos.Y = posY;
+  }
+  void setDirX(float dirX){
+    this->dir.X = dirX;
+  }
+  void setDirY(float dirY){
+    this->dir.Y = dirY;
+  }
+
   ii getDirection(){
     return this->dir;
   }
