@@ -49,6 +49,10 @@ public:
   void setBehavior( shared_ptr<Behaviour> b ){
     this->behaviour = b;
   }
+   auto getBehaviour(){
+	cout<<"the behaviour is:"<<endl;
+    return this->behaviour;
+  }
   friend ostream& operator << (ostream &out, Beast *b) {
     out << "Animal #"<< b->getId() << " = {"<< b->getPosition().X <<", " << b->getPosition().Y << "}";
     return out;
