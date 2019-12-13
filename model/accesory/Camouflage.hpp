@@ -1,7 +1,7 @@
 #ifndef _CCamouflage
 #define _CCamouflage
 #include "./Accesory.hpp"
-class Camouflage: public: Accessory{
+class Camouflage: public Accessory{
 private:
   double ccamouflage;
 public:
