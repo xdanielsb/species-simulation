@@ -5,11 +5,11 @@ class Fin: public Accessory{
 private:
   double cspeed;
 public:
-  Fin( double fin_limit){
-    this->cspeed = fmod(rand(),(fin_limit-1)) + 1;
+  FinS( double speed){
+    this->cspeed = speed;
   }
-  ~Fin(){}
-  double get_cspeed(){
+  ~FinS(){}
+  double getSpeed(){
     return this->cspeed;
   }
 };

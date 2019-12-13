@@ -34,7 +34,7 @@ class BeastFactory{
                             behaviourFactory->getComportement(type)
                       );
       b->setMaxAge( rnd->getInt(ONE_SECOND, ONE_MINUTE));
-      b->sethasMultipleBehaviours( type == MultipleBehaviour );
+      b->sethasMultipleBehaviours( type == MULTIPLEBEHAVIOUR );
 			return b;
     }
     // TODO: put a limit of the maximun number of elements in the population

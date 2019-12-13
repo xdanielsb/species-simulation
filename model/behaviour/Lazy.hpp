@@ -6,9 +6,6 @@ class LazyB: public Behaviour{
 private:
   const double MINDIS = 5;
   const int MinAnimalChangeDirection = 4;
-  double getDistance(const ii &a1, const ii &a2){
-      return hypot( a1.X - a2.X , a1.Y - a2.Y );
-  }
 public:
     LazyB(){}
     ~LazyB(){}
