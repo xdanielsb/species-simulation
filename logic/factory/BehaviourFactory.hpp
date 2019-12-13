@@ -15,7 +15,7 @@ class BehaviourFactory{
   	BehaviourFactory() {}
     shared_ptr<Behaviour> getComportement(int indexCom){
     if( indexCom == MultipleBehaviour ) indexCom = 0;
-  	if ( !BehaviourPool.count(indexCom)){
+  	if( !BehaviourPool.count(indexCom)){
   		switch(indexCom){
   			case FarSighted:
   				BehaviourPool[indexCom] = make_shared<FarsightedB>();
@@ -30,8 +30,8 @@ class BehaviourFactory{
   				BehaviourPool[indexCom] = make_shared<LazyB>();
   				break;
   		}
-    }
-		return BehaviourPool[indexCom];
+  }
+	return BehaviourPool[indexCom];
 	}
 };
 #endif
