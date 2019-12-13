@@ -21,6 +21,7 @@ public:
     }
   }
   Environment( vector< Animal*> &l){
+	  
     this->lbeast = l;
     rnd = new Random();
   }

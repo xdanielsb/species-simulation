@@ -1,12 +1,3 @@
-#define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
-#include<bits/stdc++.h>
-using namespace std;
-#include"../logic/include.hpp"
-#include"../model/beast/Beast.hpp"
-#include"../model/behaviour/Lazy.hpp"
-#include"../include/doctest.h"
-#include"../logic/include.hpp"
-
 
 TEST_CASE("Beasts without speed don't move") {
 	
