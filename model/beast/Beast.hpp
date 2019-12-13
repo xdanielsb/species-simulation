@@ -39,8 +39,8 @@ public:
   Beast* clone(){
     return new Beast( *this);
   }
-  void setBehavior( shared_ptr<Behaviour> b ){
-    this->behaviour = b;
+  void setBehavior( int type ){
+  //  this->behaviour = b;
   }
   friend ostream& operator << (ostream &out, Beast *b) {
     out << "Animal #"<< b->getId() << " = {"<< b->getPosition().X <<", " << b->getPosition().Y << "}";

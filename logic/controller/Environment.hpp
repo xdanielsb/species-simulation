@@ -12,8 +12,13 @@ private:
   const double PROBABILITY_OF_AUTO_CLONAGE  = 0.05;
   const double SIZEBEAST = 10;
 public:
-  void changeState(){
+  void changeStateMultipleBehaviourBeast(){
+    int i = 0, n = lbeast.size();
+    for( int i= 0; i < n; i++){
+      if( lbeast[i]->gethasMultipleBehaviours()){
 
+      }
+    }
   }
   Environment( vector< Animal*> &lbeast){
     this->lbeast = lbeast;
@@ -72,7 +77,6 @@ public:
           printf("The Beast %d died by age\n", (*beast)->getId());
         #endif
       }
-
     }
     this->lbeast = lbeastn;
   }
