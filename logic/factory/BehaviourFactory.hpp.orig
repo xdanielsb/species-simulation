@@ -12,6 +12,28 @@ class BehaviourFactory{
   private:
     map<int, shared_ptr<Behaviour>> BehaviourPool;
   public:
+<<<<<<< HEAD
+    Behaviour* getComportement(int indexCom){
+			if (!BehaviourPool.count(indexCom)){
+				switch(indexCom){
+					case 0:
+						BehaviourPool[indexCom] = new FarsightedB;
+						break;
+					case 1: 
+						BehaviourPool[indexCom] = new GregariusB;
+						break;
+					case 2: 
+						BehaviourPool[indexCom] = new KamikazeB;
+						break;
+					case 3: 
+						BehaviourPool[indexCom] = new LazyB;
+						break;		
+				}
+			return 	
+			
+	}
+	 
+=======
   	BehaviourFactory() {}
     shared_ptr<Behaviour> getComportement(int indexCom){
     if( indexCom == MultipleBehaviour ) indexCom = 0;
@@ -32,6 +54,12 @@ class BehaviourFactory{
   		}
     }
 		return BehaviourPool[indexCom];
+<<<<<<< HEAD
+	}}
+
+>>>>>>> 47f3c90c922d3e7e19b2ae43a2ee01cedad5ad94
+=======
 	}
+>>>>>>> 63d6a4ffd6e8881c57a1a2becad3e285f419965f
 };
 #endif

@@ -13,7 +13,6 @@ class Random{
     return rand();
   }
   int getInt(int a , int b){
-     assert( a >= 1);
      assert( a < b );
      int val = rand() % b + a;
      assert( val >= a && val <= b );
