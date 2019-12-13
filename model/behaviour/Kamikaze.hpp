@@ -15,15 +15,6 @@ private:
     if( fabs(res.Y) > 1e-6 ) res.Y /= getDistance( src->pos, aim->pos);
     return res;
   }
-  bool changeDirection(const Animal* a){
-    float futurePositionX = a->pos.X += a->dir.X;
-    float futurePositionY = a->pos.Y += a->dir.Y;
-    if(futurePositionX<0 || futurePositionY<0 || futurePositionX > MaxX || futurePositionY > MaxY){
-	return true;	
-    }else{
-	return false;	
-    }
-  }
 public:
   void move(Animal* a, vector<Animal*> list){
     double minDistance = 1e9;
@@ -37,9 +28,9 @@ public:
       }
     }
     a->dir = getNewDirection( a, nearestAnimal);
-    if(changeDirection(a)){
+    if(isOutOfBoundaries(a)){
 		a->dir.X *= -1;
-      		a->dir.Y *= -1;	
+      		a->dir.Y *= -1;
 	}
     a->pos.X += a->dir.X;
     a->pos.Y += a->dir.Y;
