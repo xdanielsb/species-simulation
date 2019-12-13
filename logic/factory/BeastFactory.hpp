@@ -10,11 +10,22 @@ class BeastFactory{
     Random *rnd;
     const int NUM_BEHAVIOURS = 5;
     BehaviourFactory* behaviourFactory;
-  public:
-    BeastFactory() {
+
+    static BeastFactory* instance;
+    
+    BeastFactory(BehaviourFactory* behaviourFactory) {
       rnd = new Random();
-      behaviourFactory = new BehaviourFactory();
+      this->behaviourFactory = behaviourFactory;
     }
+
+  public:
+
+    static BeastFactory *buildFactory(BehaviourFactory* behaviourFactory) {
+      if (!instance)
+      instance = new BeastFactory(behaviourFactory);
+      return instance;
+    }
+    
     Beast* newRandomBeast(int id, int type){
       Beast *b = new Beast(id, {this->rnd->getInt(1, WIDTH_WINDOW),
                             this->rnd->getInt(1, HEIGHT_WINDOW)},

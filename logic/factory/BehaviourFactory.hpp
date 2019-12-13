@@ -11,8 +11,19 @@
 class BehaviourFactory{
   private:
     map<int, shared_ptr<Behaviour>> BehaviourPool;
+
+	static BehaviourFactory *instance;
+
+	BehaviourFactory() {}
+  
   public:
-  	BehaviourFactory() {}
+
+	static BehaviourFactory *buildFactory() {
+		if (!instance)
+      	instance = new BehaviourFactory;
+      	return instance;
+	}
+	
     shared_ptr<Behaviour> getComportement(int indexCom){
     if( indexCom == MultipleBehaviour ) indexCom = 0;
   	if( !BehaviourPool.count(indexCom)){
