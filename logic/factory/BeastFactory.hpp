@@ -13,9 +13,9 @@ class BeastFactory{
 
     static BeastFactory* instance;
     
-    BeastFactory(BehaviourFactory* behaviourFactory) {
+    BeastFactory(BehaviourFactory* b) {
       rnd = new Random();
-      this->behaviourFactory = behaviourFactory;
+      this->behaviourFactory = b;
     }
 
   public:
@@ -34,6 +34,7 @@ class BeastFactory{
                             behaviourFactory->getComportement(type)
                       );
       b->setMaxAge( rnd->getInt(ONE_SECOND, ONE_MINUTE));
+			return b;
     }
     // TODO: put a limit of the maximun number of elements in the population
     vector<Animal*> newRandomPopulation( int n ){
