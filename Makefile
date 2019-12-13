@@ -13,3 +13,5 @@ debug:
 	$(CC) -DDEBUG  $(CFLAGS) $(NAMEFILE) $(TFLAGS) -o main.o && ./main.o
 run:
 	$(CC)  $(CFLAGS) $(NAMEFILE) $(TFLAGS) -o main.o && ./main.o
+test-code:
+	$(CC) $(CFLAGS) $(NAMEFILETEST) $(TFLAGS) -o main.o && ./main.o
