@@ -38,7 +38,7 @@ public:
     this->behaviour->move( this, neighbors );
   }
   Beast* clone(){
-
+    return new Beast( *this);
   }
   void setBehavior( shared_ptr<Behaviour> b ){
     this->behaviour = b;
