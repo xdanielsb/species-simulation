@@ -8,6 +8,7 @@ NAMEFILE = launcher.cpp
 all:
 	$(CC) $(CSANIT) $(CFLAGS) $(NAMEFILE) $(TFLAGS) -o main.o && ./main.o
 
-
+debug:
+	$(CC) -DDEBUG  $(CFLAGS) $(NAMEFILE) $(TFLAGS) -o main.o && ./main.o
 run:
 	$(CC)  $(CFLAGS) $(NAMEFILE) $(TFLAGS) -o main.o && ./main.o
