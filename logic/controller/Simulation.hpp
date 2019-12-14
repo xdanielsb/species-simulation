@@ -47,13 +47,12 @@ public:
       printf("Running step #%d\n", step);
      #endif
      this_thread::sleep_for(chrono::seconds(1));
-     this->env->step();
+     this->env->step( step );
    }
   }
   void startGUI(int argc,char **argv){
     diag = new Dialog();
     diag->create(argc, argv);
-
 
     this->q = new Aquarium(WIDTH_WINDOW, HEIGHT_WINDOW, env);
     this->q->run();

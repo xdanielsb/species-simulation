@@ -40,7 +40,7 @@ public:
       #ifdef  DEBUG
         printf("Running step #%d\n", step);
       #endif
-      this->env->step();
+      this->env->step( step );
       display( *this->env );
       this->wait(100);
     }

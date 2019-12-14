@@ -17,7 +17,7 @@ typedef pair< float, float > ii;
  * Base colors
  */
 
-inline const unsigned char white[3] = {255, 255, 255};
+inline const float WHITE[] = { 255, 255, 255 }, BLACK[] = { 0, 0, 0 };
 
 /*
  * Constants and defines

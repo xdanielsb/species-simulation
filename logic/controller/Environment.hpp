@@ -40,30 +40,27 @@ public:
     this->lbeast = l;
     rnd = Random::getInstance();
   }
-  bool step(){
+  bool step(int idStep){
       const unsigned char black[] = { 0,0,0 };
       this->removeOlderBeast();
       this->removeCollidedBeast();
       this->autoClonage();
       int n = lbeast.size();
       cimg_forXY( *this, x, y )
-//      fillC( x, y, 0, black[0], black[1],black[2] );
-
-
-                    this->fillC(x,y,0,
-                      x*std::cos(6.0*y/this->height) +
-                      y*std::sin(9.0*x/this->width),
-                      x*std::sin(8.0*y/this->height) -
-                      y*std::cos(11.0*x/this->width),
-                      x*std::cos(13.0*y/this->height) -
-                      y*std::sin(8.0*x/this->width));
-                      normalize(240,255);
-
+      this->fillC(x,y,0,
+        x*std::cos(6.0*y/this->height) +
+        y*std::sin(9.0*x/this->width),
+        x*std::sin(8.0*y/this->height) -
+        y*std::cos(11.0*x/this->width),
+        x*std::cos(13.0*y/this->height) -
+        y*std::sin(8.0*x/this->width));
+        normalize(240,255);
       for( int i = 0; i < n ; i++){
           this->lbeast[i]->move( this->lbeast );
           this->lbeast[i]->draw(*this);
           this->lbeast[i]->getOlder();
       }
+      draw_text(4,4,"Year: %u ",WHITE,BLACK,1,13,idStep);
       return n;
   }
   void changeStateMultipleBehaviourBeast(){
