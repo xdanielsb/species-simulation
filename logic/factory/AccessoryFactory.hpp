@@ -15,7 +15,7 @@
  * methode "buildFactory" is used to initier the instance of 
  * AccessoryFactory and the methode "getAccessory" is used to return 
  * different accessories the input 'id' corresponds to different 
- * accessories, for exemples, {{0, CAMOUFLAGE}, {1, FIN}, {2, SHELL}}.  
+ * accessories, check Id of accessories in the file logic/include.hpp.  
  * 
  *
  */
