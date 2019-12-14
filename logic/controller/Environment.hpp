@@ -3,26 +3,20 @@
 #include"../factory/BeastFactory.hpp"
 #include"../../model/beast/Animal.hpp"
 #include"../../model/behaviour/IBehaviour.hpp"
-#include"../../include/CImg.h"
-#include<unordered_set>
-#include<vector>
-using namespace std;
-using namespace cimg_library;
-typedef unsigned char        T;
-typedef CImg<T>            UImg;
+
 
 /**
  * Implementation of a class Environment to initier the Environment and to
- * launch, manage the Environment. 
+ * launch, manage the Environment.
  *
- * The constructeur is used to generate the ground with certain "width", 
- * certain "height" and a list of beasts "l". The methode "step" is used 
- * to represent one iteration of simulation and during each iteration some 
+ * The constructeur is used to generate the ground with certain "width",
+ * certain "height" and a list of beasts "l". The methode "step" is used
+ * to represent one iteration of simulation and during each iteration some
  * fonctions have to be realized, "changeStateMultipleBehaviourBeast"
- * changes the behaviour of the beast after each iteration, 
- * "removeCollidedBeast" removes or changes the moving direction with certain 
+ * changes the behaviour of the beast after each iteration,
+ * "removeCollidedBeast" removes or changes the moving direction with certain
  * probability of beasts who are in collision, "removeOlderBeast" removes the
- * beast whose age is beyound his max_age, "autoClonage" clones some beasts   
+ * beast whose age is beyound his max_age, "autoClonage" clones some beasts
  * randomly after each iteration.
  *
  *
@@ -54,7 +48,6 @@ public:
       int n = lbeast.size();
       cimg_forXY( *this, x, y )
 //      fillC( x, y, 0, black[0], black[1],black[2] );
-
 
       fillC(x,y,0,x*std::cos(1.0*y/hWave) +
                   y*std::sin(1.0*x/wWave),

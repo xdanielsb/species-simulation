@@ -3,6 +3,11 @@
 #include<math.h>
 #include<array>
 #include<new>
+#include<unordered_set>
+#include<vector>
+#include"./include/CImg.h"
+using namespace cimg_library;
+#include"./logic/include.hpp"
 #include"./logic/controller/Simulation.hpp"
 using namespace std;
 #include <thread>

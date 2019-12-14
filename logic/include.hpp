@@ -12,6 +12,8 @@ using namespace std;
  * New Types
  */
 typedef pair< float, float > ii;
+typedef unsigned char        T;
+typedef CImg<T>              UImg;
 
 /*
  * Constants and defines
