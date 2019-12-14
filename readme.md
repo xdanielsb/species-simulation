@@ -12,7 +12,8 @@ accessories and sensors.
 
 #### How to run?
 ```sh
-  $ make run
+  $ make linux
+  $ make macosx
 ```
 #### How to run the tests?
 ```sh

@@ -32,3 +32,8 @@
 *.exe
 *.out
 *.app
+
+
+# Mac OSX
+.DS_Store
+assets/.DS_Store
