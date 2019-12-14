@@ -23,6 +23,8 @@ enum SENSOR{
 };
 ```
 
+### Run - Test - Debug
+
 #### How to run?
 ```sh
   $ make
