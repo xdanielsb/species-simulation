@@ -11,6 +11,22 @@ using namespace cimg_library;
 typedef unsigned char        T;
 typedef CImg<T>            UImg;
 
+/**
+ * Implementation of a class Environment to initier the Environment and to
+ * launch, manage the Environment. 
+ *
+ * The constructeur is used to generate the ground with certain "width", 
+ * certain "height" and a list of beasts "l". The methode "step" is used 
+ * to represent one iteration of simulation and during each iteration some 
+ * fonctions have to be realized, "changeStateMultipleBehaviourBeast"
+ * changes the behaviour of the beast after each iteration, 
+ * "removeCollidedBeast" removes or changes the moving direction with certain 
+ * probability of beasts who are in collision, "removeOlderBeast" removes the
+ * beast whose age is beyound his max_age, "autoClonage" clones some beasts   
+ * randomly after each iteration.
+ *
+ *
+ */
 class Environment: public UImg
 {
 private:
@@ -26,8 +42,8 @@ private:
   const unsigned int wWave = 2000;
   const unsigned int hWave = 2000;
 public:
-  Environment( std::vector< Animal*> &l, const unsigned int _width, const unsigned int _height):
-  UImg( _width, _height, 1, 3 ),  width(_width), height(_height){
+  Environment( std::vector< Animal*> &l, const unsigned int _w, const unsigned int _h):
+  UImg( _width, _height, 1, 3 ),  width(_w), height(_h){
     this->lbeast = l;
     rnd = Random::getInstance();
   }

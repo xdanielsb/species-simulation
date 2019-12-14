@@ -7,6 +7,18 @@
 #include <map>
 #include<memory>
 
+/**
+ * Implementation of a AccessoryFactory to generate different accessories 
+ * using pool object design pattern
+ *
+ * Differents accessories are stored in the hashmap "AccessoryPool", the 
+ * methode "buildFactory" is used to initier the instance of 
+ * AccessoryFactory and the methode "getAccessory" is used to return 
+ * different accessories the input 'id' corresponds to different 
+ * accessories, for exemples, {{0, CAMOUFLAGE}, {1, FIN}, {2, SHELL}}.  
+ * 
+ *
+ */
 class AccessoryFactory{
   private:
     map<int, shared_ptr<Accessory>> AccessoryPool;

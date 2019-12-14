@@ -5,6 +5,19 @@
 #include"../util/Random.hpp"
 #include"./BehaviourFactory.hpp"
 
+/**
+ * Implementation of a BeastFactory to generate different beasts using 
+ * factory design pattern
+ *
+ * Differents beasts are stored in the "list" and return by the methode
+ * "newRandomPopulation", the input variable "n" decides the number of 
+ * beasts in the "list", the methode "buildFactory" is used to initier 
+ * the instance of BeastFactory and the methode "newRandomBeast" 
+ * is used to return an instance of beast with certain "id" and 
+ * different "types" of behaviour.     
+ * 
+ *
+ */
 class BeastFactory{
   private:
     static BeastFactory* instance;

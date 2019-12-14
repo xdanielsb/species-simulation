@@ -2,6 +2,15 @@
 #define _CKamikaze
 #include"./IBehaviour.hpp"
 #define debug(x) cout << #x << " = " << x <<endl;
+
+/**
+ * Implementation of behaviour Kamikaze
+ *
+ * A kamikaze animal is attracted to the nearest animal and attempts to 
+ * attack it, seeking to cause a collision of the surroundings.
+ *
+ *
+ */
 class KamikazeB:public Behaviour{
 private:
   ii getNewDirection( Animal *src, Animal *aim){
