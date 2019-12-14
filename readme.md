@@ -27,7 +27,7 @@ enum SENSOR{
 
 #### How to run?
 ```sh
-  $ make
+  $ make run
 ```
 #### How to run the tests?
 ```sh
@@ -37,3 +37,11 @@ enum SENSOR{
 ```sh
   $ make debug
 ```
+
+### Dependencies
+
+* g++
+* c++17
+* lm
+* -lX11
+* -lpthread
