@@ -6,16 +6,16 @@
 #include"./BehaviourFactory.hpp"
 
 /**
- * Implementation of a BeastFactory to generate different beasts using 
+ * Implementation of a BeastFactory to generate different beasts using
  * singleton design pattern
  *
  * Differents beasts are stored in the "list" and return by the methode
- * "newRandomPopulation", the input variable "n" decides the number of 
- * beasts in the "list", the methode "buildFactory" is used to initier 
- * the instance of BeastFactory and the methode "newRandomBeast" 
- * is used to return an instance of beast with certain "id" and 
- * different "types" of behaviour.     
- * 
+ * "newRandomPopulation", the input variable "n" decides the number of
+ * beasts in the "list", the methode "buildFactory" is used to initier
+ * the instance of BeastFactory and the methode "newRandomBeast"
+ * is used to return an instance of beast with certain "id" and
+ * different "types" of behaviour.
+ *
  *
  */
 class BeastFactory{
@@ -44,7 +44,7 @@ class BeastFactory{
                             behaviourFactory->getComportement(type)
                       );
       b->setMaxAge( rnd->getInt(ONE_SECOND, ONE_MINUTE));
-      b->sethasMultipleBehaviours( type == MULTIPLEBEHAVIOUR );
+      b->setBehavior( type  );
 			return b;
     }
     vector<Animal*> newRandomPopulation( int n ){

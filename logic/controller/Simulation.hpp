@@ -53,6 +53,8 @@ public:
   void startGUI(int argc,char **argv){
     diag = new Dialog();
     diag->create(argc, argv);
+
+
     this->q = new Aquarium(WIDTH_WINDOW, HEIGHT_WINDOW, env);
     this->q->run();
   }

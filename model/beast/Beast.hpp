@@ -66,9 +66,7 @@ public:
   Beast* clone(){
     return new Beast( *this);
   }
-  void setBehavior( int type ){
-  //  this->behaviour = b;
-  }
+
    /**
    * Print the info of the beast, ID and position actual
    *

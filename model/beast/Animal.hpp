@@ -8,7 +8,7 @@ private:
   ii dir;
   int age;
   int maxAge;
-  bool hasMultipleBehaviours;
+  int idBehaviour;
   unsigned char               * color;
   const double      AFF_SIZE = 8.;
   const double      MAX_VITESSE = 10.;
@@ -99,18 +99,15 @@ public:
       return hypot( this->pos.X - a2.X , this->pos.Y - a2.Y );
   }
   virtual void move(vector<Animal*> &neighbors) = 0;
-  /// Set the behaviour of the animal
-  virtual void setBehavior( int type) = 0;
 
   virtual Animal* clone() = 0;
 
-  /// Set the animal whether it's multiplebehaviour or not
-  void sethasMultipleBehaviours( bool flag ){
-    this->hasMultipleBehaviours = flag;
+  /// Get the behaviours
+  int getBehaviour() const {
+    return this->idBehaviour;
   }
-  /// Get the info about the animal whether it's multiplebehaviour or not
-  bool gethasMultipleBehaviours() const {
-    return this->hasMultipleBehaviours;
+  void setBehavior( int id){
+    this->idBehaviour = id;
   }
 
   /// Draw the animal in the graphique interface
@@ -120,8 +117,7 @@ public:
    double yt = this->getPosY() - sin( orientation )*AFF_SIZE/2.1;
    u.draw_ellipse( this->getPosX(), this->getPosY(), AFF_SIZE, AFF_SIZE/5., -orientation/M_PI*180., this->color );
    u.draw_circle(  this->getPosX(), this->getPosY(), 4, this->color );
-
-   u.draw_text( this->getPosX(), this->getPosY() + 5 , "c", this->color );
+   u.draw_text( this->getPosX(), this->getPosY() + 5 , INITALS_BEHAVIOURS[this->getBehaviour()], this->color );
   }
   /**
   * Print the info of the animal, ID and position actual

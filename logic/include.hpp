@@ -51,7 +51,12 @@ const unsigned int ONE_SECOND    = 1;
    EYE = 1,
  };
 
- inline const char Names ={};
+ inline const char* INITALS_BEHAVIOURS[5] ={
+  "FARSIGTHED",
+  "GREGARIU",
+  "KAMIKAZE",
+  "LAZY",
+  "MULTIPLEBEHAVIOUR"};
 
 
 #endif

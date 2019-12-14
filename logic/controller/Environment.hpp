@@ -69,7 +69,7 @@ public:
   void changeStateMultipleBehaviourBeast(){
     int n = lbeast.size();
     for( int i= 0; i < n; i++){
-      if( lbeast[i]->gethasMultipleBehaviours()){
+      if( lbeast[i]->getBehaviour() == MULTIPLEBEHAVIOUR ){
 
       }
     }
