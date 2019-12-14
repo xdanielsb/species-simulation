@@ -12,15 +12,12 @@ accessories and sensors.
 
 #### How to run?
 ```sh
-  $ make run
+  $ make linux  #run this if your computer has gnu-linux
+  $ make macosx #run this if your computer has macosx
 ```
 #### How to run the tests?
 ```sh
   $ make test-code
-```
-#### How to debug?
-```sh
-  $ make debug
 ```
 
 ### Dependencies
