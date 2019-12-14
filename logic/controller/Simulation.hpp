@@ -8,20 +8,19 @@
 #include"../../model/beast/Animal.hpp"
 #include <thread>
 #include <chrono>
-
+using namespace std;
 class Simulation{
 private:
   Aquarium *q;
   BeastFactory *beastFactory;
   BehaviourFactory *behaviourFactory;
   Environment *env;
-
 public:
   Simulation( int nBeast){
       this->behaviourFactory = BehaviourFactory::buildFactory();
       this->beastFactory = BeastFactory::buildFactory(behaviourFactory);
       vector< Animal*> list = this->beastFactory->newRandomPopulation( nBeast );
-      this->env = new Environment( list );
+      this->env = new Environment( list, WIDTH_WINDOW, HEIGHT_WINDOW );
   }
   ~Simulation() {
     delete behaviourFactory;
@@ -34,9 +33,9 @@ public:
      this->env->step();
    }
   }
-  void startGUI(){
-      this->q = new Aquarium(300, 300, env);
-      this->q->run();
+  void startGUI(int argc,char **argv){
+      this->q = new Aquarium(WIDTH_WINDOW, HEIGHT_WINDOW, env);
+      this->q->run(argc, argv);
   }
 };
 #endif

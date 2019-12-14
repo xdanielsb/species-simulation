@@ -1,26 +1,33 @@
 #ifndef _CEnvironment
 #define _CEnvironment
 #include"../factory/BeastFactory.hpp"
-#include"../../model/beast/Beast.hpp"
+#include"../../model/beast/Animal.hpp"
 #include"../../model/behaviour/IBehaviour.hpp"
+#include"../../include/CImg.h"
 #include<unordered_set>
-class Environment{ // facade
+#include<vector>
+using namespace std;
+using namespace cimg_library;
+typedef unsigned char        T;
+typedef CImg<T>            UImg;
+
+class Environment: public UImg
+{
 private:
-  vector< Animal* > lbeast;
+
+  std::vector< Animal* > lbeast;
   Random *rnd;
+  inline static const T     black[] =  { (T)0, (T)0, (T)0 };
   const double PROBABILITY_OF_DIED_IN_COLLISION  = 0.5;
   const double PROBABILITY_OF_AUTO_CLONAGE  = 0.05;
   const double SIZEBEAST = 10;
+  const unsigned int width;
+  const unsigned int height;
+  const unsigned int wWave = 2000;
+  const unsigned int hWave = 2000;
 public:
-  void changeStateMultipleBehaviourBeast(){
-    int n = lbeast.size();
-    for( int i= 0; i < n; i++){
-      if( lbeast[i]->gethasMultipleBehaviours()){
-
-      }
-    }
-  }
-  Environment( vector< Animal*> &l){
+  Environment( std::vector< Animal*> &l, const unsigned int _width, const unsigned int _height):
+  UImg( _width, _height, 1, 3 ),  width(_width), height(_height){
     this->lbeast = l;
     rnd = Random::getInstance();
   }
@@ -29,13 +36,31 @@ public:
       this->removeCollidedBeast();
       this->autoClonage();
       int n = lbeast.size();
+      cimg_forXY( *this, x, y )
+//      fillC( x, y, 0, black[0], black[1],black[2] );
+
+
+      fillC(x,y,0,x*std::cos(1.0*y/hWave) +
+                  y*std::sin(1.0*x/wWave),
+                  x*std::sin(1.0*y/hWave) -
+                  y*std::cos(1.0*x/wWave),
+                  x*std::cos(1.0*y/hWave) -
+                  y*std::sin(1.0*x/wWave));
       for( int i = 0; i < n ; i++){
-        if( this->lbeast[i]){
           this->lbeast[i]->move( this->lbeast );
+          this->lbeast[i]->draw(*this);
+          const unsigned char yellow[] = { 255,255,0 };
           this->lbeast[i]->getOlder();
-        }
       }
       return n;
+  }
+  void changeStateMultipleBehaviourBeast(){
+    int n = lbeast.size();
+    for( int i= 0; i < n; i++){
+      if( lbeast[i]->gethasMultipleBehaviours()){
+
+      }
+    }
   }
   void removeCollidedBeast(){
     unordered_set< int > died;
@@ -56,7 +81,7 @@ public:
         }
       }
     }
-    vector< Animal* > lbeastn;
+    std::vector< Animal* > lbeastn;
     for( int i = 0; i < n ; ++i){
       if( !died.count(i) ) lbeastn.push_back( lbeast[i]);
       else{
@@ -68,7 +93,7 @@ public:
     this->lbeast  = lbeastn;
   }
   void removeOlderBeast(){
-    vector< Animal* > lbeastn;
+    std::vector< Animal* > lbeastn;
     for( auto beast= lbeast.begin(); beast != lbeast.end(); beast++){
       if( (*beast)->getAge() <= (*beast)->getMaxAge() ){
         lbeastn.push_back( *beast );
@@ -81,7 +106,6 @@ public:
     }
     this->lbeast = lbeastn;
   }
-
   void autoClonage(){
     int n = this->lbeast.size();
     for( int i = 0; i < n; i++ ){
@@ -94,6 +118,5 @@ public:
       }
     }
   }
-
 };
 #endif
