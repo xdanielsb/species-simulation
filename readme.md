@@ -19,10 +19,6 @@ accessories and sensors.
 ```sh
   $ make test-code
 ```
-#### How to debug?
-```sh
-  $ make debug
-```
 
 ### Dependencies
 
