@@ -27,33 +27,35 @@ class Simulation{
 private:
   Aquarium *q;
   BeastFactory *beastFactory;
-  BehaviourFactory *behaviourFactory;
   Environment *env;
   Dialog *diag;
 public:
-  Simulation( int nBeast){
-      this->behaviourFactory = BehaviourFactory::buildFactory();
-      this->beastFactory = BeastFactory::buildFactory(behaviourFactory);
-      vector< Animal*> list = this->beastFactory->newRandomPopulation( nBeast );
-      this->env = new Environment( list, WIDTH_WINDOW, HEIGHT_WINDOW );
+  Simulation( ){
+      this->beastFactory = BeastFactory::getInstance();
+      this->env = new Environment( WIDTH_WINDOW, HEIGHT_WINDOW );
   }
   ~Simulation() {
-    delete behaviourFactory;
     delete beastFactory;
+    delete env;
   }
-  void startCLI( ){
-   for(int step = 1;; step++){
-     #ifdef DEBUG
-      printf("Running step #%d\n", step);
-     #endif
-     this_thread::sleep_for(chrono::seconds(1));
-     this->env->step();
-   }
+
+  void startCLI( int nBeast ){
+     vector< Animal*> list = this->beastFactory->newRandomPopulation( nBeast );
+     this->env->setListBeast( list );
+     for(int step = 1;; step++){
+       #ifdef DEBUG
+        printf("Running step #%d\n", step);
+       #endif
+       this_thread::sleep_for(chrono::seconds(1));
+       this->env->step( step );
+     }
   }
-  void startGUI(int argc,char **argv){
+  void startGUI(int argc,char **argv, int nBeast){
     diag = new Dialog();
     diag->create(argc, argv);
-    this->q = new Aquarium(WIDTH_WINDOW, HEIGHT_WINDOW, env);
+    vector< Animal*> list = this->beastFactory->newRandomPopulation( nBeast );
+    this->env->setListBeast( list );
+    this->q = new Aquarium(WIDTH_WINDOW, HEIGHT_WINDOW, this->env);
     this->q->run();
   }
 };

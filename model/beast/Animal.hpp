@@ -1,5 +1,9 @@
 #ifndef _CAnimal
 #define _CAnimal
+#include"../../logic/util/Random.hpp"
+#include"../accessory/Accessory.hpp"
+#include"../sensor/Sensor.hpp"
+
 class Animal{
 private:
   int id;
@@ -7,12 +11,14 @@ private:
   ii dir;
   int age;
   int maxAge;
-  bool hasMultipleBehaviours;
+  int idBehaviour;
   unsigned char               * color;
   const double      AFF_SIZE = 8.;
   const double      MAX_VITESSE = 10.;
   const double      LIMITE_VUE = 30.;
-  
+  vector< shared_ptr<Sensor> > sensors;
+  vector< shared_ptr<Accessory>> accesories;
+
 public:
 
   Animal(){}
@@ -25,15 +31,15 @@ public:
   */
   Animal(int _id, ii _pos, ii _dir): id(_id), pos(_pos), dir(_dir){
     this->age = 0;
-    color = new unsigned char[ 3 ];
-    color[ 0 ] = static_cast<int>( 0 );
-    color[ 1 ] = static_cast<int>( 0 );
-    color[ 2 ] = static_cast<int>( 0 );
+    color = Random::getInstance()->getDarkColor();
   }
   virtual ~Animal(){};
   /// Get the position of animal
   ii getPosition() {
     return this->pos;
+  }
+  void setPosition( ii _pos){
+    this->pos = _pos;
   }
   /// Get the X position of animal
   float getPosX() const{
@@ -101,19 +107,34 @@ public:
       return hypot( this->pos.X - a2.X , this->pos.Y - a2.Y );
   }
   virtual void move(vector<Animal*> &neighbors) = 0;
-  /// Set the behaviour of the animal
-  virtual void setBehavior( int type) = 0;
 
   virtual Animal* clone() = 0;
 
-  /// Set the animal whether it's multiplebehaviour or not
-  void sethasMultipleBehaviours( bool flag ){
-    this->hasMultipleBehaviours = flag;
+  /// Get the behaviours
+  int getBehaviour() const {
+    return this->idBehaviour;
   }
-  /// Get the info about the animal whether it's multiplebehaviour or not
-  bool gethasMultipleBehaviours() const {
-    return this->hasMultipleBehaviours;
+  void setBehavior( int id){
+    this->idBehaviour = id;
   }
+
+  /**
+  * Add accessories to the beast
+  *
+  * @param *a pointer of the accessory which will be equiped to the beast
+  */
+  void addAccessory(shared_ptr<Accessory> a){
+    this->accesories.push_back( a );
+  }
+  /**
+  * Add sensors to the beast
+  *
+  * @param *a pointer of the sensor which will be equiped to the beast
+  */
+  void addSensor( shared_ptr<Sensor> s){
+    this->sensors.push_back( s );
+  }
+
 
   /// Draw the animal in the graphique interface
   void draw( CImg<unsigned char> &u ){
@@ -122,7 +143,10 @@ public:
    double yt = this->getPosY() - sin( orientation )*AFF_SIZE/2.1;
    u.draw_ellipse( this->getPosX(), this->getPosY(), AFF_SIZE, AFF_SIZE/5., -orientation/M_PI*180., this->color );
    u.draw_circle(  this->getPosX(), this->getPosY(), 4, this->color );
+   u.draw_text( this->getPosX(), this->getPosY() + 5 , INITALS_BEHAVIOURS[this->getBehaviour()], this->color );
   }
+
+
   /**
   * Print the info of the animal, ID and position actual
   *

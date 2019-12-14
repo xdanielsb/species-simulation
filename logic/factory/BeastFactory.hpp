@@ -4,36 +4,35 @@
 #include"../../model/beast/Beast.hpp"
 #include"../util/Random.hpp"
 #include"./BehaviourFactory.hpp"
+#include"./SensorFactory.hpp"
+#include"./AccessoryFactory.hpp"
 
 /**
- * Implementation of a BeastFactory to generate different beasts using 
+ * Implementation of a BeastFactory to generate different beasts using
  * singleton design pattern
  *
  * Differents beasts are stored in the "list" and return by the methode
- * "newRandomPopulation", the input variable "n" decides the number of 
- * beasts in the "list", the methode "buildFactory" is used to initier 
- * the instance of BeastFactory and the methode "newRandomBeast" 
- * is used to return an instance of beast with certain "id" and 
- * different "types" of behaviour.     
- * 
+ * "newRandomPopulation", the input variable "n" decides the number of
+ * beasts in the "list", the methode "getInstance" is used to initier
+ * the instance of BeastFactory and the methode "newRandomBeast"
+ * is used to return an instance of beast with certain "id" and
+ * different "types" of behaviour.
+ *
  *
  */
 class BeastFactory{
   private:
     static BeastFactory* instance;
     Random *rnd;
-    const int NUM_BEHAVIOURS = 5;
-    BehaviourFactory* behaviourFactory;
 
-    BeastFactory(BehaviourFactory* b) {
+    BeastFactory() {
       rnd =  Random::getInstance();
-      this->behaviourFactory = b;
     }
 
   public:
 
-    static BeastFactory *buildFactory(BehaviourFactory* behaviourFactory) {
-      if (!instance) instance = new BeastFactory(behaviourFactory);
+    static BeastFactory *getInstance() {
+      if (!instance) instance = new BeastFactory();
       return instance;
     }
     Beast* newRandomBeast(int id, int type){
@@ -41,18 +40,28 @@ class BeastFactory{
                             this->rnd->getInt(1, HEIGHT_WINDOW)},
                             {this->rnd->getInt(-1, 1),
                             this->rnd->getInt(-1, 1)},
-                            behaviourFactory->getComportement(type)
+                            BehaviourFactory::getInstance()->getComportement(type)
                       );
       b->setMaxAge( rnd->getInt(ONE_SECOND, ONE_MINUTE));
-      b->sethasMultipleBehaviours( type == MULTIPLEBEHAVIOUR );
+      b->setBehavior( type  );
+
+      bool addAccesory = this->rnd->getBool();
+      bool addSensor = this->rnd->getBool();
+      if( addAccesory )
+      b->addAccessory(
+        AccessoryFactory::getInstance()->getAccessory(this->rnd->getInt(0, NUMACCESORIES))
+      );
+      if( addSensor )
+      b->addSensor(
+        SensorFactory::getInstance()->getSensor(this->rnd->getInt(0, NUMSENSORS))
+      );
 			return b;
     }
     vector<Animal*> newRandomPopulation( int n ){
       vector<Animal*> list;
-      vector< float > pseudoRandomDistribution = rnd->getVector(  NUM_BEHAVIOURS );
-      for( int i = 0, id = 1; i < NUM_BEHAVIOURS; i++){
+      vector< float > pseudoRandomDistribution = rnd->getVector(  NUMBEHAVIOURS );
+      for( int i = 0, id = 1; i < NUMBEHAVIOURS; i++){
         int totali = round(pseudoRandomDistribution[ i ] * n);
-        printf("\tNumber of beast with behaviour %d = %d \n", i,  totali);
         for( int j = 0; j < totali; j++, id++){
             list.push_back( this->newRandomBeast( id, i ) );
         }

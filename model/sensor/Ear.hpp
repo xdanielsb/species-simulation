@@ -10,10 +10,10 @@ using namespace std;
  *
  *
  */
-class Ear: public Sensor{
+class EarS: public Sensor{
 public:
-	Ear();
-	Ear(){}
-
+	EarS(double dis, double det): Sensor(dis, det, 2*PI){
+	}
+	~EarS(){}
 };
 #endif

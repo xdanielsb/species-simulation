@@ -18,7 +18,10 @@ public:
                   "(-) Gonza Quintana.\n\n"
                   "(-) Xue Wang.\n\n"
                   "(-) Lei Zan .\n\n"
-                  "take a look to the code at https://github.com/xdanielsb/BeastCollider.\n"
+                  "Code: \n"
+                  "(-) https://github.com/xdanielsb/BeastCollider.\n\n"
+                  "Instructions \n"
+                  "1 - Click on the window to create a random beast\n\n"
                   "Look the readme.md for more details","Start !","Quit",0,0,0,0,
                   src.get_resize(this->WIDTH,this->HEIGHT,1,3),true)) std::exit(0);
   }

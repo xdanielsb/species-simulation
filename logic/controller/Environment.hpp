@@ -34,38 +34,43 @@ private:
   const unsigned int height;
   const unsigned int wWave = 2000;
   const unsigned int hWave = 2000;
+  BeastFactory *beastFactory;
 public:
-  Environment( std::vector< Animal*> &l, const unsigned int _w, const unsigned int _h):
+  Environment( const unsigned int _w, const unsigned int _h):
   CImg( _w, _h, 1, 3 ),  width(_w), height(_h){
-    this->lbeast = l;
     rnd = Random::getInstance();
+    this->beastFactory = BeastFactory::getInstance();
   }
-  bool step(){
+  void setListBeast( std::vector< Animal*> &l){
+    this->lbeast = l;
+  }
+  bool step(int idStep){
       const unsigned char black[] = { 0,0,0 };
       this->removeOlderBeast();
       this->removeCollidedBeast();
       this->autoClonage();
       int n = lbeast.size();
       cimg_forXY( *this, x, y )
-//      fillC( x, y, 0, black[0], black[1],black[2] );
-
-      fillC(x,y,0,x*std::cos(1.0*y/hWave) +
-                  y*std::sin(1.0*x/wWave),
-                  x*std::sin(1.0*y/hWave) -
-                  y*std::cos(1.0*x/wWave),
-                  x*std::cos(1.0*y/hWave) -
-                  y*std::sin(1.0*x/wWave));
+      this->fillC(x,y,0,
+        x*std::cos(6.0*y/this->height) +
+        y*std::sin(9.0*x/this->width),
+        x*std::sin(8.0*y/this->height) -
+        y*std::cos(11.0*x/this->width),
+        x*std::cos(13.0*y/this->height) -
+        y*std::sin(8.0*x/this->width));
+        normalize(240,255);
       for( int i = 0; i < n ; i++){
           this->lbeast[i]->move( this->lbeast );
           this->lbeast[i]->draw(*this);
           this->lbeast[i]->getOlder();
       }
+      draw_text(4,4,"Year: %u, Num Beast: %u",WHITE,BLACK,1,13,idStep, this->lbeast.size());
       return n;
   }
   void changeStateMultipleBehaviourBeast(){
     int n = lbeast.size();
     for( int i= 0; i < n; i++){
-      if( lbeast[i]->gethasMultipleBehaviours()){
+      if( lbeast[i]->getBehaviour() == MULTIPLEBEHAVIOUR ){
 
       }
     }
@@ -125,6 +130,12 @@ public:
         #endif
       }
     }
+  }
+  void createNewBeast( ii pos){
+    int rndBehaviourid = this->rnd->getInt(0, NUMBEHAVIOURS);
+    Beast *b = this->beastFactory->newRandomBeast( 0, rndBehaviourid );
+    b->setPosition( pos );
+    this->lbeast.push_back( b );
   }
 };
 #endif

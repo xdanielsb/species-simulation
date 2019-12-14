@@ -10,9 +10,11 @@ using namespace std;
  *
  *
  */
-class Eye: public Sensor{
+class EyeS: public Sensor{
 public:
-	Eye( ): Sensor(){
+	EyeS(double dis, double det, double degr): Sensor(dis, det, degr){
+
 	}
+	~EyeS(){}
 };
 #endif

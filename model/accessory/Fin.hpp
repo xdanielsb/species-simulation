@@ -5,18 +5,18 @@
 /**
  * Implementation of Fin
  *
- * The fins allow the equipped animal to move faster by applying 
- * a multiplier coefficient ν∈ [1; νmax] at the speed of the 
- * creature. The constructeur is used to initier an instance of 
+ * The fins allow the equipped animal to move faster by applying
+ * a multiplier coefficient ν∈ [1; νmax] at the speed of the
+ * creature. The constructeur is used to initier an instance of
  * fin and "getSpeed" is used to get the caracter of the fin.
  *
- * 
+ *
  */
-class Fin: public Accessory{
+class FinS: public Accessory{
 private:
   double cspeed;
 public:
-  FinS( double speed){
+  FinS( double speed):Accessory(){
     this->cspeed = speed;
   }
   ~FinS(){}

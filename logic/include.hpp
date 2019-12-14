@@ -13,6 +13,11 @@ using namespace std;
  */
 typedef pair< float, float > ii;
 
+/*
+ * Base colors
+ */
+
+inline const float WHITE[] = { 255, 255, 255 }, BLACK[] = { 0, 0, 0 };
 
 /*
  * Constants and defines
@@ -45,6 +50,17 @@ const unsigned int ONE_SECOND    = 1;
    EAR = 0,
    EYE = 1,
  };
+
+const int NUMBEHAVIOURS  = 5;
+const int NUMACCESORIES  = 3;
+const int NUMSENSORS     = 2;
+
+ inline const char* INITALS_BEHAVIOURS[ NUMBEHAVIOURS ] ={
+  "FARSIGTHED",
+  "GREGARIU",
+  "KAMIKAZE",
+  "LAZY",
+  "MULTIPLEBEHAVIOUR"};
 
 
 #endif

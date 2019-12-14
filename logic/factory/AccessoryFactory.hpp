@@ -8,28 +8,30 @@
 #include<memory>
 
 /**
- * Implementation of a AccessoryFactory to generate different accessories 
+ * Implementation of a AccessoryFactory to generate different accessories
  * using pool object design pattern
  *
- * Differents accessories are stored in the hashmap "AccessoryPool", the 
- * methode "buildFactory" is used to initier the instance of 
- * AccessoryFactory and the methode "getAccessory" is used to return 
- * different accessories the input 'id' corresponds to different 
- * accessories, check Id of accessories in the file logic/include.hpp.  
- * 
+ * Differents accessories are stored in the hashmap "AccessoryPool", the
+ * methode "getInstance" is used to initier the instance of
+ * AccessoryFactory and the methode "getAccessory" is used to return
+ * different accessories the input 'id' corresponds to different
+ * accessories, check Id of accessories in the file logic/include.hpp.
+ *
  *
  */
 class AccessoryFactory{
   private:
     map<int, shared_ptr<Accessory>> AccessoryPool;
+    Random *rnd;
+	  static AccessoryFactory *instance;
 
-	static AccessoryFactory *instance;
-
-	AccessoryFactory() {}
+	AccessoryFactory() {
+    rnd =  Random::getInstance();
+  }
 
   public:
 
-	static AccessoryFactory *buildFactory() {
+	static AccessoryFactory *getInstance() {
 		if (!instance)
       	instance = new AccessoryFactory;
       	return instance;
@@ -39,13 +41,15 @@ class AccessoryFactory{
   	if( !AccessoryPool.count(id)){
   	   switch(id){
   			case CAMOUFLAGE:
-  				AccessoryPool[id] = make_shared<CamouflageS>();
+  				AccessoryPool[id] = make_shared<CamouflageS>(this->rnd->getDouble());
   				break;
   			case FIN:
-  				AccessoryPool[id] = make_shared<FinS>();
+  				AccessoryPool[id] = make_shared<FinS>(this->rnd->getDouble());
   				break;
         case SHELL:
-  				AccessoryPool[id] = make_shared<ShellS>();
+  				AccessoryPool[id] = make_shared<ShellS>(
+            this->rnd->getDouble(),
+            this->rnd->getDouble());
   				break;
   		}
     }

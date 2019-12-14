@@ -9,6 +9,8 @@
  * Dependencies
  */
 #include"../model/beast/Animal.hpp"
+#include"../logic/factory/BeastFactory.hpp"
+#include"../logic/factory/BehaviourFactory.hpp"
 class Aquarium : public CImgDisplay{
 private:
 
@@ -29,17 +31,25 @@ public:
     this->env = _env;
     //CImg<unsigned char> board(400,300,1,1,0);
     assign( *env, "Ecosystem" );
-    this->move((CImgDisplay::screen_width() - _width)/2, (CImgDisplay::screen_height() - _height)/2).hide_mouse();
+    this->move((CImgDisplay::screen_width() - _width)/2, (CImgDisplay::screen_height() - _height)/2);
+    //.hide_mouse();
   }
+
 
   /// Launch the simulation
   void run( ){
     int step = 1;
+    double clicX = -1, clicY = -1;
     while(!this->is_closed() && step++){
+      const unsigned int but = button();
       #ifdef  DEBUG
         printf("Running step #%d\n", step);
       #endif
-      this->env->step();
+      clicX = mouse_x(); clicY= mouse_y();
+      if( clicX > 1 && clicY > 1 && but){
+        this->createNewBeast( {clicX, clicY} );
+      }
+      this->env->step( step );
       display( *this->env );
       this->wait(100);
     }
@@ -56,5 +66,10 @@ public:
   int getHeight( void ) const {
     return height;
   };
+  /// Create new beast
+  void createNewBeast( ii pos ){
+     this->env->createNewBeast( pos );
+  }
+
 };
 #endif
