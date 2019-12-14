@@ -43,7 +43,7 @@ private:
   const unsigned int hWave = 2000;
 public:
   Environment( std::vector< Animal*> &l, const unsigned int _w, const unsigned int _h):
-  UImg( _width, _height, 1, 3 ),  width(_w), height(_h){
+  UImg( _w, _h, 1, 3 ),  width(_w), height(_h){
     this->lbeast = l;
     rnd = Random::getInstance();
   }
