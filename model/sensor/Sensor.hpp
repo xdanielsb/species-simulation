@@ -6,6 +6,14 @@
 
 using namespace std;
 
+/**
+ * Implementation of Sensor
+ * 
+ * For different kinds of sensor, they have somme common caracter likes 
+ * "distance", "degree" and capacity of "detection".
+ *
+ *
+ */
 class Sensor{
 private:
 

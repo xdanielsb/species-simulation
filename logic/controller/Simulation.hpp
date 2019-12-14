@@ -8,6 +8,19 @@
 #include"../../model/beast/Animal.hpp"
 #include <thread>
 #include <chrono>
+
+/**
+ * Implementation of a class Simulation to initier the simulation and to
+ * launch and manage the simualtion. 
+ *
+ * The constructeur is used to initialize the environment and generate a 
+ * list of beasts "list" with number"nBeast". The methode "startCLI" is used 
+ * to count the number of iteration and print the log, the methode "startGUI"
+ * is used to create the graphique interface.
+ * 
+ *  
+ */
+
 using namespace std;
 class Simulation{
 private:

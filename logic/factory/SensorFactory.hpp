@@ -6,6 +6,19 @@
 
 #include <map>
 #include<memory>
+
+/**
+ * Implementation of a SensorFactory to generate different sensors using pool 
+ * object design pattern
+ *
+ * Differents sensors are stored in the hashmap "SensorPool", the methode 
+ * "buildFactory" is used to initier the instance of SensorFactory and 
+ * the methode "getSensor" is used to return different sensors the 
+ * input 'id' corresponds to different sensors, for exemples, 
+ * {{0, EAR}, {1, EYE}}.  
+ * 
+ *
+ */
 class SensorFactory{
   private:
     map<int, shared_ptr<Sensor>> SensorPool;
