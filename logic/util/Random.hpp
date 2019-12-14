@@ -33,12 +33,16 @@ class Random{
   double getDouble(){
     return rand();
   }
+  bool getBool(){
+    return rand() > 0.5;
+  }
   int getInt(int a , int b){
      assert( a < b );
      int val = rand() % b + a;
      assert( val >= a && val <= b );
      return val;
   }
+
   ii getPair( int a, int b){
     return make_pair( getInt(a, b), getInt(a,b ));
   }

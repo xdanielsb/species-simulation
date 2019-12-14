@@ -39,7 +39,7 @@ public:
   Environment( const unsigned int _w, const unsigned int _h):
   CImg( _w, _h, 1, 3 ),  width(_w), height(_h){
     rnd = Random::getInstance();
-    this->beastFactory = BeastFactory::buildFactory(BehaviourFactory::buildFactory());
+    this->beastFactory = BeastFactory::getInstance();
   }
   void setListBeast( std::vector< Animal*> &l){
     this->lbeast = l;

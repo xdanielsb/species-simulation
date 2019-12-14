@@ -52,6 +52,8 @@ const unsigned int ONE_SECOND    = 1;
  };
 
 const int NUMBEHAVIOURS  = 5;
+const int NUMACCESORIES  = 3;
+const int NUMSENSORS     = 2;
 
  inline const char* INITALS_BEHAVIOURS[ NUMBEHAVIOURS ] ={
   "FARSIGTHED",

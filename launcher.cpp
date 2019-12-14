@@ -5,6 +5,7 @@
 #include<new>
 #include<unordered_set>
 #include<vector>
+#include<memory>
 #include"./include/CImg.h"
 using namespace cimg_library;
 #include"./logic/include.hpp"

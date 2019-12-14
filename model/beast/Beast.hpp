@@ -1,13 +1,6 @@
 #ifndef _CBeast
 #define _CBeast
-#include"../accessory/Accessory.hpp"
-#include"../sensor/Sensor.hpp"
 #include"../behaviour/IBehaviour.hpp"
-#include"../behaviour/Lazy.hpp"
-#include"../behaviour/Kamikaze.hpp"
-#include"../behaviour/Gregarius.hpp"
-#include"../behaviour/Farsighted.hpp"
-
 #include <iomanip>
 #include <memory>
 
@@ -18,8 +11,6 @@ private:
   double perceptionEye;
   double speed;
   double resistance;
-  vector< Sensor* > sensors;
-  vector< Accessory*> accesories;
   shared_ptr<Behaviour> behaviour;
 public:
 /**
@@ -34,23 +25,6 @@ public:
     b.swap(behaviour);
   }
   ~Beast(){}
-  /**
-  * Add accessories to the beast
-  *
-  * @param *a pointer of the accessory which will be equiped to the beast
-  */
-  void addAccessory(Accessory *a){
-    this->accesories.push_back( a );
-  }
-  /**
-  * Add sensors to the beast
-  *
-  * @param *a pointer of the sensor which will be equiped to the beast
-  */
-  void addSensor( Sensor* s){
-    this->sensors.push_back( s );
-  }
-
   /**
   * The beast will use this fonction to move
   *

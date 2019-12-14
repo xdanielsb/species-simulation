@@ -27,17 +27,14 @@ class Simulation{
 private:
   Aquarium *q;
   BeastFactory *beastFactory;
-  BehaviourFactory *behaviourFactory;
   Environment *env;
   Dialog *diag;
 public:
   Simulation( ){
-      this->behaviourFactory = BehaviourFactory::buildFactory();
-      this->beastFactory = BeastFactory::buildFactory(behaviourFactory);
+      this->beastFactory = BeastFactory::getInstance();
       this->env = new Environment( WIDTH_WINDOW, HEIGHT_WINDOW );
   }
   ~Simulation() {
-    delete behaviourFactory;
     delete beastFactory;
     delete env;
   }

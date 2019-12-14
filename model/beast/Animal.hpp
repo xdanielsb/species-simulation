@@ -1,6 +1,9 @@
 #ifndef _CAnimal
 #define _CAnimal
 #include"../../logic/util/Random.hpp"
+#include"../accessory/Accessory.hpp"
+#include"../sensor/Sensor.hpp"
+
 class Animal{
 private:
   int id;
@@ -13,6 +16,8 @@ private:
   const double      AFF_SIZE = 8.;
   const double      MAX_VITESSE = 10.;
   const double      LIMITE_VUE = 30.;
+  vector< shared_ptr<Sensor> > sensors;
+  vector< shared_ptr<Accessory>> accesories;
 
 public:
 
@@ -113,6 +118,24 @@ public:
     this->idBehaviour = id;
   }
 
+  /**
+  * Add accessories to the beast
+  *
+  * @param *a pointer of the accessory which will be equiped to the beast
+  */
+  void addAccessory(shared_ptr<Accessory> a){
+    this->accesories.push_back( a );
+  }
+  /**
+  * Add sensors to the beast
+  *
+  * @param *a pointer of the sensor which will be equiped to the beast
+  */
+  void addSensor( shared_ptr<Sensor> s){
+    this->sensors.push_back( s );
+  }
+
+
   /// Draw the animal in the graphique interface
   void draw( CImg<unsigned char> &u ){
    double orientation = this->getDirX() != 0 ? atan(-this->getDirY()/this->getDirX()): .0;
@@ -122,6 +145,8 @@ public:
    u.draw_circle(  this->getPosX(), this->getPosY(), 4, this->color );
    u.draw_text( this->getPosX(), this->getPosY() + 5 , INITALS_BEHAVIOURS[this->getBehaviour()], this->color );
   }
+
+
   /**
   * Print the info of the animal, ID and position actual
   *
