@@ -8,7 +8,7 @@
  * Implementation of a class Random to generate random int, double, pair 
  * or vector
  *
- * The methode "getInstance" is used to initier the instance of 
+ * The methode "getInstance" is used to initialize the instance of 
  * class Random, the methode "getDouble" is used to generate a double 
  * randomly,the methode "getInt" is used to generate an int between 
  * ]"a", "b"[randomly, "getPair" is used to generate a pair of type
