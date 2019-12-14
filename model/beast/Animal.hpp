@@ -33,6 +33,9 @@ public:
   ii getPosition() {
     return this->pos;
   }
+  void setPosition( ii _pos){
+    this->pos = _pos;
+  }
   /// Get the X position of animal
   float getPosX() const{
     return this->pos.X;

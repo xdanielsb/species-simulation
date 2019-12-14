@@ -52,7 +52,6 @@ class BeastFactory{
       vector< float > pseudoRandomDistribution = rnd->getVector(  NUM_BEHAVIOURS );
       for( int i = 0, id = 1; i < NUM_BEHAVIOURS; i++){
         int totali = round(pseudoRandomDistribution[ i ] * n);
-        printf("\tNumber of beast with behaviour %d = %d \n", i,  totali);
         for( int j = 0; j < totali; j++, id++){
             list.push_back( this->newRandomBeast( id, i ) );
         }

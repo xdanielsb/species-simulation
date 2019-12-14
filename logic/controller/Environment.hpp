@@ -34,11 +34,15 @@ private:
   const unsigned int height;
   const unsigned int wWave = 2000;
   const unsigned int hWave = 2000;
+  BeastFactory *beastFactory;
 public:
-  Environment( std::vector< Animal*> &l, const unsigned int _w, const unsigned int _h):
+  Environment( const unsigned int _w, const unsigned int _h):
   CImg( _w, _h, 1, 3 ),  width(_w), height(_h){
-    this->lbeast = l;
     rnd = Random::getInstance();
+    this->beastFactory = BeastFactory::buildFactory(BehaviourFactory::buildFactory());
+  }
+  void setListBeast( std::vector< Animal*> &l){
+    this->lbeast = l;
   }
   bool step(int idStep){
       const unsigned char black[] = { 0,0,0 };
@@ -60,7 +64,7 @@ public:
           this->lbeast[i]->draw(*this);
           this->lbeast[i]->getOlder();
       }
-      draw_text(4,4,"Year: %u ",WHITE,BLACK,1,13,idStep);
+      draw_text(4,4,"Year: %u, Num Beast: %u",WHITE,BLACK,1,13,idStep, this->lbeast.size());
       return n;
   }
   void changeStateMultipleBehaviourBeast(){
@@ -126,6 +130,12 @@ public:
         #endif
       }
     }
+  }
+  void createNewBeast( ii pos){
+    int rndBehaviourid = this->rnd->getInt(0, NUMBEHAVIOURS);
+    Beast *b = this->beastFactory->newRandomBeast( 0, rndBehaviourid );
+    b->setPosition( pos );
+    this->lbeast.push_back( b );
   }
 };
 #endif
