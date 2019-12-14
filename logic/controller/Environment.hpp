@@ -32,8 +32,6 @@ private:
   const double SIZEBEAST = 10;
   const unsigned int width;
   const unsigned int height;
-  const unsigned int wWave = 2000;
-  const unsigned int hWave = 2000;
   BeastFactory *beastFactory;
 public:
   Environment( const unsigned int _w, const unsigned int _h):
@@ -45,7 +43,6 @@ public:
     this->lbeast = l;
   }
   bool step(int idStep){
-      const unsigned char black[] = { 0,0,0 };
       this->removeOlderBeast();
       this->removeCollidedBeast();
       this->autoClonage();

@@ -14,8 +14,6 @@ private:
   int idBehaviour;
   unsigned char               * color;
   const double      AFF_SIZE = 8.;
-  const double      MAX_VITESSE = 10.;
-  const double      LIMITE_VUE = 30.;
   vector< shared_ptr<Sensor> > sensors;
   vector< shared_ptr<Accessory>> accesories;
 
@@ -139,8 +137,6 @@ public:
   /// Draw the animal in the graphique interface
   void draw( CImg<unsigned char> &u ){
    double orientation = this->getDirX() != 0 ? atan(-this->getDirY()/this->getDirX()): .0;
-   double xt = this->getPosX() + cos( orientation )*AFF_SIZE/2.1;
-   double yt = this->getPosY() - sin( orientation )*AFF_SIZE/2.1;
    u.draw_ellipse( this->getPosX(), this->getPosY(), AFF_SIZE, AFF_SIZE/5., -orientation/M_PI*180., this->color );
    u.draw_circle(  this->getPosX(), this->getPosY(), 4, this->color );
    u.draw_text( this->getPosX(), this->getPosY() + 5 , INITALS_BEHAVIOURS[this->getBehaviour()], this->color );
