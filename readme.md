@@ -12,8 +12,8 @@ accessories and sensors.
 
 #### How to run?
 ```sh
-  $ make linux
-  $ make macosx
+  $ make linux  #run this if your computer has gnu-linux
+  $ make macosx #run this if your computer has macosx
 ```
 #### How to run the tests?
 ```sh
