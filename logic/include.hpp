@@ -13,6 +13,7 @@ using namespace std;
  */
 typedef pair< float, float > ii;
 
+
 /*
  * Constants and defines
  */
@@ -44,6 +45,7 @@ const unsigned int ONE_SECOND    = 1;
    EAR = 0,
    EYE = 1,
  };
+
 
 #endif
 

@@ -3,37 +3,30 @@
 #include"../factory/BeastFactory.hpp"
 #include"../../model/beast/Animal.hpp"
 #include"../../model/behaviour/IBehaviour.hpp"
-#include"../../include/CImg.h"
-#include<unordered_set>
-#include<vector>
-using namespace std;
-using namespace cimg_library;
-typedef unsigned char        T;
-typedef CImg<T>            UImg;
+
 
 /**
  * Implementation of a class Environment to initier the Environment and to
- * launch, manage the Environment. 
+ * launch, manage the Environment.
  *
- * The constructeur is used to generate the ground with certain "width", 
- * certain "height" and a list of beasts "l". The methode "step" is used 
- * to represent one iteration of simulation and during each iteration some 
+ * The constructeur is used to generate the ground with certain "width",
+ * certain "height" and a list of beasts "l". The methode "step" is used
+ * to represent one iteration of simulation and during each iteration some
  * fonctions have to be realized, "changeStateMultipleBehaviourBeast"
- * changes the behaviour of the beast after each iteration, 
- * "removeCollidedBeast" removes or changes the moving direction with certain 
+ * changes the behaviour of the beast after each iteration,
+ * "removeCollidedBeast" removes or changes the moving direction with certain
  * probability of beasts who are in collision, "removeOlderBeast" removes the
- * beast whose age is beyound his max_age, "autoClonage" clones some beasts   
+ * beast whose age is beyound his max_age, "autoClonage" clones some beasts
  * randomly after each iteration.
  *
  *
  */
-class Environment: public UImg
+class Environment: public CImg<unsigned char>
 {
 private:
 
   std::vector< Animal* > lbeast;
   Random *rnd;
-  inline static const T     black[] =  { (T)0, (T)0, (T)0 };
   const double PROBABILITY_OF_DIED_IN_COLLISION  = 0.5;
   const double PROBABILITY_OF_AUTO_CLONAGE  = 0.05;
   const double SIZEBEAST = 10;
@@ -43,18 +36,18 @@ private:
   const unsigned int hWave = 2000;
 public:
   Environment( std::vector< Animal*> &l, const unsigned int _w, const unsigned int _h):
-  UImg( _w, _h, 1, 3 ),  width(_w), height(_h){
+  CImg( _w, _h, 1, 3 ),  width(_w), height(_h){
     this->lbeast = l;
     rnd = Random::getInstance();
   }
   bool step(){
+      const unsigned char black[] = { 0,0,0 };
       this->removeOlderBeast();
       this->removeCollidedBeast();
       this->autoClonage();
       int n = lbeast.size();
       cimg_forXY( *this, x, y )
 //      fillC( x, y, 0, black[0], black[1],black[2] );
-
 
       fillC(x,y,0,x*std::cos(1.0*y/hWave) +
                   y*std::sin(1.0*x/wWave),
@@ -65,7 +58,6 @@ public:
       for( int i = 0; i < n ; i++){
           this->lbeast[i]->move( this->lbeast );
           this->lbeast[i]->draw(*this);
-          const unsigned char yellow[] = { 255,255,0 };
           this->lbeast[i]->getOlder();
       }
       return n;

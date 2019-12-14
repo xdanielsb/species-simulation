@@ -5,8 +5,8 @@
 /**
  * Implementation of behaviour Lazy
  *
- * When the number of animals around a lazy animal becomes too large, 
- * it flees at high speed in the opposite direction before resuming 
+ * When the number of animals around a lazy animal becomes too large,
+ * it flees at high speed in the opposite direction before resuming
  * cruise speed.
  *
  *
@@ -38,7 +38,9 @@ public:
 			}
     	a->setPosX(a->getPosX()+a->getDirX());
     	a->setPosY(a->getPosY()+a->getDirY());
-    	printf("->L{%.2f, %.2f}\n", a->getPosX(), a->getPosY());
+      #ifdef DEBUG
+    	 printf("->L{%.2f, %.2f}\n", a->getPosX(), a->getPosY());
+      #endif
 	}
 	const double getMINDIS(){
 		return this->MINDIS;
