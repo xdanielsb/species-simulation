@@ -6,11 +6,7 @@
 
 class Beast: public Animal{
 private:
-  double camouflage;
-  double perceptionEar;
-  double perceptionEye;
-  double speed;
-  double resistance;
+
   shared_ptr<Behaviour> behaviour;
 public:
 /**
