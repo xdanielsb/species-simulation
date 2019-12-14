@@ -43,7 +43,9 @@ public:
   }
   void startCLI( ){
    for(int step = 1;; step++){
-     printf("Running step #%d\n", step);
+     #ifdef DEBUG
+      printf("Running step #%d\n", step);
+     #endif
      this_thread::sleep_for(chrono::seconds(1));
      this->env->step();
    }

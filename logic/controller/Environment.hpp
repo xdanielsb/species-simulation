@@ -21,13 +21,12 @@
  *
  *
  */
-class Environment: public UImg
+class Environment: public CImg<unsigned char>
 {
 private:
 
   std::vector< Animal* > lbeast;
   Random *rnd;
-  inline static const T     black[] =  { (T)0, (T)0, (T)0 };
   const double PROBABILITY_OF_DIED_IN_COLLISION  = 0.5;
   const double PROBABILITY_OF_AUTO_CLONAGE  = 0.05;
   const double SIZEBEAST = 10;
@@ -37,11 +36,12 @@ private:
   const unsigned int hWave = 2000;
 public:
   Environment( std::vector< Animal*> &l, const unsigned int _w, const unsigned int _h):
-  UImg( _w, _h, 1, 3 ),  width(_w), height(_h){
+  CImg( _w, _h, 1, 3 ),  width(_w), height(_h){
     this->lbeast = l;
     rnd = Random::getInstance();
   }
   bool step(){
+      const unsigned char black[] = { 0,0,0 };
       this->removeOlderBeast();
       this->removeCollidedBeast();
       this->autoClonage();
@@ -58,7 +58,6 @@ public:
       for( int i = 0; i < n ; i++){
           this->lbeast[i]->move( this->lbeast );
           this->lbeast[i]->draw(*this);
-          const unsigned char yellow[] = { 255,255,0 };
           this->lbeast[i]->getOlder();
       }
       return n;

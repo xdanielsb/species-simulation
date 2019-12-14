@@ -12,8 +12,7 @@ using namespace std;
  * New Types
  */
 typedef pair< float, float > ii;
-typedef unsigned char        T;
-typedef CImg<T>              UImg;
+
 
 /*
  * Constants and defines
@@ -46,6 +45,7 @@ const unsigned int ONE_SECOND    = 1;
    EAR = 0,
    EYE = 1,
  };
+
 
 #endif
 

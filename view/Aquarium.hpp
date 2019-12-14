@@ -36,7 +36,9 @@ public:
   void run( ){
     int step = 1;
     while(!this->is_closed() && step++){
-      printf("Running step #%d\n", step);
+      #ifdef  DEBUG
+        printf("Running step #%d\n", step);
+      #endif
       this->env->step();
       display( *this->env );
       this->wait(100);

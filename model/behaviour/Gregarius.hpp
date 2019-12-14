@@ -7,7 +7,7 @@ using namespace std;
 /**
  * Implementation of behaviour Gregarius
  *
- * A Gregarius animal adjusts its direction to the average direction 
+ * A Gregarius animal adjusts its direction to the average direction
  * of the surroundings.
  *
  *
@@ -43,7 +43,9 @@ public:
       	}
         a->setPosX(a->getPosX()+a->getDirX());
       	a->setPosY(a->getPosY()+a->getDirY());
-      	printf("->G{%.2f, %.2f}\n", a->getPosX(), a->getPosY());
+        #ifdef DEBUG
+      	 printf("->G{%.2f, %.2f}\n", a->getPosX(), a->getPosY());
+        #endif
     }
 };
 #endif

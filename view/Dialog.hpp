@@ -1,6 +1,9 @@
 #ifndef _CDialog
 #define _CDialog
 class Dialog{
+private:
+  const int WIDTH = 100;
+  const int HEIGHT = 100;
 public:
   Dialog(){}
   ~Dialog(){}
@@ -13,11 +16,11 @@ public:
                   "(-) Zheng LI .\n\n"
                   "(-) Andy Méri.\n\n"
                   "(-) Gonza Quintana.\n\n"
-      "(-) Xue Wang.\n\n"
+                  "(-) Xue Wang.\n\n"
                   "(-) Lei Zan .\n\n"
                   "take a look to the code at https://github.com/xdanielsb/BeastCollider.\n"
-                  "See also the available options (option '-h')\n","Start !","Quit",0,0,0,0,
-                  src.get_resize(100,100,1,3),true)) std::exit(0);
+                  "Look the readme.md for more details","Start !","Quit",0,0,0,0,
+                  src.get_resize(this->WIDTH,this->HEIGHT,1,3),true)) std::exit(0);
   }
 };
 #endif

@@ -6,7 +6,7 @@
 /**
  * Implementation of behaviour Kamikaze
  *
- * A kamikaze animal is attracted to the nearest animal and attempts to 
+ * A kamikaze animal is attracted to the nearest animal and attempts to
  * attack it, seeking to cause a collision of the surroundings.
  *
  *
@@ -45,7 +45,9 @@ public:
   	}
     a->setPosX(a->getPosX()+a->getDirX());
     a->setPosY(a->getPosY()+a->getDirY());
-    printf("->K{%.2f, %.2f}\n", a->getPosX(), a->getPosY());
+    #ifdef DEBUG
+      printf("->K{%.2f, %.2f}\n", a->getPosX(), a->getPosY());
+    #endif
   }
 };
 #endif

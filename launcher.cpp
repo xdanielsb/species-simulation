@@ -12,7 +12,7 @@ using namespace cimg_library;
 using namespace std;
 #include <thread>
 int main(int argc,char **argv){
-  int nBeast = 100;
+  int nBeast = 10;
   int simulateWithGUI = true;
   Simulation *stask = new Simulation(nBeast);
   try{

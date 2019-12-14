@@ -7,18 +7,13 @@ using namespace std;
 /**
  * Implementation of behaviour Farsignted
  *
- * A Farsighted animal estimates the trajectories of critters 
+ * A Farsighted animal estimates the trajectories of critters
  * around it and adjusts its trajectory to avoid possible collisions.
- * The methode "getDistance" return the euclidiean distance between 
- * two pair.
  *
- * 
+ *
  */
 class FarsightedB:public Behaviour{
-private:
-  double getDistance(const ii &a1, const ii &a2){
-      return hypot( a1.X - a2.X , a1.Y - a2.Y );
-  }
+
 public:
   void move(Animal* a, vector<Animal*> list){
     double minDistance = 1e9;
@@ -35,15 +30,15 @@ public:
     	a->setDirX(nearestAnimal->getDirX());
     	a->setDirY(nearestAnimal->getDirY());
 		}
-    if(isOutOfBoundaryX(a)){
-		    a->setDirX(a->getDirX()*-1);
-	  }
-    if(isOutOfBoundaryY(a)){
-		    a->setDirY(a->getDirY()*-1);
-	  }
+    if(isOutOfBoundaryX(a))
+		   a->setDirX(a->getDirX()*-1);
+    if(isOutOfBoundaryY(a))
+       a->setDirY(a->getDirY()*-1);
     a->setPosX(a->getPosX()+a->getDirX());
     a->setPosY(a->getPosY()+a->getDirY());
-    printf("->F{%.2f, %.2f}\n", a->getPosX(), a->getPosY());
+    #ifdef DEBUG
+      printf("->F{%.2f, %.2f}\n", a->getPosX(), a->getPosY());
+    #endif
   }
 };
 #endif
