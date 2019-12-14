@@ -45,3 +45,8 @@ enum SENSOR{
 * lm
 * -lX11
 * -lpthread
+
+
+### Model
+
+<img src="diagrams/static/model.png"/>
