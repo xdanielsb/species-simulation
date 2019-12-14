@@ -8,6 +8,19 @@
 #include <map>
 #include<memory>
 
+/**
+ * Implementation of a BehaviourFactory to generate different behaviours using 
+ * pool object design pattern
+ *
+ * Differents behaviours are stored in the hashmap "BehaviourPool", the 
+ * methode "buildFactory" is used to initier the instance of BehaviourFactory 
+ * and the methode "getComportement" is used to return different behaviours 
+ * the input 'id' corresponds to different behaviours, for exemples, 
+ * {{0, FarsightedB}, {1, GregariusB}, {2, KamikazeB}, {3, LazyB}, 
+ * {4, MULTIPLEBEHAVIOUR}}.  
+ * 
+ *
+ */
 class BehaviourFactory{
   private:
     map<int, shared_ptr<Behaviour>> BehaviourPool;

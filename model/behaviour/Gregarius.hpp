@@ -4,6 +4,14 @@
 
 using namespace std;
 
+/**
+ * Implementation of behaviour Gregarius
+ *
+ * A Gregarius animal adjusts its direction to the average direction 
+ * of the surroundings.
+ *
+ *
+ */
 class GregariusB:public Behaviour{
 private:
   const double MINDIS = 5;

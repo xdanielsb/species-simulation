@@ -4,6 +4,16 @@
 
 using namespace std;
 
+/**
+ * Implementation of behaviour Farsignted
+ *
+ * A Farsighted animal estimates the trajectories of critters 
+ * around it and adjusts its trajectory to avoid possible collisions.
+ * The methode "getDistance" return the euclidiean distance between 
+ * two pair.
+ *
+ * 
+ */
 class FarsightedB:public Behaviour{
 private:
   double getDistance(const ii &a1, const ii &a2){

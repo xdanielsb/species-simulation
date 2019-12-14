@@ -4,6 +4,12 @@
 #include <random>
 #include<iostream>
 using namespace std;
+
+/**
+ * Implementation of Ear
+ *
+ *
+ */
 class Ear: public Sensor{
 public:
 	Ear();

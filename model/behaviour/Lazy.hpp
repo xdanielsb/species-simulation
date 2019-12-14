@@ -2,6 +2,15 @@
 #define _CLazy
 #include"./IBehaviour.hpp"
 
+/**
+ * Implementation of behaviour Lazy
+ *
+ * When the number of animals around a lazy animal becomes too large, 
+ * it flees at high speed in the opposite direction before resuming 
+ * cruise speed.
+ *
+ *
+ */
 class LazyB: public Behaviour{
 private:
   const double MINDIS = 5;
