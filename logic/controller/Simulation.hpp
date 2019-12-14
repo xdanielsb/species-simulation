@@ -33,9 +33,9 @@ public:
      this->env->step();
    }
   }
-  void startGUI(){
+  void startGUI(int argc,char **argv){
       this->q = new Aquarium(WIDTH_WINDOW, HEIGHT_WINDOW, env);
-      this->q->run();
+      this->q->run(argc, argv);
   }
 };
 #endif

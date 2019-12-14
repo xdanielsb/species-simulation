@@ -22,9 +22,9 @@ public:
   Animal(int _id, ii _pos, ii _dir): id(_id), pos(_pos), dir(_dir){
     this->age = 0;
     color = new T[ 3 ];
-    color[ 0 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*230. );
-    color[ 1 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*230. );
-    color[ 2 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*230. );
+    color[ 0 ] = static_cast<int>( 0 );
+    color[ 1 ] = static_cast<int>( 0 );
+    color[ 2 ] = static_cast<int>( 0 );
   }
   virtual ~Animal(){};
   ii getPosition() {

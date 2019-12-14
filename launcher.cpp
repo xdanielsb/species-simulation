@@ -6,13 +6,13 @@
 #include"./logic/controller/Simulation.hpp"
 using namespace std;
 #include <thread>
-int main(){
+int main(int argc,char **argv){
   int nBeast = 100;
   int simulateWithGUI = true;
   Simulation *stask = new Simulation(nBeast);
   try{
     if(simulateWithGUI ){
-        stask->startGUI();
+        stask->startGUI(argc, argv);
     }else{
       thread th(&Simulation::startCLI, stask);
       th.join();

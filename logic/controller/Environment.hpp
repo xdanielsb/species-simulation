@@ -21,9 +21,13 @@ private:
   const double PROBABILITY_OF_DIED_IN_COLLISION  = 0.5;
   const double PROBABILITY_OF_AUTO_CLONAGE  = 0.05;
   const double SIZEBEAST = 10;
+  const unsigned int width;
+  const unsigned int height;
+  const unsigned int wWave = 2000;
+  const unsigned int hWave = 2000;
 public:
   Environment( std::vector< Animal*> &l, const unsigned int _width, const unsigned int _height):
-  UImg( _width, _height, 1, 3 ){
+  UImg( _width, _height, 1, 3 ),  width(_width), height(_height){
     this->lbeast = l;
     rnd = Random::getInstance();
   }
@@ -33,7 +37,15 @@ public:
       this->autoClonage();
       int n = lbeast.size();
       cimg_forXY( *this, x, y )
-      fillC( x, y, 0, black[0], black[1],black[2] );
+//      fillC( x, y, 0, black[0], black[1],black[2] );
+
+
+      fillC(x,y,0,x*std::cos(1.0*y/hWave) +
+                  y*std::sin(1.0*x/wWave),
+                  x*std::sin(1.0*y/hWave) -
+                  y*std::cos(1.0*x/wWave),
+                  x*std::cos(1.0*y/hWave) -
+                  y*std::sin(1.0*x/wWave));
       for( int i = 0; i < n ; i++){
           this->lbeast[i]->move( this->lbeast );
           this->lbeast[i]->draw(*this);
