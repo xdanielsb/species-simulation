@@ -46,7 +46,7 @@ public:
                   "(-) Zheng LI .\n\n"
                   "(-) Andy Méri.\n\n"
                   "(-) Gonza Quintana.\n\n"
-									"(-) Xue Wang.\n\n"
+		  "(-) Xue Wang.\n\n"
                   "(-) Lei Zan .\n\n"
                   "take a look to the code at https://github.com/xdanielsb/BeastCollider.\n"
                   "See also the available options (option '-h')\n","Start !","Quit",0,0,0,0,
