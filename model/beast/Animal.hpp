@@ -1,5 +1,6 @@
 #ifndef _CAnimal
 #define _CAnimal
+#include"../../logic/util/Random.hpp"
 class Animal{
 private:
   int id;
@@ -12,7 +13,7 @@ private:
   const double      AFF_SIZE = 8.;
   const double      MAX_VITESSE = 10.;
   const double      LIMITE_VUE = 30.;
-  
+
 public:
 
   Animal(){}
@@ -25,10 +26,7 @@ public:
   */
   Animal(int _id, ii _pos, ii _dir): id(_id), pos(_pos), dir(_dir){
     this->age = 0;
-    color = new unsigned char[ 3 ];
-    color[ 0 ] = static_cast<int>( 0 );
-    color[ 1 ] = static_cast<int>( 0 );
-    color[ 2 ] = static_cast<int>( 0 );
+    color = Random::getInstance()->getDarkColor();
   }
   virtual ~Animal(){};
   /// Get the position of animal
@@ -122,6 +120,8 @@ public:
    double yt = this->getPosY() - sin( orientation )*AFF_SIZE/2.1;
    u.draw_ellipse( this->getPosX(), this->getPosY(), AFF_SIZE, AFF_SIZE/5., -orientation/M_PI*180., this->color );
    u.draw_circle(  this->getPosX(), this->getPosY(), 4, this->color );
+
+   u.draw_text( this->getPosX(), this->getPosY() + 5 , "c", this->color );
   }
   /**
   * Print the info of the animal, ID and position actual

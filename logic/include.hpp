@@ -13,6 +13,11 @@ using namespace std;
  */
 typedef pair< float, float > ii;
 
+/*
+ * Base colors
+ */
+
+inline const unsigned char white[3] = {255, 255, 255};
 
 /*
  * Constants and defines
@@ -45,6 +50,8 @@ const unsigned int ONE_SECOND    = 1;
    EAR = 0,
    EYE = 1,
  };
+
+ inline const char Names ={};
 
 
 #endif
