@@ -29,7 +29,8 @@ public:
     this->env = _env;
     //CImg<unsigned char> board(400,300,1,1,0);
     assign( *env, "Ecosystem" );
-    this->move((CImgDisplay::screen_width() - _width)/2, (CImgDisplay::screen_height() - _height)/2).hide_mouse();
+    this->move((CImgDisplay::screen_width() - _width)/2, (CImgDisplay::screen_height() - _height)/2);
+    //.hide_mouse();
   }
 
   /// Launch the simulation
