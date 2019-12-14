@@ -7,7 +7,7 @@
 
 /**
  * Implementation of a BeastFactory to generate different beasts using 
- * factory design pattern
+ * singleton design pattern
  *
  * Differents beasts are stored in the "list" and return by the methode
  * "newRandomPopulation", the input variable "n" decides the number of 
