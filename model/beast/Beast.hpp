@@ -1,6 +1,9 @@
 #ifndef _CBeast
 #define _CBeast
 #include"../behaviour/IBehaviour.hpp"
+#include"../../logic/factory/BehaviourFactory.hpp"
+#include"../../logic/util/Random.hpp"
+
 #include <iomanip>
 #include <memory>
 
@@ -35,6 +38,11 @@ public:
   /// The beast will clone himself
   Beast* clone(){
     return new Beast( *this);
+  }
+  // change to a random behaviour 
+  void changeBehaviour(){
+    int nidBehaviour = Random::getInstance()->getInt(0, NUMBEHAVIOURS-1);
+    this->behaviour = BehaviourFactory::getInstance()->getComportement(nidBehaviour);
   }
 
    /**

@@ -108,6 +108,8 @@ public:
 
   virtual Animal* clone() = 0;
 
+  virtual void changeBehaviour() = 0;
+
   /// Get the behaviours
   int getBehaviour() const {
     return this->idBehaviour;
