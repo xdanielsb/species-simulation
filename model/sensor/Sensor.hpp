@@ -16,8 +16,6 @@ using namespace std;
  */
 class Sensor{
 private:
-
-protected:
 	double distance;
 	double degree;
 	double detection;
