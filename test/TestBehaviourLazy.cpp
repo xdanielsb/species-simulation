@@ -1,3 +1,16 @@
+#include <memory>
+#include <iomanip>
+#include "CImg.h"
+#include"../logic/include.hpp"
+#include"../model/accessory/Accessory.hpp"
+#include"../model/sensor/Sensor.hpp"
+#include"../model/beast/Animal.hpp"
+#include"../model/beast/Beast.hpp"
+#include"../model/behaviour/IBehaviour.hpp"
+#include"../model/behaviour/Lazy.hpp"
+#include"../include/doctest.h"
+
+#include"../logic/util/Random.hpp"
 
 TEST_CASE("Beasts without speed don't move") {
 	
@@ -157,14 +170,14 @@ TEST_CASE("Lazy beast bouncing when reaching the aquarium bounds") {
 	// The beasts should bounce
 
 	
-	CHECK(get<0>(b1->getPosition()) == get<0>(pos1)-1);
-	CHECK(get<1>(b1->getPosition()) == get<1>(pos1));
+	CHECK(get<0>(b1->getPosition()) == WIDTH_WINDOW-1);
+	CHECK(get<1>(b1->getPosition()) == 0);
 	
-	CHECK(get<0>(b2->getPosition()) == get<0>(pos2));
-	CHECK(get<1>(b2->getPosition()) == get<1>(pos2)-1);
+	CHECK(get<0>(b2->getPosition()) == 0);
+	CHECK(get<1>(b2->getPosition()) == HEIGHT_WINDOW-1);
 	
-	CHECK(get<0>(b3->getPosition()) == get<0>(pos3)+1);
-	CHECK(get<1>(b3->getPosition()) == get<1>(pos3)+1);
+	CHECK(get<0>(b3->getPosition()) == 1);
+	CHECK(get<1>(b3->getPosition()) == 1);
 	
 	delete(b1);
 	delete(b2);

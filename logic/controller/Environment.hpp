@@ -46,6 +46,7 @@ public:
       this->removeOlderBeast();
       this->removeCollidedBeast();
       this->autoClonage();
+      this->changeStateMultipleBehaviourBeast();
       int n = lbeast.size();
       cimg_forXY( *this, x, y )
       this->fillC(x,y,0,
@@ -68,7 +69,7 @@ public:
     int n = lbeast.size();
     for( int i= 0; i < n; i++){
       if( lbeast[i]->getBehaviour() == MULTIPLEBEHAVIOUR ){
-
+        lbeast[i]->changeBehaviour();
       }
     }
   }
