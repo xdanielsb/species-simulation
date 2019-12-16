@@ -3,9 +3,14 @@
 template <typename T>
 struct CImg {
   T aux;
+  T x, y;
+  CImg(...){}
   void draw_ellipse(...){}
   void draw_circle(...){}
   void draw_text(...){}
+  void cimg_forXY(...){}
+  void normalize(...){}
+  void fillC(){};
 };
 #include<memory>
 #include"../model/behaviour/IBehaviour.hpp"

@@ -48,15 +48,18 @@ public:
       this->autoClonage();
       this->changeStateMultipleBehaviourBeast();
       int n = lbeast.size();
-      cimg_forXY( *this, x, y )
-      this->fillC(x,y,0,
-        x*std::cos(6.0*y/this->height) +
-        y*std::sin(9.0*x/this->width),
-        x*std::sin(8.0*y/this->height) -
-        y*std::cos(11.0*x/this->width),
-        x*std::cos(13.0*y/this->height) -
-        y*std::sin(8.0*x/this->width));
-        normalize(240,255);
+      #ifndef TEST
+      cimg_forXY( *this, x, y ){
+        this->fillC(x,y,0,
+          x*std::cos(6.0*y/this->height) +
+          y*std::sin(9.0*x/this->width),
+          x*std::sin(8.0*y/this->height) -
+          y*std::cos(11.0*x/this->width),
+          x*std::cos(13.0*y/this->height) -
+          y*std::sin(8.0*x/this->width));
+      }
+      #endif
+      normalize(240,255);
       for( int i = 0; i < n ; i++){
           this->lbeast[i]->move( this->lbeast );
           this->lbeast[i]->draw(*this);
