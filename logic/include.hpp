@@ -28,7 +28,7 @@ const double PI = acos(-1);
 
 const unsigned int WIDTH_WINDOW  = 600;
 const unsigned int HEIGHT_WINDOW = 600;
-const unsigned int ONE_MINUTE    = 600;
+const unsigned int ONE_MINUTE    = 300;
 const unsigned int ONE_SECOND    = 1;
 
 /*

@@ -14,7 +14,7 @@ public:
                   "----------------\n\n"
                   "(-) Daniel Santos.\n\n"
                   "(-) Zheng LI .\n\n"
-                  "(-) Andy Méri.\n\n"
+                  "(-) Andy Meri.\n\n"
                   "(-) Gonza Quintana.\n\n"
                   "(-) Xue Wang.\n\n"
                   "(-) Lei Zan .\n\n"

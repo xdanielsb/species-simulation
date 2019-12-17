@@ -27,7 +27,7 @@ private:
 
   std::vector< Animal* > lbeast;
   Random *rnd;
-  const double PROBABILITY_OF_DIED_IN_COLLISION  = 0.5;
+  const double PROBABILITY_OF_DIED_IN_COLLISION  = 0.9;
   const double PROBABILITY_OF_AUTO_CLONAGE  = 0.05;
   const double SIZEBEAST = 10;
   const unsigned int width;
@@ -41,6 +41,9 @@ public:
   }
   void setListBeast( std::vector< Animal*> &l){
     this->lbeast = l;
+  }
+  std::vector<Animal*> getListBeast( ) const {
+    return this->lbeast;
   }
   bool step(int idStep){
       this->removeOlderBeast();

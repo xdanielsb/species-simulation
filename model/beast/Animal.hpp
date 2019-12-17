@@ -12,7 +12,7 @@ private:
   int age;
   int maxAge;
   int idBehaviour;
-  unsigned char               * color;
+  unsigned char    * color;
   const double      AFF_SIZE = 8.;
   vector< shared_ptr<Sensor> > sensors;
   vector< shared_ptr<Accessory>> accesories;
@@ -126,6 +126,9 @@ public:
   void addAccessory(shared_ptr<Accessory> a){
     this->accesories.push_back( a );
   }
+  bool hasAccessories( ){
+    return this->accesories.size() > 0;
+  }
   /**
   * Add sensors to the beast
   *
@@ -133,6 +136,9 @@ public:
   */
   void addSensor( shared_ptr<Sensor> s){
     this->sensors.push_back( s );
+  }
+  bool hasSensors( ){
+    return this->sensors.size()> 0;
   }
 
 
