@@ -45,6 +45,7 @@ class BeastFactory{
       b->setMaxAge( rnd->getInt(ONE_SECOND, ONE_MINUTE));
       b->setSpeed(  rnd->getInt(1, 3));
       b->setBehavior( type  );
+      b->setSize( rnd->getInt(8, 16));
       bool addAccesory = this->rnd->getBool();
       bool addSensor = this->rnd->getBool();
       if( addAccesory )

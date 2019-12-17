@@ -13,8 +13,8 @@ private:
   int maxAge;
   int idBehaviour;
   int speed;
-  unsigned char    * color;
-  const double      AFF_SIZE = 8.;
+  unsigned char  * color;
+  double  lengthA = 8.;
   vector< shared_ptr<Sensor> > sensors;
   vector< shared_ptr<Accessory>> accesories;
 
@@ -44,6 +44,11 @@ public:
   float getPosX() const{
     return this->pos.X;
   }
+
+  void setSize( double len  ){
+    this->lengthA = len;
+  }
+
   /// Get the Y position of animal
   float getPosY() const{
     return this->pos.Y;
@@ -154,7 +159,7 @@ public:
   /// Draw the animal in the graphique interface
   void draw( CImg<unsigned char> &u ){
    double orientation = this->getDirX() != 0 ? atan(-this->getDirY()/this->getDirX()): .0;
-   u.draw_ellipse( this->getPosX(), this->getPosY(), AFF_SIZE, AFF_SIZE/5., -orientation/M_PI*180., this->color );
+   u.draw_ellipse( this->getPosX(), this->getPosY(), lengthA, lengthA/5., -orientation/M_PI*180., this->color );
    u.draw_circle(  this->getPosX(), this->getPosY(), 4, this->color );
    u.draw_text( this->getPosX(), this->getPosY() + 5 , INITALS_BEHAVIOURS[this->getBehaviour()], this->color );
   }

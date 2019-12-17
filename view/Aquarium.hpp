@@ -47,7 +47,7 @@ public:
     detailleView.move((CImgDisplay::screen_width() - _width)/2 - 200,
                       (CImgDisplay::screen_height() - _height)/2 + 150);
     int iterationsToDieSelectedBeast = -1;
-    Animal *choosed;
+    Animal *choosed = nullptr;
     while(!this->is_closed() && step++){
       const unsigned int but = button();
       // Draw detailled view
@@ -78,15 +78,17 @@ public:
         bool isThereBeastNearClick = false;
         for( Animal *c: this->env->getListBeast()){
            double dist = c->getDistance( {clicX, clicY} );
-           if( dist  < 10 && dist < minDist){
+           if( c && dist  < 10 && dist < minDist){
              minDist = dist;
              choosed = c;
              isThereBeastNearClick = true;
              iterationsToDieSelectedBeast = c->getMaxAge() - c->getAge();
            }
         }
-        if(!isThereBeastNearClick )
-          this->createNewBeast( {clicX, clicY} );
+        if(!isThereBeastNearClick ){
+          this->createNewBeast( make_pair(clicX, clicY) );
+          iterationsToDieSelectedBeast = -1;
+        }
       }
       if( iterationsToDieSelectedBeast >= 0){
         backDetailleView.draw_text(110, 110,

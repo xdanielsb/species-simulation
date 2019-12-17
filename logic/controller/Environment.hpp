@@ -138,7 +138,7 @@ public:
     }
   }
   void createNewBeast( ii pos){
-    int rndBehaviourid = this->rnd->getInt(0, NUMBEHAVIOURS);
+    int rndBehaviourid = this->rnd->getInt(0, NUMBEHAVIOURS -1);
     Beast *b = this->beastFactory->newRandomBeast( 0, rndBehaviourid );
     b->setPosition( pos );
     this->lbeast.push_back( b );

@@ -8,10 +8,10 @@ using namespace std;
  * Implementation of class "Behaviour" that define the same interface
  * for all different behaviours
  *
- * The methode "move" let the "animal" move around his neighbours  
- * "listAnimals", the methode "isOutOfBoundaryX" pulls the animal  
- * back, when the animal go beyound the BoundaryX and the methode 
- * "isOutOfBoundaryY" controls the animal not to pass over the 
+ * The methode "move" let the "animal" move around his neighbours
+ * "listAnimals", the methode "isOutOfBoundaryX" pulls the animal
+ * back, when the animal go beyound the BoundaryX and the methode
+ * "isOutOfBoundaryY" controls the animal not to pass over the
  * BoundaryY.
  *
  *
@@ -22,11 +22,11 @@ public:
  virtual ~Behaviour() {};
  bool isOutOfBoundaryX(const Animal* a){
    float futurePositionX = (a->getPosX() + a->getDirX());
-   return ( futurePositionX < 0 || futurePositionX > WIDTH_WINDOW );
+   return ( futurePositionX <  MARGIN || futurePositionX > WIDTH_WINDOW - MARGIN);
  }
  bool isOutOfBoundaryY(const Animal* a){
    float futurePositionY = (a->getPosY() + a->getDirY());
-   return ( futurePositionY < 0 || futurePositionY > HEIGHT_WINDOW );
+   return ( futurePositionY < MARGIN || futurePositionY > HEIGHT_WINDOW - MARGIN );
  }
 };
 #endif
