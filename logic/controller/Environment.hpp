@@ -65,7 +65,8 @@ public:
           this->lbeast[i]->draw(*this);
           this->lbeast[i]->getOlder();
       }
-      draw_text(4,4,"Year: %u, Num Beast: %u",WHITE,BLACK,1,13,idStep, this->lbeast.size());
+      draw_text(4, 4, "Year: %u, Num Beast: %u", WHITE,BLACK,
+                1,13,idStep, this->lbeast.size());
       return n;
   }
   void changeStateMultipleBehaviourBeast(){
@@ -78,9 +79,8 @@ public:
   }
   void removeCollidedBeast(){
     unordered_set< int > died;
-    //int i = 0, n = lbeast.size();
 		int n = lbeast.size();
-    for( int i= 0; i < n; i++){
+    for( int i = 0; i < n; i++){
       if( died.count(i) ) continue;
       for( int j = i+1; j < n; j++){
         if( died.count( j )) continue;
@@ -101,6 +101,7 @@ public:
       else{
         #ifdef DEBUG
           printf("The Beast %d died by collision\n", lbeast[i]->getId());
+          delete lbeast[i];
         #endif
       }
     }
@@ -115,6 +116,7 @@ public:
       else{
         #ifdef DEBUG
           printf("The Beast %d died by age\n", (*beast)->getId());
+          delete *beast;
         #endif
       }
     }
@@ -122,7 +124,7 @@ public:
   }
   void autoClonage(){
     int n = this->lbeast.size();
-    for( int i = 0; i < n; i++ ){
+    for( int i = 0; i < n ; i++ ){
       int probAutoClonage  = this->rnd->getDouble();
       if( probAutoClonage <= PROBABILITY_OF_AUTO_CLONAGE){
         this->lbeast.push_back( this->lbeast[i]->clone() );
