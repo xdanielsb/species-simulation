@@ -87,7 +87,6 @@ public:
         }
         if(!isThereBeastNearClick ){
           this->createNewBeast( make_pair(clicX, clicY) );
-          iterationsToDieSelectedBeast = -1;
         }
       }
       if( iterationsToDieSelectedBeast >= 0){
