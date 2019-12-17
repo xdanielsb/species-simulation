@@ -38,13 +38,13 @@ class BeastFactory{
     Beast* newRandomBeast(int id, int type){
       Beast *b = new Beast(id, {this->rnd->getInt(1, WIDTH_WINDOW),
                             this->rnd->getInt(1, HEIGHT_WINDOW)},
-                            {this->rnd->getInt(-1, 1),
-                            this->rnd->getInt(-1, 1)},
+                            {this->rnd->getInt(-2, 2),
+                            this->rnd->getInt(-2, 2)},
                             BehaviourFactory::getInstance()->getComportement(type)
                       );
       b->setMaxAge( rnd->getInt(ONE_SECOND, ONE_MINUTE));
+      b->setSpeed(  rnd->getInt(1, 3));
       b->setBehavior( type  );
-
       bool addAccesory = this->rnd->getBool();
       bool addSensor = this->rnd->getBool();
       if( addAccesory )

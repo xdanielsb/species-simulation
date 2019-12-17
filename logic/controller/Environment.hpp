@@ -28,7 +28,7 @@ private:
   std::vector< Animal* > lbeast;
   Random *rnd;
   const double PROBABILITY_OF_DIED_IN_COLLISION  = 0.9;
-  const double PROBABILITY_OF_AUTO_CLONAGE  = 0.05;
+  const double PROBABILITY_OF_AUTO_CLONAGE  = 0.9999;
   const double SIZEBEAST = 10;
   const unsigned int width;
   const unsigned int height;
@@ -129,7 +129,7 @@ public:
     int n = this->lbeast.size();
     for( int i = 0; i < n ; i++ ){
       int probAutoClonage  = this->rnd->getDouble();
-      if( probAutoClonage <= PROBABILITY_OF_AUTO_CLONAGE){
+      if( probAutoClonage > PROBABILITY_OF_AUTO_CLONAGE){
         this->lbeast.push_back( this->lbeast[i]->clone() );
         #ifdef DEBUG
           printf("The Beast %d was cloned\n", this->lbeast[i]->getId());

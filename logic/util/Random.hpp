@@ -31,10 +31,11 @@ class Random{
   }
 
   double getDouble(){
-    return rand();
+    double rnd = ((double) rand() / (RAND_MAX)) ;
+    return rnd;
   }
   bool getBool(){
-    return rand() % 2;
+    return rand() % 2 ;
   }
   int getInt(int a , int b){
      assert( a < b );

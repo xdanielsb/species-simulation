@@ -12,6 +12,7 @@ private:
   int age;
   int maxAge;
   int idBehaviour;
+  int speed;
   unsigned char    * color;
   const double      AFF_SIZE = 8.;
   vector< shared_ptr<Sensor> > sensors;
@@ -78,6 +79,14 @@ public:
   /// Animal gets one year older
   void getOlder(){
     this->age++;
+  }
+  /// Set speed
+  void setSpeed( int _speed){
+    this->speed = _speed;
+  }
+  /// Get Speed
+  int getSpeed(){
+    return this->speed;
   }
   /// Set animal's max age
   void setMaxAge( int m){
