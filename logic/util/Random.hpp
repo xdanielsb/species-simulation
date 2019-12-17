@@ -34,7 +34,7 @@ class Random{
     return rand();
   }
   bool getBool(){
-    return rand() > 0.5;
+    return rand() % 2;
   }
   int getInt(int a , int b){
      assert( a < b );

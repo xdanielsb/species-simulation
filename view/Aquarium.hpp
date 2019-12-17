@@ -94,15 +94,15 @@ public:
                   Age =   %d         \n\
                   Max Age = %d       \n\
                   Behaviour = %c     \n\
-                  Has Accessory = %d \n\
-                  Has Sensors = %d \n\
+                  Has Accessory = %c \n\
+                  Has Sensors = %c \n\
                  ",
                  WHITE,BLACK,
                  1,13, choosed->getAge(),
                  choosed->getMaxAge(),
                  INITALS_BEHAVIOURS[choosed->getBehaviour()][0],
-                 choosed->hasAccessories(),
-                 choosed->hasSensors()
+                 choosed->hasAccessories()?'Y':'N',
+                 choosed->hasSensors()?'Y':'N'
              );
         iterationsToDieSelectedBeast--;
       }
