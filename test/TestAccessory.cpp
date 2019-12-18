@@ -22,8 +22,7 @@ TEST_CASE("Test getter for Shell") {
 
 TEST_CASE("Test getter for Fin") {
    double cspeed = 0.85;
-   FinS *f1 = new FinS(cspeed);
+   Accessory *f1 = new FinS(cspeed);
    CHECK(f1->getSpeed() == cspeed);
    delete f1;
 }
-
