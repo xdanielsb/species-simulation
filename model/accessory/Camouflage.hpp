@@ -29,6 +29,9 @@ public:
   double getCamouflage(){
     return this->ccamouflage;
   }
+  double getSpeed() {
+    return 0;
+  }
   ~CamouflageS(){}
 };
 #endif

@@ -10,5 +10,6 @@ class Accessory{
 public:
   Accessory(){}
   virtual ~Accessory(){}
+  virtual double getSpeed() = 0;
 };
 #endif

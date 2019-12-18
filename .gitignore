@@ -37,3 +37,4 @@
 # Mac OSX
 .DS_Store
 assets/.DS_Store
+./main.o.dSYM

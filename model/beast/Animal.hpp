@@ -128,8 +128,8 @@ public:
   int getBehaviour() const {
     return this->idBehaviour;
   }
-  void setBehavior( int id){
-    this->idBehaviour = id;
+  void setBehavior( int _id){
+    this->idBehaviour = _id;
   }
 
   /**
@@ -139,6 +139,7 @@ public:
   */
   void addAccessory(shared_ptr<Accessory> a){
     this->accesories.push_back( a );
+    this->setSpeed( max(1., this->speed + a->getSpeed()));
   }
   bool hasAccessories( ){
     return this->accesories.size() > 0;
