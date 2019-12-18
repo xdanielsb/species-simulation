@@ -13,6 +13,12 @@ using namespace cimg_library;
 using namespace std;
 #include <thread>
 
+/**
+ * Set the initial number of animal in the environment and launch
+ * the simulation.
+ *
+ *
+ */
 int main(int argc,char **argv){
   int nBeast = 20;
   Simulation *stask = new Simulation();
