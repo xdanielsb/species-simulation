@@ -31,11 +31,11 @@ public:
     	a->setDirY(nearestAnimal->getDirY());
 		}
     if(isOutOfBoundaryX(a))
-		   a->setDirX(a->getDirX()*-1);
+		   a->setDirX(-a->getDirX());
     if(isOutOfBoundaryY(a))
-       a->setDirY(a->getDirY()*-1);
-    a->setPosX(a->getPosX()+a->getDirX());
-    a->setPosY(a->getPosY()+a->getDirY());
+       a->setDirY(-a->getDirY());
+    a->setPosX(a->getPosX()+a->getDirX() * a->getSpeed());
+    a->setPosY(a->getPosY()+a->getDirY() * a->getSpeed());
     #ifdef DEBUG
       printf("->F{%.2f, %.2f}\n", a->getPosX(), a->getPosY());
     #endif

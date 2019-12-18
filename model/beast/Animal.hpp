@@ -12,8 +12,9 @@ private:
   int age;
   int maxAge;
   int idBehaviour;
-  unsigned char               * color;
-  const double      AFF_SIZE = 8.;
+  int speed;
+  unsigned char  * color;
+  double  lengthA ;
   vector< shared_ptr<Sensor> > sensors;
   vector< shared_ptr<Accessory>> accesories;
 
@@ -29,6 +30,7 @@ public:
   */
   Animal(int _id, ii _pos, ii _dir): id(_id), pos(_pos), dir(_dir){
     this->age = 0;
+    this->speed = 1;
     color = Random::getInstance()->getDarkColor();
   }
   virtual ~Animal(){};
@@ -43,6 +45,11 @@ public:
   float getPosX() const{
     return this->pos.X;
   }
+
+  void setSize( double len  ){
+    this->lengthA = len;
+  }
+
   /// Get the Y position of animal
   float getPosY() const{
     return this->pos.Y;
@@ -79,6 +86,14 @@ public:
   void getOlder(){
     this->age++;
   }
+  /// Set speed
+  void setSpeed( int _speed){
+    this->speed = _speed;
+  }
+  /// Get Speed
+  int getSpeed(){
+    return this->speed;
+  }
   /// Set animal's max age
   void setMaxAge( int m){
     this->maxAge = m;
@@ -114,8 +129,8 @@ public:
   int getBehaviour() const {
     return this->idBehaviour;
   }
-  void setBehavior( int id){
-    this->idBehaviour = id;
+  void setBehavior( int _id){
+    this->idBehaviour = _id;
   }
 
   /**
@@ -125,6 +140,10 @@ public:
   */
   void addAccessory(shared_ptr<Accessory> a){
     this->accesories.push_back( a );
+    this->setSpeed( max(1., this->speed + a->getSpeed()));
+  }
+  bool hasAccessories( ){
+    return this->accesories.size() > 0;
   }
   /**
   * Add sensors to the beast
@@ -134,12 +153,15 @@ public:
   void addSensor( shared_ptr<Sensor> s){
     this->sensors.push_back( s );
   }
+  bool hasSensors( ){
+    return this->sensors.size()> 0;
+  }
 
 
   /// Draw the animal in the graphique interface
   void draw( CImg<unsigned char> &u ){
    double orientation = this->getDirX() != 0 ? atan(-this->getDirY()/this->getDirX()): .0;
-   u.draw_ellipse( this->getPosX(), this->getPosY(), AFF_SIZE, AFF_SIZE/5., -orientation/M_PI*180., this->color );
+   u.draw_ellipse( this->getPosX(), this->getPosY(), lengthA, lengthA/5., -orientation/M_PI*180., this->color );
    u.draw_circle(  this->getPosX(), this->getPosY(), 4, this->color );
    u.draw_text( this->getPosX(), this->getPosY() + 5 , INITALS_BEHAVIOURS[this->getBehaviour()], this->color );
   }

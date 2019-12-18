@@ -27,8 +27,8 @@ private:
 
   std::vector< Animal* > lbeast;
   Random *rnd;
-  const double PROBABILITY_OF_DIED_IN_COLLISION  = 0.5;
-  const double PROBABILITY_OF_AUTO_CLONAGE  = 0.05;
+  const double PROBABILITY_OF_DIED_IN_COLLISION  = 0.9;
+  const double PROBABILITY_OF_AUTO_CLONAGE  = 0.9999;
   const double SIZEBEAST = 10;
   const unsigned int width;
   const unsigned int height;
@@ -42,27 +42,34 @@ public:
   void setListBeast( std::vector< Animal*> &l){
     this->lbeast = l;
   }
+  std::vector<Animal*> getListBeast( ) const {
+    return this->lbeast;
+  }
   bool step(int idStep){
       this->removeOlderBeast();
       this->removeCollidedBeast();
       this->autoClonage();
       this->changeStateMultipleBehaviourBeast();
       int n = lbeast.size();
-      cimg_forXY( *this, x, y )
-      this->fillC(x,y,0,
-        x*std::cos(6.0*y/this->height) +
-        y*std::sin(9.0*x/this->width),
-        x*std::sin(8.0*y/this->height) -
-        y*std::cos(11.0*x/this->width),
-        x*std::cos(13.0*y/this->height) -
-        y*std::sin(8.0*x/this->width));
-        normalize(240,255);
+      #ifndef TEST
+      cimg_forXY( *this, x, y ){
+        this->fillC(x,y,0,
+          x*std::cos(6.0*y/this->height) +
+          y*std::sin(9.0*x/this->width),
+          x*std::sin(8.0*y/this->height) -
+          y*std::cos(11.0*x/this->width),
+          x*std::cos(13.0*y/this->height) -
+          y*std::sin(8.0*x/this->width));
+      }
+      #endif
+      normalize(240,255);
       for( int i = 0; i < n ; i++){
           this->lbeast[i]->move( this->lbeast );
           this->lbeast[i]->draw(*this);
           this->lbeast[i]->getOlder();
       }
-      draw_text(4,4,"Year: %u, Num Beast: %u",WHITE,BLACK,1,13,idStep, this->lbeast.size());
+      draw_text(4, 4, "Year: %u, Num Beast: %u", WHITE,BLACK,
+                1,13,idStep, this->lbeast.size());
       return n;
   }
   void changeStateMultipleBehaviourBeast(){
@@ -75,9 +82,8 @@ public:
   }
   void removeCollidedBeast(){
     unordered_set< int > died;
-    //int i = 0, n = lbeast.size();
 		int n = lbeast.size();
-    for( int i= 0; i < n; i++){
+    for( int i = 0; i < n; i++){
       if( died.count(i) ) continue;
       for( int j = i+1; j < n; j++){
         if( died.count( j )) continue;
@@ -98,6 +104,7 @@ public:
       else{
         #ifdef DEBUG
           printf("The Beast %d died by collision\n", lbeast[i]->getId());
+          delete lbeast[i];
         #endif
       }
     }
@@ -112,6 +119,7 @@ public:
       else{
         #ifdef DEBUG
           printf("The Beast %d died by age\n", (*beast)->getId());
+          delete *beast;
         #endif
       }
     }
@@ -119,9 +127,9 @@ public:
   }
   void autoClonage(){
     int n = this->lbeast.size();
-    for( int i = 0; i < n; i++ ){
+    for( int i = 0; i < n ; i++ ){
       int probAutoClonage  = this->rnd->getDouble();
-      if( probAutoClonage <= PROBABILITY_OF_AUTO_CLONAGE){
+      if( probAutoClonage > PROBABILITY_OF_AUTO_CLONAGE){
         this->lbeast.push_back( this->lbeast[i]->clone() );
         #ifdef DEBUG
           printf("The Beast %d was cloned\n", this->lbeast[i]->getId());
@@ -130,7 +138,7 @@ public:
     }
   }
   void createNewBeast( ii pos){
-    int rndBehaviourid = this->rnd->getInt(0, NUMBEHAVIOURS);
+    int rndBehaviourid = this->rnd->getInt(0, NUMBEHAVIOURS -1);
     Beast *b = this->beastFactory->newRandomBeast( 0, rndBehaviourid );
     b->setPosition( pos );
     this->lbeast.push_back( b );

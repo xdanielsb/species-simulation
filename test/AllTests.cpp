@@ -6,9 +6,9 @@
  /**
   * Implementation of Test
   */
-  
-//#include"TestBehaviourLazy.cpp" 
-//#include"TestBehaviourKamikaze.cpp"
-#include"TestAccessory.cpp"
+
 #include"TestSensor.cpp"
-//#include"TestBehaviour.cpp"
+#include"TestAccessory.cpp"
+#include"TestBehaviour.cpp"
+#include"TestLazy.cpp"
+//#include"TestKamikaze.cpp"
