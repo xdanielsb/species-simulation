@@ -22,9 +22,8 @@ public:
     	int beastInMyRegion=1;
     	for(Animal*  b:listAnimals){
           if( b->getId() == a->getId() )continue;
-      		if(a->getDistance(  b->getPosition()) < MINDIS) {
+      		if(a->getDistance(  b->getPosition()) < MINDIS)
         		beastInMyRegion +=1;
-		      }
     	}
     	if(beastInMyRegion > MinAnimalChangeDirection){
       	a->setDirX(a->getDirX()*-1);

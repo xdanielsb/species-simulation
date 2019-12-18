@@ -14,7 +14,7 @@ private:
   int idBehaviour;
   int speed;
   unsigned char  * color;
-  double  lengthA = 8.;
+  double  lengthA ;
   vector< shared_ptr<Sensor> > sensors;
   vector< shared_ptr<Accessory>> accesories;
 
@@ -30,6 +30,7 @@ public:
   */
   Animal(int _id, ii _pos, ii _dir): id(_id), pos(_pos), dir(_dir){
     this->age = 0;
+    this->speed = 1;
     color = Random::getInstance()->getDarkColor();
   }
   virtual ~Animal(){};

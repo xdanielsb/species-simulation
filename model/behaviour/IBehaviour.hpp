@@ -22,11 +22,11 @@ public:
  virtual ~Behaviour() {};
  bool isOutOfBoundaryX(const Animal* a){
    float futurePositionX = (a->getPosX() + a->getDirX());
-   return ( futurePositionX <  MARGIN || futurePositionX > WIDTH_WINDOW - MARGIN);
+   return ( futurePositionX < 0 || futurePositionX > WIDTH_WINDOW );
  }
  bool isOutOfBoundaryY(const Animal* a){
    float futurePositionY = (a->getPosY() + a->getDirY());
-   return ( futurePositionY < MARGIN || futurePositionY > HEIGHT_WINDOW - MARGIN );
+   return ( futurePositionY < 0 || futurePositionY > HEIGHT_WINDOW  );
  }
 };
 #endif

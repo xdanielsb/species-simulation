@@ -45,12 +45,12 @@ TEST_CASE("Lazy beast returnig in it's way when there are too many quiet beasts 
 	CHECK(me->getPosY() == 1);
 	me->move(list);
 	CHECK(me->getPosX() == 0);
-	CHECK(me->getPosY() == 1);
+	CHECK(me->getPosY() == 2.);
 	for( int i= 0; i < 3; i++){
 		me->move(list);
 	}
 	CHECK(me->getPosX() == 0);
-	CHECK(me->getPosY() == 1);
+	CHECK(me->getPosY() == 5.);
 	for(Animal*  b:list){
 			delete(b);
 	}
@@ -77,10 +77,10 @@ TEST_CASE("Lazy beast doesn't return. There are not too many beasts - 1D") {
 	for(int j=0;j<nmoves;j++)
 		me->move(list);
 	CHECK(me->getPosX() == my_pos.first);
-	CHECK(me->getPosY() == 1);
+	CHECK(me->getPosY() == 6);
 	me->move(list);
 	CHECK(me->getPosX() == 0);
-	CHECK(me->getPosY() == 1);
+	CHECK(me->getPosY() == 7);
 	for(Animal*  b:list)
 			delete(b);
 }
@@ -110,12 +110,12 @@ TEST_CASE("Lazy beast bouncing when reaching the aquarium bounds") {
 	b3->move(list);
 
 	// The beasts should bounce
-	CHECK(b1->getPosX() == WIDTH_WINDOW);
+	CHECK(b1->getPosX() == WIDTH_WINDOW -1);
 	CHECK(b1->getPosY() == 0);
 	CHECK(b2->getPosX() == 0);
-	CHECK(b2->getPosY() == HEIGHT_WINDOW);
-	CHECK(b3->getPosX() == 0);
-	CHECK(b3->getPosY() == 0);
+	CHECK(b2->getPosY() == HEIGHT_WINDOW -1);
+	CHECK(b3->getPosX() == 1);
+	CHECK(b3->getPosY() == 1);
 
 	delete(b1);
 	delete(b2);
