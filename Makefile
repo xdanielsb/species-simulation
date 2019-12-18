@@ -14,5 +14,3 @@ macosx:
 	$(CCM) $(COFLAGS) $(NAMEFILE)  -o main.o && ./main.o
 test-code:
 	$(CC) -DTEST $(CFLAGS) $(NAMEFILETEST) -o main.o && ./main.o
-debug:
-	$(CC) -DDEBUG  $(CFLAGS) $(NAMEFILE) $(TFLAGS) -o main.o && ./main.o

@@ -5,9 +5,6 @@
  */
 using namespace std;
 
-// TODO: DELETE BEFORE SEND
-#define debug(x) cout << #x << " = " << x <<endl;
-
 /*
  * New Types
  */
