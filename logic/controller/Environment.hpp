@@ -102,7 +102,7 @@ public:
     for( int i = 0; i < n ; ++i){
       if( !died.count(i) ) lbeastn.push_back( lbeast[i]);
       else{
-        #ifdef DEBUG
+        #ifdef CLI
           printf("The Beast %d died by collision\n", lbeast[i]->getId());
           delete lbeast[i];
         #endif
@@ -117,7 +117,7 @@ public:
         lbeastn.push_back( *beast );
       }
       else{
-        #ifdef DEBUG
+        #ifdef CLI
           printf("The Beast %d died by age\n", (*beast)->getId());
           delete *beast;
         #endif
@@ -131,7 +131,7 @@ public:
       int probAutoClonage  = this->rnd->getDouble();
       if( probAutoClonage > PROBABILITY_OF_AUTO_CLONAGE){
         this->lbeast.push_back( this->lbeast[i]->clone() );
-        #ifdef DEBUG
+        #ifdef CLI
           printf("The Beast %d was cloned\n", this->lbeast[i]->getId());
         #endif
       }

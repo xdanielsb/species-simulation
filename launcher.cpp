@@ -12,17 +12,17 @@ using namespace cimg_library;
 #include"./logic/controller/Simulation.hpp"
 using namespace std;
 #include <thread>
+
 int main(int argc,char **argv){
   int nBeast = 20;
-  int simulateWithGUI = true;
   Simulation *stask = new Simulation();
   try{
-    if(simulateWithGUI ){
+    #ifndef CLI
         stask->startGUI(argc, argv, nBeast);
-    }else{
+    #else
       thread th(&Simulation::startCLI, stask, nBeast);
       th.join();
-    }
+    #endif
   }catch(const char* msg){
     printf("An error has occurred %s \n",msg);
   }

@@ -67,7 +67,7 @@ public:
                    1,13);
         }
       }
-      #ifdef  DEBUG
+      #ifdef  CLI
         printf("Running step #%d\n", step);
       #endif
 
