@@ -30,7 +30,7 @@ public:
   * @param neighbors a vector of animals that exists in the simulation
   */
   void move(vector<Animal*> &neighbors){
-    #ifdef DEBUG
+    #ifdef CLI
       cout << setprecision(2) << fixed << "\tMoving "<< this ;
     #endif
     this->behaviour->move( this, neighbors );
@@ -39,7 +39,7 @@ public:
   Beast* clone(){
     return new Beast( *this);
   }
-  // change to a random behaviour 
+  // change to a random behaviour
   void changeBehaviour(){
     int nidBehaviour = Random::getInstance()->getInt(0, NUMBEHAVIOURS-1);
     this->behaviour = BehaviourFactory::getInstance()->getComportement(nidBehaviour);
@@ -51,7 +51,12 @@ public:
    * @param b a pointer of beast
    */
   friend ostream& operator << (ostream &out, Beast *b) {
-    out << "Animal #"<< b->getId() << " = {"<< b->getPosition().X <<", " << b->getPosition().Y << "}";
+    out << "Animal #"<< b->getId()
+        << " = {"<< b->getPosition().X
+        <<", " << b->getPosition().Y
+        <<", age= "<< b->getAge()
+        <<", Maxage= "<< b->getMaxAge()
+        <<"}";
     return out;
   }
 

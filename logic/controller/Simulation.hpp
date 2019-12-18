@@ -40,15 +40,15 @@ public:
   }
 
   void startCLI( int nBeast ){
+     printf("The Simulation has started\n");
      vector< Animal*> list = this->beastFactory->newRandomPopulation( nBeast );
      this->env->setListBeast( list );
      for(int step = 1;; step++){
-       #ifdef DEBUG
-        printf("Running step #%d\n", step);
-       #endif
-       this_thread::sleep_for(chrono::seconds(1));
+       printf("Running step #%d\n", step);
+       this_thread::sleep_for(chrono::seconds(3));
        this->env->step( step );
      }
+     printf("The simulation has finished.\n");
   }
   void startGUI(int argc,char **argv, int nBeast){
     diag = new Dialog();

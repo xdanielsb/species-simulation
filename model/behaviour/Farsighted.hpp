@@ -36,7 +36,7 @@ public:
        a->setDirY(-a->getDirY());
     a->setPosX(a->getPosX()+a->getDirX() * a->getSpeed());
     a->setPosY(a->getPosY()+a->getDirY() * a->getSpeed());
-    #ifdef DEBUG
+    #ifdef CLI
       printf("->F{%.2f, %.2f}\n", a->getPosX(), a->getPosY());
     #endif
   }

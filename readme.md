@@ -20,6 +20,11 @@ accessories and sensors.
   $ make test-code
 ```
 
+### How to simulate in Command Line Interface (CLI)
+```sh
+  $ make linux CLI=1 #run this if your computer has gnu-linux
+  $ make macosx CLI=1 #run this if your computer has macosx
+```
 ### Dependencies
 
 * g++

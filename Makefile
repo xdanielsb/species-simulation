@@ -9,8 +9,16 @@ CCM = c++
 COFLAGS = -I.. -Wall -std=c++17  -Dcimg_use_vt100 -Dcimg_display=1 -I/usr/X11R6/include -lm -L/usr/X11R6/lib -lX11 -lpthread
 
 linux:
-	$(CC)  $(CFLAGS) $(NAMEFILE) $(TFLAGS) -o main.o && ./main.o
+ifdef CLI
+	$(CC) -DCLI $(CFLAGS) $(NAMEFILE) $(TFLAGS) -o main.o && ./main.o
+else
+	$(CC) $(CFLAGS) $(NAMEFILE) $(TFLAGS) -o main.o && ./main.o
+endif
 macosx:
+ifdef CLI
+	$(CCM) -DCLI $(COFLAGS) $(NAMEFILE)  -o main.o && ./main.o
+else
 	$(CCM) $(COFLAGS) $(NAMEFILE)  -o main.o && ./main.o
+endif
 test-code:
 	$(CC) -DTEST $(CFLAGS) $(NAMEFILETEST) -o main.o && ./main.o

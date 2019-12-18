@@ -18,7 +18,6 @@ struct CImg {
 #include"../model/behaviour/Gregarius.hpp"
 #include"../model/behaviour/Farsighted.hpp"
 
-//why should class Lazy have a getter
 TEST_CASE("Test getter for Lazy") {
    double mindis = 5;
    LazyB *lazy = new LazyB();

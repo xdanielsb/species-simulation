@@ -39,7 +39,7 @@ public:
         if(isOutOfBoundaryY(a)) a->setDirY(a->getDirY()*-1);
         a->setPosX(a->getPosX()+a->getDirX() * a->getSpeed());
       	a->setPosY(a->getPosY()+a->getDirY() * a->getSpeed());
-        #ifdef DEBUG
+        #ifdef CLI
       	 printf("->G{%.2f, %.2f}\n", a->getPosX(), a->getPosY());
         #endif
     }
